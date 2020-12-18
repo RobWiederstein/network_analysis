@@ -12,3 +12,8 @@ The first tutorial is an introduction to gephi and uses LesMiserables sample dat
 
 
 Gephi [Tutorial](https://www.youtube.com/watch?v=HJ4Hcq3YX4k&list=PLjs-3YZ-rWutIpBEl7gZJdXFva1ZmzcFg&index=2&t=34s) on Network Visualization and Analysis with Professor Jengol Beck. She has an entire course with supporting materials [here](http://www.cs.umd.edu/~golbeck/INST633o/Viz.shtml). Additionally, there is a [playlist](https://www.youtube.com/playlist?list=PLk_jmmkw5S2BqnYBqF2VNPcszY93-ze49) of youtube videos introducing gephi. (There's an interesting final tutorial on Twitter Streaming Importer??)
+
+# Acknowledgements
+
+[Sigmajs](http://sigmajs.org)
+[Gephi](https://gephi.org)
