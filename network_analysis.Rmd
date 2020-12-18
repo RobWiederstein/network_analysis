@@ -25,11 +25,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, include=F}
 library(sigmajs)
-d = system.file("examples/ediaspora.gexf.xml", package = "sigma")
-sigmajs(d)
+d = "./data/gephy/lesmiserables.gml.zip"
+sigmajs(d) %>%
+  sg_nodes(nodes, id, label, size, color) %>%
+  sg_edges(edges, id, source, target) 
+
 ```
 
 ```{r}
+#example for ?sigmajs::sigmajs
 library(sigmajs)
 nodes <- sg_make_nodes()
 edges <- sg_make_edges(nodes)
