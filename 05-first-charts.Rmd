@@ -21,6 +21,7 @@ plot(g, edge.arrow.size=.2, vertex.label=NA, vertex.size=8)
 ```
 
 ## Stop light
+
 ```{r}
 library(sigmajs)
 library(tibble)

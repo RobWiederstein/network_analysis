@@ -155,8 +155,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
 <li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
 <li class="chapter" data-level="4" data-path="first-graphs.html"><a href="first-graphs.html"><i class="fa fa-check"></i><b>4</b> First Graphs</a><ul>
-<li class="chapter" data-level="4.1" data-path="first-graphs.html"><a href="first-graphs.html#stop-light"><i class="fa fa-check"></i><b>4.1</b> Stop light</a></li>
-<li class="chapter" data-level="4.2" data-path="first-graphs.html"><a href="first-graphs.html#les-miserabe"><i class="fa fa-check"></i><b>4.2</b> Les Miserabe</a></li>
+<li class="chapter" data-level="4.1" data-path="first-graphs.html"><a href="first-graphs.html#les-miserable-dataset"><i class="fa fa-check"></i><b>4.1</b> Les Miserable Dataset</a></li>
+<li class="chapter" data-level="4.2" data-path="first-graphs.html"><a href="first-graphs.html#stop-light"><i class="fa fa-check"></i><b>4.2</b> Stop light</a></li>
+<li class="chapter" data-level="4.3" data-path="first-graphs.html"><a href="first-graphs.html#les-miserabe"><i class="fa fa-check"></i><b>4.3</b> Les Miserabe</a></li>
 </ul></li>
 </ul>
 
@@ -177,8 +178,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="first-graphs" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> First Graphs</h1>
-<div id="stop-light" class="section level2">
-<h2><span class="header-section-number">4.1</span> Stop light</h2>
+<div id="les-miserable-dataset" class="section level2">
+<h2><span class="header-section-number">4.1</span> Les Miserable Dataset</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Load igraph</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(igraph)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"></a>
@@ -202,6 +203,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># make the graph a little prettier</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">plot</span>(g, <span class="dt">edge.arrow.size=</span>.<span class="dv">2</span>, <span class="dt">vertex.label=</span><span class="ot">NA</span>, <span class="dt">vertex.size=</span><span class="dv">8</span>)</a></code></pre></div>
 <p><img src="book_hello_world_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+</div>
+<div id="stop-light" class="section level2">
+<h2><span class="header-section-number">4.2</span> Stop light</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">library</span>(sigmajs)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">library</span>(tibble)</a></code></pre></div>
 <pre><code>## 
@@ -220,11 +224,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb10-9" data-line-number="9"><span class="kw">sigmajs</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb10-10" data-line-number="10"><span class="st">  </span><span class="kw">sg_nodes</span>(nodes, id, label, time) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb10-11" data-line-number="11"><span class="st">  </span><span class="kw">sg_edges</span>(edges, id, source, target) </a></code></pre></div>
-<div id="htmlwidget-83f2e48ee4b8b1be4795" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-83f2e48ee4b8b1be4795">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":" 3.337736","y":"17.390784"},{"id":"2","label":"red","time":" 30","x":"16.601812","y":" 8.046088"},{"id":"3","label":"yellow","time":" 10","x":"18.350433","y":" 4.815687"},{"id":"4","label":"green","time":" 20","x":"10.710034","y":" 2.648359"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e6a4e0baeea80cb02dcf" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e6a4e0baeea80cb02dcf">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":" 1.974710","y":"15.920390"},{"id":"2","label":"red","time":" 30","x":" 3.673655","y":" 8.847453"},{"id":"3","label":"yellow","time":" 10","x":"16.181321","y":" 2.625081"},{"id":"4","label":"green","time":" 20","x":" 5.455467","y":" 5.171840"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="les-miserabe" class="section level2">
-<h2><span class="header-section-number">4.2</span> Les Miserabe</h2>
+<h2><span class="header-section-number">4.3</span> Les Miserabe</h2>
 
 </div>
 </div>
