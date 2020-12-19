@@ -9,3 +9,5 @@ first-graphs
 les-miserable-dataset
 stop-light
 les-miserabe
+fig:nice-fig-01
+glossary
