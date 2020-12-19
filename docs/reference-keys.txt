@@ -1,0 +1,11 @@
+fig:nice-fig
+tab:nice-tab
+hello-world
+r-markdown
+including-plots
+intro
+literature
+first-graphs
+les-miserable-dataset
+stop-light
+les-miserabe
