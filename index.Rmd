@@ -1,31 +1,23 @@
 ---
 title: "Network Analysis"
 author: "Robert Wiederstein"
-date: "12/18/2020"
-knit: (function(input_file, encoding) {
-  out_dir <- 'docs';
-  rmarkdown::render(input_file,
- encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
-new_session: true
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
 output:
-  bookdown::html_document2:
-    toc: true
-    toc_float: true
-    toc_depth: 3
-    number_sections: true
-    theme: readable
-    highlight: pygments
-    fig_caption: true
+  bookdown::gitbook: default
+description: "This is a series of tutorials on network applications."
 ---
+
+# Hello World
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r, include=F}
+```{r, include=F, eval=FALSE}
 library(sigmajs)
-d = "./data/gephy/lesmiserables.gml.zip"
+d = unzip("./data/gephy/lesmiserables.gml.zip")
 sigmajs(d) %>%
   sg_nodes(nodes, id, label, size, color) %>%
   sg_edges(edges, id, source, target) 
@@ -38,7 +30,7 @@ library(sigmajs)
 nodes <- sg_make_nodes()
 edges <- sg_make_edges(nodes)
 
-sigmajs("svg") %>%
+sigmajs() %>%
   sg_nodes(nodes, id, label, size, color) %>%
   sg_edges(edges, id, source, target) 
 ```
@@ -48,6 +40,13 @@ sigmajs("svg") %>%
 ## R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+
+```{r}
+library(sigmajs)
+d = system.file("examples/ediaspora.gexf.xml", package = "sigma")
+sigmajs(d)
+```
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 

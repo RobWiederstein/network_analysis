@@ -1,0 +1,10 @@
+r-markdown
+including-plots
+fig:nice-fig
+tab:nice-tab
+intro
+hello-world
+literature
+first-graphs
+les-miserabe
+stop-light
