@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Literature | Network Analysis in R</title>
+  <title>Chapter 4 Sigma JS | Network Analysis in R</title>
   <meta name="description" content="This is a series of tutorials on network applications." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Literature | Network Analysis in R" />
+  <meta property="og:title" content="Chapter 4 Sigma JS | Network Analysis in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Literature | Network Analysis in R" />
+  <meta name="twitter:title" content="Chapter 4 Sigma JS | Network Analysis in R" />
   
   <meta name="twitter:description" content="This is a series of tutorials on network applications." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html"/>
-<link rel="next" href="first-graphs.html"/>
+<link rel="prev" href="first-graphs.html"/>
+<link rel="next" href="glossary.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -193,18 +193,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="literature" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Literature</h1>
-<p>Here is a review of existing methods.</p>
+<div id="sigma" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Sigma JS</h1>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co">#example for ?sigmajs::sigmajs</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">library</span>(sigmajs)</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">nodes &lt;-<span class="st"> </span><span class="kw">sg_make_nodes</span>()</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">edges &lt;-<span class="st"> </span><span class="kw">sg_make_edges</span>(nodes)</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="kw">sigmajs</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="st">  </span><span class="kw">sg_nodes</span>(nodes, id, label, size, color) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="st">  </span><span class="kw">sg_edges</span>(edges, id, source, target) </a></code></pre></div>
+<div id="htmlwidget-54c868f9bdf68c312d1a" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-54c868f9bdf68c312d1a">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"R70","size":"4","color":"#B1E2A3","x":" 2.615858","y":"16.053354"},{"id":"2","label":"U73","size":"4","color":"#A5DBA3","x":"10.933828","y":"15.826037"},{"id":"3","label":"H86","size":"5","color":"#9AD4A4","x":" 7.194800","y":" 4.740831"},{"id":"4","label":"O15","size":"5","color":"#76BA99","x":"11.563019","y":" 4.828129"},{"id":"5","label":"T46","size":"3","color":"#48998A","x":" 9.046631","y":"18.852359"},{"id":"6","label":"N40","size":"3","color":"#2D7E7E","x":"15.263113","y":"18.912316"},{"id":"7","label":"P42","size":"2","color":"#236B76","x":" 9.744794","y":"17.205676"},{"id":"8","label":"E57","size":"3","color":"#1C686F","x":" 1.354480","y":"10.596605"},{"id":"9","label":"W49","size":"4","color":"#20986D","x":"16.254353","y":" 9.513508"},{"id":"10","label":"N66","size":"4","color":"#24C96B","x":"12.854503","y":"13.427773"}],"edges":[{"id":"1","source":"1","target":"5"},{"id":"2","source":"2","target":"10"},{"id":"3","source":"3","target":"3"},{"id":"4","source":"4","target":"4"},{"id":"5","source":"5","target":"6"},{"id":"6","source":"6","target":"6"},{"id":"7","source":"7","target":"8"},{"id":"8","source":"8","target":"8"},{"id":"9","source":"9","target":"8"},{"id":"10","source":"10","target":"8"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
+<div id="stop-light-1" class="section level2">
+<h2><span class="header-section-number">4.1</span> Stop light</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">library</span>(sigmajs)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">library</span>(tibble)</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">edges &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">id =</span> <span class="kw">rep</span>(<span class="st">&quot;1&quot;</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">                    <span class="dt">source =</span> <span class="kw">rep</span>(<span class="st">&quot;1&quot;</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">                    <span class="dt">target =</span> <span class="kw">as.character</span>(<span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">                    )</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">nodes &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">id =</span> <span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">                    <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">&quot;light&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>),</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">                    <span class="dt">time =</span> <span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb12-10" data-line-number="10">)</a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="kw">sigmajs</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="st">  </span><span class="kw">sg_nodes</span>(nodes, id, label, time) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-13" data-line-number="13"><span class="st">  </span><span class="kw">sg_edges</span>(edges, id, source, target) </a></code></pre></div>
+<div id="htmlwidget-a405eaa4d7992beacee3" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a405eaa4d7992beacee3">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":"10.450179","y":" 2.613551"},{"id":"2","label":"red","time":" 30","x":"15.085558","y":"16.137785"},{"id":"3","label":"yellow","time":" 10","x":" 6.374187","y":" 7.126601"},{"id":"4","label":"green","time":" 20","x":" 8.642574","y":" 8.658820"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="first-graphs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="first-graphs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="glossary.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

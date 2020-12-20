@@ -1,197 +1,23 @@
-## 1 Getting Started
-## if you haven't installed the relevant packages, do so with the following code:
-## install.packages("network")
-## install.packages("statnet")
-## install.packages("sna")
-## install.packages("numderiv")
+#get packages if not installed
+list.of.packages <- c("network", "statnet", "sna", "numDeriv", "ergm")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
 
-###########################################################
-###########################################################
-##2 A Brief R Tutorial
-##2.1 Introduction to basic R syntax
-1 + 3 # evaluation
-a <- 3 # assignment
-a # evaluation
-a<-3 # spacing does not matter
-a <- 3 # spacing does not matter
-a
+#load packages
+sapply(list.of.packages, library, character.only = T)
 
-sqrt(a) # use the square root function
-b <- sqrt(a) # use function and save result
-b
+## 3 network objects: importing, exploring, and manipulating network data
 
-d # evaluate something that is not there
-a == b # is a equivalent to b?
-a != b # is a not equal to b?
-ls() # list objects in the global environment
-help.start() # get help with R generally
-?sqrt # get specific help for a function
-??sqrt # looking for help pertaining to sqrt
-apropos("sq") # it's on the tip of my tongue...
-rm(a) # remove a single object
-ls()
-rm(list=ls()) # remove everything from the environment
-ls()
-
-###########################################################
-##2.2 Vectors and matrices in R
-#Creating vectors using the "combine" operator
-c
-?c
-a <- c(1,3,5) # create a vector by combining values
-a
-a[2] # select the second element
-b <- c("one","three","five") # also works with strings
-b
-b[2]
-a <- c(a,a) # can apply recursively
-a
-a <- c(a,b) # mixing types---what happens?
-a # all converted to the same type
-
-#Sequences and replication
-a <- seq(from=1,to=5,by=1) # from 1 to 5 the slow way
-b <- 1:5 # a shortcut!
-a==b # all TRUE
-rep(1,times=5) # a lot of ones
-rep(1:5,times=2) # repeat an entire sequence
-rep(1:5,each=2) # same, but element-wise
-rep(1:5,times=5:1) # can vary the count of each element
-
-#any, all, and which (with vectors)
-a <- -1:4 # create a vector
-a
-a>2 # some TRUE, some FALSE
-any(a>2) # are any elements TRUE?
-all(a>2) # are all elements TRUE?
-which(a>2) # which indices are TRUE?
-
-#From vectors to matrices
-a <- matrix(data=1:25, nrow=5, ncol=5) # create a matrix the "formal" way
-a
-a[1,2] # select a matrix element (two dimensions)
-a[1,] # just the first row
-all(a[1,]==a[1,1:5]) # show the equivalence
-a[,2] # can also perform for columns
-a[2:3,3:5] # select submatrices
-a[-1,] # nice trick: negative numbers omit cells!
-a[-2,-2] # get rid of row two, column two
-
-b <- cbind(1:5,1:5) # another way to create matrices
-b
-d <- rbind(1:5,1:5) # can perform with rows, too
-d
-cbind(b,d) # no go: must have compatible dimensions!
-dim(b) # what were those dimensions, anyway?
-dim(d)
-nrow(b)
-ncol(b)
-cbind(b,b) # combining two matrices
-
-t(b) # can transpose b
-cbind(t(b),d) # now it works
-rbind(t(b),d) # now it works
-
-###########################################################
-##2.3 Element-wise operations
-a <- 1:5
-a + 1 # addition
-a * 2 # multiplication
-a / 3 # division
-a - 4 # subtraction
-a ^ 5 # you get the idea...
-
-a + a # also works on pairs of vectors
-a * a
-a + 1:6 # problem: need same length
-
-a <- rbind(1:5,2:6) # same principles apply to matrices
-b <- rbind(3:7,4:8)
-a + b
-a / b
-a %*% t(b) # matrix multiplication
-
-#logical operators (generally) work like arithmetic ones
-a > 0 # each value greater than zero?
-a == b # corresponding values equivalent?
-a != b # corresponding values not equivalent?
-!(a == b) # same as above
-(a>2) | (b>4) # the OR operator
-(a>2) & (b>4) # the AND operator
-(a>2) || (b>4) # beware the "double-pipe"!
-(a>2) && (b>4) # (and the "double-ampersand"!)
-
-#ditto for many other basic transformations
-log(a)
-exp(b)
-sqrt(a+b) # note that we can nest statements!
-log((sqrt(a+b)+a)*b) # as recursive as we wanna be
-
-###########################################################
-##2.4 Data Frames
-d <- data.frame(income=1:5,sane=c(T,T,T,T,F),name=LETTERS[1:5])
-d
-d[1,2] # acts a lot like a matrix!
-d[,1]*5
-d[-1,]
-d$sane # can use dollar sign notation
-d$sane[3]<-FALSE # making changes
-d
-d[2,3] # shows factors for string values
-
-#if you want to do without factors
-d$name <- LETTERS[1:5] # eliminate evil factors by overwriting
-d[2,3]
-d <- data.frame(income=1:5,sane=c(T,T,T,T,F),name=LETTERS[1:5],stringsAsFactors=FALSE)
-d
-
-d <- as.data.frame(cbind(1:5,2:6)) # can create from matrices
-d
-is.data.frame(d) # how can we tell it's not a matrix?
-is.matrix(d) # the truth comes out
-
-###########################################################
-##2.5 Finding built-in data sets
-#Many packages have built-in data for testing and educational purposes
-data() # lists them all
-?USArrests # get help on a data set
-data(USArrests) # load the data set
-USArrests # view the object
-
-##2.6 Elementary visualization
-#R's workhorse is the "plot" command
-plot(USArrests$Murder,USArrests$UrbanPop) # using dollar sign notation
-plot(USArrests$Murder,USArrests$UrbanPop,log="xy") # log-log scale
-
-#Adding plot title and axis labels
-plot(USArrests$Murder,USArrests$Assault,xlab="Murder",ylab="Assault",main="USArrests")
-
-#Can also add text
-plot(USArrests$Murder,USArrests$Assault,xlab="Murder",ylab="Assault", main="USArrests",type="n")
-text(USArrests$Murder,USArrests$Assault,rownames(USArrests))
-
-#Histograms and boxplots are often helpful
-hist(USArrests$Murder)
-boxplot(USArrests)
-
-###########################################################
-###########################################################
-##3 network objects: importing, exploring, and manipulating network data
-
-##3.1 Importing Relational Data
-#Be sure to be in the directory where you stored the data for the workshop. If you've not set the working directory, you must do so now. See Section 1.7 for how to do this.
-#You can use setwd() to change it, or platform specific shortcuts
-getwd() # Check what directory you're in
-list.files() # Check what's in the working directory
+## 3.1 Importing Relational Data
 
 #Read an adjacency matrix (R stores it as a data frame by default)
-relations <- read.csv("relationalData.csv",header=FALSE,stringsAsFactors=FALSE)
+relations <- read.csv("./data/statnet/relationalData.csv",header=FALSE,stringsAsFactors=FALSE)
 relations
 #Here's a case where matrix format is preferred
 relations <- as.matrix(relations) # convert to matrix format
 
 #Read in some vertex attribute data (okay to leave it as a data frame)
-nodeInfo <- read.csv("vertexAttributes.csv",header=TRUE,stringsAsFactors=FALSE)
+nodeInfo <- read.csv("./data/statnet/vertexAttributes.csv",header=TRUE,stringsAsFactors=FALSE)
 nodeInfo
 
 #Since our relational data has no row/column names, let's set them now
@@ -199,46 +25,41 @@ rownames(relations) <- nodeInfo$name
 colnames(relations) <- nodeInfo$name
 relations
 
-#Why did we set stringsAsFactors=FALSE?
-relations_wFactors<-read.csv("vertexAttributes.csv",header=T,stringsAsFactors=TRUE)
-relations_wFactors[1,2]<-"Derek"
-
-numFactor<-as.factor(c(1,3,5))
-numFactor+1
-as.numeric(numFactor)
-
-#For more information. . .
-?list.files
-?read.csv
-?as.matrix
-?rownames
-
 ###########################################################
 ##3.2 Creating network objects, working with edgelists
 
-nrelations<-network(relations,directed=FALSE) # Create a network object based on relations
-nrelations # Get a quick description of the data
-nempty <- network.initialize(5) # Create an empty graph with 5 vertices
-nempty # Compare with nrelations
+# Create a network object based on relations
+nrelations<-network(relations,directed=FALSE)
+# Get a quick description of the data
+nrelations
+# Create an empty graph with 5 vertices
+nempty <- network.initialize(5)
+# Compare with nrelations
+nempty 
 
-edgelist<-read.csv("edgeList.csv",header=T,stringsAsFactors=F)
-head(edgelist)
+#import edgelist
+edgelist<-read.csv("./data/statnet/edgeList.csv",header=T,stringsAsFactors=F)
+#test for dataframe
+is.data.frame(edgelist)
+# test for network
+is.network(edgelist)
 
+#construct network
 nedge<-network(edgelist,matrix.type="edgelist")
+#test for network
+is.network(nedge)
 nedge
 nedge[,]
 plot(nedge,displaylabels=T)
 
-nedge<-network(edgelist,matrix.type="edgelist",ignore.eval=F,names.eval="weight")
+#construct network w/ weights
+nedge<-network(edgelist, matrix.type = "edgelist", ignore.eval = F, names.eval = "weight")
 nedge
 nedge[,]
 as.matrix(nedge,"weight")
 
-plot(nedge,displaylabels=T,edge.lwd=as.sociomatrix(nedge,"weight")*5)
-
-#For more information. . .
-?network 
-?as.network.matrix
+#plot
+plot(nedge, displaylabels = T, edge.lwd = as.sociomatrix(nedge, "weight") * 5)
 
 ###########################################################
 ##3.3 Description and Visualization
@@ -256,14 +77,6 @@ plot(nrelations,displaylabels=T,mode="circle") # A less useful layout...
 library(sna) # Load the sna library
 gplot(nrelations) # Requires sna
 gplot(relations) # gplot Will work with a matrix object too
-
-#For more information. . .
-?summary.network
-?network.dyadcount
-?network.edgecount
-?as.sociomatrix
-?as.matrix.network
-?is.directed
 
 ###########################################################
 ##3.4 Working With Edges
@@ -343,18 +156,27 @@ load("IntroToSNAinR.Rdata") # Load supplemental workshop data
 ##4.2 Network data in SNA
 #The sna package can handle network data in many forms. For instance, the function gden() calculates network density; we can use it on a network object, an adjacency matrix, a list of such matrices, etc.
 
-data(flo)
+data(flo) #florence
 flo # Adjacency form
+is.network(flo)
+gplot(flo)
 gden(flo)
 nflo<-network(flo,directed=FALSE) # Network form
+is.network(nflo)
 gden(nflo)
+gplot(nflo)
 
-#The sna package also supports a special kind of matrix called an \sna edgelist." These are three-column matrices, each row of which represents an edge (via its sender, recipient, and value, respectively). These sna edgelists" have special attributes that indicate their size, vertex names (if any), and bipartite status (if applicable).
+#The sna package also supports a special kind of matrix called an \sna edgelist." 
+#These are three-column matrices, each row of which represents an edge (via its 
+#sender, recipient, and value, respectively). These sna edgelists" have special 
+#attributes that indicate their size, vertex names (if any), and bipartite status 
+#(if applicable).
 eflo<-as.edgelist.sna(flo) # Coerce flo to an sna edgelist
 eflo
 attr(eflo,"n") # How many vertices are there?
 attr(eflo,"vnames") # Are there vertex names?
 as.sociomatrix.sna(eflo) # Can transform back w/ as.sociomatrix.sna 
+gplot(eflo)
 
 #For more information. . .
 ?as.edgelist.sna
@@ -372,6 +194,7 @@ nodeColors<-ifelse(nodeInfo$sex=="F","hotpink","dodgerblue")
 gplot(relations,gmode="graph",displaylabels=TRUE,vertex.col=nodeColors)
 
 #Using data we just loaded in, plot the contiguity among nations in 1993 (from the Correlates of War (CoW)1 project)
+load("~/Dropbox/coding/rproj/tutorial_nodes/data/statnet/introToSNAinR.Rdata")
 gplot(contig_1993) # The default visualization
 gplot(contig_1993, usearrows=FALSE) # Turn off arrows manually
 gplot(contig_1993, gmode="graph") # Can also tell gplot the data is undirected

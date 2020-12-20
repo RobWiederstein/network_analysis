@@ -1,7 +1,7 @@
 ---
 title: "Network Analysis in R"
 author: "Robert Wiederstein"
-date: "`r Sys.Date()`"
+date: "2020-12-19"
 bibliography: [book.bib, packages.bib]
 documentclass: book
 site: bookdown::bookdown_site
@@ -12,10 +12,7 @@ description: This is a series of tutorials on network applications.
 
 # Preface {-}
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(bookdown)
-```
+
 
 ## Why Read this Book
 

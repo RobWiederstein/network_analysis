@@ -1,0 +1,42 @@
+# Sigma JS {#sigma}
+
+```{r, include=F, eval=FALSE}
+library(sigmajs)
+d = unzip("./data/gephy/lesmiserables.gml.zip")
+sigmajs(d) %>%
+  sg_nodes(nodes, id, label, size, color) %>%
+  sg_edges(edges, id, source, target) 
+
+```
+
+```{r}
+#example for ?sigmajs::sigmajs
+library(sigmajs)
+nodes <- sg_make_nodes()
+edges <- sg_make_edges(nodes)
+
+sigmajs() %>%
+  sg_nodes(nodes, id, label, size, color) %>%
+  sg_edges(edges, id, source, target) 
+```
+
+
+## Stop light
+
+```{r}
+library(sigmajs)
+library(tibble)
+edges <- tibble(id = rep("1", 3),
+                    source = rep("1", 3),
+                    target = as.character(c(2:4))
+                    )
+nodes <- tibble(id = as.character(1:4),
+                    label = c("light", "red", "yellow", "green"),
+                    time = c(100, 30, 10, 20)
+)
+sigmajs() %>%
+  sg_nodes(nodes, id, label, time) %>%
+  sg_edges(edges, id, source, target) 
+
+```
+
