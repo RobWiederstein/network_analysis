@@ -1,5 +1,3 @@
-fig:nice-fig-01
-tab:nice-tab
 why-read-this-book
 purpose
 collection
@@ -7,6 +5,10 @@ assumptions
 intro
 defined
 input-formats
+adjacency-matrix
+incidence-matrix
+edge-list
+dataframe-distinguished
 r-packages
 literature
 first-graphs

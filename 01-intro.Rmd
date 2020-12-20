@@ -6,7 +6,15 @@
 
 ## Input formats
 
-Building a network graph is confusing because of the number of potential input types. Users must first distinguish whether the input is an adjacency matrix, incidence matrix, or edge list.
+Building a network graph is challenging because of the number of potential input types. Users must first distinguish whether the input is an adjacency matrix, incidence matrix, or edge list.
+
+### Adjacency matrix
+
+### Incidence matrix
+
+### Edge list
+
+### Dataframe distinguished
 
 ## R packages
 
