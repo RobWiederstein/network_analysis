@@ -73,8 +73,8 @@ sigmajs() %>%
   sg_edges(edges, id, source, target) 
 ```
 
-<!--html_preserve--><div id="htmlwidget-aca059c96e8535149c2d" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-aca059c96e8535149c2d">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":"16.616005","y":" 8.771368"},{"id":"2","label":"red","time":" 30","x":" 9.352741","y":"16.291272"},{"id":"3","label":"yellow","time":" 10","x":"10.896740","y":" 6.405737"},{"id":"4","label":"green","time":" 20","x":" 5.891292","y":"13.747131"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-1f567fb66bb032c1a741" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1f567fb66bb032c1a741">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":"12.640181","y":" 3.843751"},{"id":"2","label":"red","time":" 30","x":"12.177734","y":"15.464822"},{"id":"3","label":"yellow","time":" 10","x":" 4.220843","y":"15.216751"},{"id":"4","label":"green","time":" 20","x":" 7.623199","y":" 8.922517"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 
 ## Les Miserabe

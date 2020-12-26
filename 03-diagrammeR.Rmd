@@ -1,0 +1,67 @@
+# DiagrammeR Package {#DiagR}
+
+Hello world.
+
+```{r unconnected-node-graph, out.width="50%", fig.align='center', fig.cap="unconnected nodes"}
+
+library(DiagrammeR)
+#graph 1 - nodes only
+n <- 5
+ndf <-
+  create_node_df(
+    n = n,
+    label = paste0("N", 1:n)
+  )
+graph1 <- create_graph(nodes_df = ndf)
+graph1 %>% render_graph(layout = "nicely")
+
+```
+
+```{r connected-node-diagram, out.width="50%", fig.align='center', fig.cap="connected nodes with edges labeled"}
+#graph 2 - connection
+edf <-
+  create_edge_df(
+    from = rep(2, n),
+    to   = 1:n,
+    rel  = letters[1:n]
+  )
+graph2 <- create_graph(nodes_df = ndf, edges_df = edf)
+graph2 %>% render_graph(layout = "nicely",
+                        output = "visNetwork")
+```
+
+```{r connected-nodes-with-attributes, out.width="50%", fig.align='center', fig.cap="connected nodes with attributes"}
+#graph3--add attributes
+n <- 5
+ndf <-
+  create_node_df(
+    n = n,
+    label = paste0("N", 1:n),
+    type = "a",
+    style = "filled",
+    color = "aqua",
+    shape = c(rep("circle", n-1), "triangle")
+  )
+
+edf <-
+  create_edge_df(
+    from = rep(2, n),
+    to = 1:n,
+    rel = letters[1:5],
+    length = seq(from = 50,
+                 to = n * 50,
+                 by = 50),
+    color = c("green", "red", "yellow", "blue", "brown"),
+    width = seq(from = 2, 
+                to = 10, 
+                by = 2
+    )
+    )
+edf
+
+graph3 <- create_graph(nodes_df = ndf, edges_df = edf)
+graph3 %>% render_graph(output = "visNetwork",
+                        layout = "tree")
+
+```
+

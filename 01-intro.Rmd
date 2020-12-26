@@ -1,8 +1,50 @@
 # Introduction {#intro}
 
-## Defined
+## Terms
 
 "A network is not just a metaphor: it is a precise, mathematical construct of nodes (vertices, actors) N and edges (ties, relations) E that can be directed or undirected." [@jasneyIntroductionSocialNetwork2018]
+
+```{r node-graph, fig.show="hold", echo=FALSE, out.width="50%", fig.cap="a node"}
+library(DiagrammeR)
+library(grid)
+library(gridExtra)
+#graph 1 - unconnected
+n <-  12
+ndf <-
+  create_node_df(
+    n = n,
+    label = paste0("N", n)
+  )
+graph1 <- create_graph(nodes_df = ndf)
+graph1 %>% render_graph()
+#graph 2 - connected
+edf <-
+  create_edge_df(
+    from = 1:n,
+    to   = n:1,
+    rel  = ""
+  )
+graph2 <- create_graph(nodes_df = ndf, edges_df = edf)
+graph2 %>% render_graph(layout = "circle",
+                        output = "visNetwork")
+```
+
+```{r}
+df <- data.frame(nodes = c(1, 2), y = c(1, 1))
+library(ggplot2)
+p <- ggplot()
+p <- p + geom_point(aes(1, 1), 
+                    size = 25,
+                    shape = 1,
+                    label = "N1"
+                    )
+p <- p + annotate("text", x = 1, y = 1, label = "N1")
+
+p <- p + theme_void()
+p
+```
+
+
 
 ## Input formats
 
