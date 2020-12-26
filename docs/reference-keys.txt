@@ -44,3 +44,5 @@ sizes
 colors
 fig:vertex-attributes
 fig:more-color-examples
+edges
+fig:edge-attributes

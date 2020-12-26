@@ -113,3 +113,12 @@ If you don't want (some) vertices to have any color, supply NA as the color name
 
 The default value is “SkyBlue2”.
 
+
+
+### Edges
+
+<div class="figure" style="text-align: center">
+<img src="04-igraph_files/figure-html/edge-attributes-1.png" alt="Selected edge attributes." width="672" />
+<p class="caption">(\#fig:edge-attributes)Selected edge attributes.</p>
+</div>
+
