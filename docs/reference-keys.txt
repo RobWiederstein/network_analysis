@@ -46,3 +46,5 @@ fig:vertex-attributes
 fig:more-color-examples
 edges
 fig:edge-attributes
+fig:jasney-adjacency-matrix
+fig:jasney-incidence-matrix

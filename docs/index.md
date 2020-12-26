@@ -2,12 +2,15 @@
 title: "Network Analysis in R"
 author: "Robert Wiederstein"
 date: "2020-12-25"
-bibliography: [book.bib, packages.bib]
+output: pdf_document
+description: This is a series of tutorials on network applications.
 documentclass: book
+link-citations: yes
+bibliography:
+- book.bib
+- packages.bib
 site: bookdown::bookdown_site
 biblio-style: apalike
-link-citations: yes
-description: This is a series of tutorials on network applications.
 ---
 
 # Preface {-}
