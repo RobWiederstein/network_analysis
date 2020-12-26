@@ -1,7 +1,7 @@
 ---
 title: "Network Analysis in R"
 author: "Robert Wiederstein"
-date: "2020-12-24"
+date: "2020-12-25"
 bibliography: [book.bib, packages.bib]
 documentclass: book
 site: bookdown::bookdown_site
@@ -28,8 +28,8 @@ What follows is admittedly not the most original or insightful work on networks.
 
 ## Prerequisites
 
-A working knowledge of `R` is necessary including how to obtain and load packages and how to manipulate basic data structures like lists and dataframes.  Methods and packages in the `tidyverse` are given priority. `Rstudio` is the development environment of choice.
+A working knowledge of `R` is necessary including how to obtain and load packages, how to manipulate basic data structures like lists and dataframes and how to plot and save graphs in multiple formats. Methods and packages in the `tidyverse` are preferred where available and  `Rstudio` is the development environment of choice.
 
 ## Disclaimer
 
-I have no education or background in statistics, informatics or network analysis.  Reliance upon any representation within this publication should occur, if at all,  only after verification from other reliable sources and in consultation with someone with suitable background.
+I have no education or background in statistics, informatics or network analysis.  Reliance upon any representation within this publication should occur, if at all,  only after verification from other reliable sources and in consultation with someone with a relevant background.
