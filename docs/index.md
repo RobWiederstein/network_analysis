@@ -1,8 +1,7 @@
 ---
 title: "Network Analysis in R"
 author: "Robert Wiederstein"
-date: "2020-12-25"
-output: pdf_document
+date: "2020-12-26"
 description: This is a series of tutorials on network applications.
 documentclass: book
 link-citations: yes

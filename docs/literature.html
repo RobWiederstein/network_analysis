@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2020-12-24" />
+<meta name="date" content="2020-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,6 +56,8 @@
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
 <script src="libs/vis-4.20.1/vis.min.js"></script>
 <script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
@@ -142,7 +144,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -155,9 +156,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Network Analysis in R</a></li>
-
-<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#why-read-this-book"><i class="fa fa-check"></i><b>0.1</b> Why Read this Book</a></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#purpose"><i class="fa fa-check"></i><b>0.2</b> Purpose</a></li>
@@ -178,9 +176,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
 <li class="chapter" data-level="3" data-path="DiagR.html"><a href="DiagR.html"><i class="fa fa-check"></i><b>3</b> DiagrammeR Package</a></li>
 <li class="chapter" data-level="4" data-path="igraph.html"><a href="igraph.html"><i class="fa fa-check"></i><b>4</b> igraph</a><ul>
-<li class="chapter" data-level="4.1" data-path="igraph.html"><a href="igraph.html#simple-examples"><i class="fa fa-check"></i><b>4.1</b> Simple Examples</a></li>
+<li class="chapter" data-level="4.1" data-path="igraph.html"><a href="igraph.html#examples"><i class="fa fa-check"></i><b>4.1</b> Examples</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="igraph.html"><a href="igraph.html#simple"><i class="fa fa-check"></i><b>4.1.1</b> Simple</a></li>
+<li class="chapter" data-level="4.1.2" data-path="igraph.html"><a href="igraph.html#complicated"><i class="fa fa-check"></i><b>4.1.2</b> Complicated</a></li>
+</ul></li>
 <li class="chapter" data-level="4.2" data-path="igraph.html"><a href="igraph.html#importation-of-datasets"><i class="fa fa-check"></i><b>4.2</b> Importation of Datasets</a></li>
-<li class="chapter" data-level="4.3" data-path="igraph.html"><a href="igraph.html#separation-spacing-of-nodes"><i class="fa fa-check"></i><b>4.3</b> Separation &amp; Spacing of Nodes</a></li>
+<li class="chapter" data-level="4.3" data-path="igraph.html"><a href="igraph.html#layout-of-nodes"><i class="fa fa-check"></i><b>4.3</b> Layout of Nodes</a></li>
+<li class="chapter" data-level="4.4" data-path="igraph.html"><a href="igraph.html#attributes"><i class="fa fa-check"></i><b>4.4</b> Attributes</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="igraph.html"><a href="igraph.html#vertices"><i class="fa fa-check"></i><b>4.4.1</b> Vertices</a></li>
+<li class="chapter" data-level="4.4.2" data-path="igraph.html"><a href="igraph.html#edges"><i class="fa fa-check"></i><b>4.4.2</b> Edges</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="first-graphs.html"><a href="first-graphs.html"><i class="fa fa-check"></i><b>5</b> First Graphs</a><ul>
 <li class="chapter" data-level="5.1" data-path="first-graphs.html"><a href="first-graphs.html#les-miserable-dataset"><i class="fa fa-check"></i><b>5.1</b> Les Miserable Dataset</a></li>
@@ -191,9 +196,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="sigma.html"><a href="sigma.html#stop-light-1"><i class="fa fa-check"></i><b>6.1</b> Stop light</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>

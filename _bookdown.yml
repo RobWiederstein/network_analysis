@@ -5,3 +5,4 @@ new_session: yes
 language:
   ui:
     chapter_name: "Chapter "
+after_chapter_script: "./R/remove_all_objects_from_global_env.R"

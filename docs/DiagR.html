@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2020-12-24" />
+<meta name="date" content="2020-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,6 +56,8 @@
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
 <script src="libs/vis-4.20.1/vis.min.js"></script>
 <script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
@@ -142,7 +144,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -155,9 +156,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Network Analysis in R</a></li>
-
-<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#why-read-this-book"><i class="fa fa-check"></i><b>0.1</b> Why Read this Book</a></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#purpose"><i class="fa fa-check"></i><b>0.2</b> Purpose</a></li>
@@ -178,9 +176,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
 <li class="chapter" data-level="3" data-path="DiagR.html"><a href="DiagR.html"><i class="fa fa-check"></i><b>3</b> DiagrammeR Package</a></li>
 <li class="chapter" data-level="4" data-path="igraph.html"><a href="igraph.html"><i class="fa fa-check"></i><b>4</b> igraph</a><ul>
-<li class="chapter" data-level="4.1" data-path="igraph.html"><a href="igraph.html#simple-examples"><i class="fa fa-check"></i><b>4.1</b> Simple Examples</a></li>
+<li class="chapter" data-level="4.1" data-path="igraph.html"><a href="igraph.html#examples"><i class="fa fa-check"></i><b>4.1</b> Examples</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="igraph.html"><a href="igraph.html#simple"><i class="fa fa-check"></i><b>4.1.1</b> Simple</a></li>
+<li class="chapter" data-level="4.1.2" data-path="igraph.html"><a href="igraph.html#complicated"><i class="fa fa-check"></i><b>4.1.2</b> Complicated</a></li>
+</ul></li>
 <li class="chapter" data-level="4.2" data-path="igraph.html"><a href="igraph.html#importation-of-datasets"><i class="fa fa-check"></i><b>4.2</b> Importation of Datasets</a></li>
-<li class="chapter" data-level="4.3" data-path="igraph.html"><a href="igraph.html#separation-spacing-of-nodes"><i class="fa fa-check"></i><b>4.3</b> Separation &amp; Spacing of Nodes</a></li>
+<li class="chapter" data-level="4.3" data-path="igraph.html"><a href="igraph.html#layout-of-nodes"><i class="fa fa-check"></i><b>4.3</b> Layout of Nodes</a></li>
+<li class="chapter" data-level="4.4" data-path="igraph.html"><a href="igraph.html#attributes"><i class="fa fa-check"></i><b>4.4</b> Attributes</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="igraph.html"><a href="igraph.html#vertices"><i class="fa fa-check"></i><b>4.4.1</b> Vertices</a></li>
+<li class="chapter" data-level="4.4.2" data-path="igraph.html"><a href="igraph.html#edges"><i class="fa fa-check"></i><b>4.4.2</b> Edges</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="first-graphs.html"><a href="first-graphs.html"><i class="fa fa-check"></i><b>5</b> First Graphs</a><ul>
 <li class="chapter" data-level="5.1" data-path="first-graphs.html"><a href="first-graphs.html#les-miserable-dataset"><i class="fa fa-check"></i><b>5.1</b> Les Miserable Dataset</a></li>
@@ -191,9 +196,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="sigma.html"><a href="sigma.html#stop-light-1"><i class="fa fa-check"></i><b>6.1</b> Stop light</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -214,83 +216,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="DiagR" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> DiagrammeR Package</h1>
 <p>Hello world.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(DiagrammeR)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#graph 1 - nodes only</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">n &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">ndf &lt;-</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">create_node_df</span>(</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">    <span class="dt">n =</span> n,</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;N&quot;</span>, <span class="dv">1</span><span class="op">:</span>n)</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">  )</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">graph1 &lt;-<span class="st"> </span><span class="kw">create_graph</span>(<span class="dt">nodes_df =</span> ndf)</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">graph1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">render_graph</span>(<span class="dt">layout =</span> <span class="st">&quot;nicely&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(DiagrammeR)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#graph 1 - nodes only</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">n &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">ndf &lt;-</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">  </span><span class="kw">create_node_df</span>(</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">    <span class="dt">n =</span> n,</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">    <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;N&quot;</span>, <span class="dv">1</span><span class="op">:</span>n)</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">graph1 &lt;-<span class="st"> </span><span class="kw">create_graph</span>(<span class="dt">nodes_df =</span> ndf)</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">graph1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">render_graph</span>(<span class="dt">layout =</span> <span class="st">&quot;nicely&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have column names if `.name_repair` is omitted as of tibble 2.0.0.
 ## Using compatibility `.name_repair`.
 ## This warning is displayed once every 8 hours.
 ## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unconnected-node-graph"></span>
-<div id="htmlwidget-86a50f3521719c6acc3b" style="width:50%;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-86a50f3521719c6acc3b">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"N1\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"122.874244977094,113.476330835609!\"] \n  \"2\" [label = \"N2\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"122.100159599203,115.976353478367!\"] \n  \"3\" [label = \"N3\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"124.204154323303,114.397963956837!\"] \n  \"4\" [label = \"N4\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"121.574868217214,114.439330968591!\"] \n  \"5\" [label = \"N5\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"123.721667393073,115.951431140286!\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-13ce89d9d64de7bf349f" style="width:50%;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-13ce89d9d64de7bf349f">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"N1\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"121.555389948321,114.869747482158!\"] \n  \"2\" [label = \"N2\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"119.203909001876,116.034408813355!\"] \n  \"3\" [label = \"N3\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"120.335951151125,117.199863633318!\"] \n  \"4\" [label = \"N4\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"121.793072246307,116.476740782123!\"] \n  \"5\" [label = \"N5\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"119.956115397653,114.596104203908!\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 3.1: unconnected nodes
 </p>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co">#graph 2 - connection</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">edf &lt;-</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw">create_edge_df</span>(</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">    <span class="dt">from =</span> <span class="kw">rep</span>(<span class="dv">2</span>, n),</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">    <span class="dt">to   =</span> <span class="dv">1</span><span class="op">:</span>n,</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">    <span class="dt">rel  =</span> letters[<span class="dv">1</span><span class="op">:</span>n]</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">  )</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">graph2 &lt;-<span class="st"> </span><span class="kw">create_graph</span>(<span class="dt">nodes_df =</span> ndf, <span class="dt">edges_df =</span> edf)</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">graph2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">render_graph</span>(<span class="dt">layout =</span> <span class="st">&quot;nicely&quot;</span>,</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">                        <span class="dt">output =</span> <span class="st">&quot;visNetwork&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">#graph 2 - connection</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">edf &lt;-</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw">create_edge_df</span>(</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">    <span class="dt">from =</span> <span class="kw">rep</span>(<span class="dv">2</span>, n),</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="dt">to   =</span> <span class="dv">1</span><span class="op">:</span>n,</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">    <span class="dt">rel  =</span> letters[<span class="dv">1</span><span class="op">:</span>n]</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">  )</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">graph2 &lt;-<span class="st"> </span><span class="kw">create_graph</span>(<span class="dt">nodes_df =</span> ndf, <span class="dt">edges_df =</span> edf)</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">graph2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">render_graph</span>(<span class="dt">layout =</span> <span class="st">&quot;nicely&quot;</span>,</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">                        <span class="dt">output =</span> <span class="st">&quot;visNetwork&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:connected-node-diagram"></span>
-<div id="htmlwidget-9dbca9e3b52bfc906fb9" style="width:50%;height:480px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9dbca9e3b52bfc906fb9">{"x":{"nodes":{"id":[1,2,3,4,5],"group":[null,null,null,null,null],"label":["N1","N2","N3","N4","N5"]},"edges":{"id":[1,2,3,4,5],"from":[2,2,2,2,2],"to":[1,2,3,4,5],"label":["a","b","c","d","e"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":{"to":{"enabled":true,"scaleFactor":1}}},"physics":{"solver":"barnesHut","stabilization":{"enabled":true,"onlyDynamicEdges":false,"fit":true}},"layout":{"improvedLayout":true}},"groups":[null],"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-fd918a9e23292a7b1e38" style="width:50%;height:480px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fd918a9e23292a7b1e38">{"x":{"nodes":{"id":[1,2,3,4,5],"group":[null,null,null,null,null],"label":["N1","N2","N3","N4","N5"]},"edges":{"id":[1,2,3,4,5],"from":[2,2,2,2,2],"to":[1,2,3,4,5],"label":["a","b","c","d","e"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":{"to":{"enabled":true,"scaleFactor":1}}},"physics":{"solver":"barnesHut","stabilization":{"enabled":true,"onlyDynamicEdges":false,"fit":true}},"layout":{"improvedLayout":true}},"groups":[null],"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 3.2: connected nodes with edges labeled
 </p>
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">#graph3--add attributes</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">n &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">ndf &lt;-</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw">create_node_df</span>(</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">    <span class="dt">n =</span> n,</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">    <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;N&quot;</span>, <span class="dv">1</span><span class="op">:</span>n),</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">    <span class="dt">type =</span> <span class="st">&quot;a&quot;</span>,</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8">    <span class="dt">style =</span> <span class="st">&quot;filled&quot;</span>,</a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">    <span class="dt">color =</span> <span class="st">&quot;aqua&quot;</span>,</a>
-<a class="sourceLine" id="cb7-10" data-line-number="10">    <span class="dt">shape =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;circle&quot;</span>, n<span class="dv">-1</span>), <span class="st">&quot;triangle&quot;</span>)</a>
-<a class="sourceLine" id="cb7-11" data-line-number="11">  )</a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13">edf &lt;-</a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="st">  </span><span class="kw">create_edge_df</span>(</a>
-<a class="sourceLine" id="cb7-15" data-line-number="15">    <span class="dt">from =</span> <span class="kw">rep</span>(<span class="dv">2</span>, n),</a>
-<a class="sourceLine" id="cb7-16" data-line-number="16">    <span class="dt">to =</span> <span class="dv">1</span><span class="op">:</span>n,</a>
-<a class="sourceLine" id="cb7-17" data-line-number="17">    <span class="dt">rel =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],</a>
-<a class="sourceLine" id="cb7-18" data-line-number="18">    <span class="dt">length =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">50</span>,</a>
-<a class="sourceLine" id="cb7-19" data-line-number="19">                 <span class="dt">to =</span> n <span class="op">*</span><span class="st"> </span><span class="dv">50</span>,</a>
-<a class="sourceLine" id="cb7-20" data-line-number="20">                 <span class="dt">by =</span> <span class="dv">50</span>),</a>
-<a class="sourceLine" id="cb7-21" data-line-number="21">    <span class="dt">color =</span> <span class="kw">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;brown&quot;</span>),</a>
-<a class="sourceLine" id="cb7-22" data-line-number="22">    <span class="dt">width =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>, </a>
-<a class="sourceLine" id="cb7-23" data-line-number="23">                <span class="dt">to =</span> <span class="dv">10</span>, </a>
-<a class="sourceLine" id="cb7-24" data-line-number="24">                <span class="dt">by =</span> <span class="dv">2</span></a>
-<a class="sourceLine" id="cb7-25" data-line-number="25">    )</a>
-<a class="sourceLine" id="cb7-26" data-line-number="26">    )</a>
-<a class="sourceLine" id="cb7-27" data-line-number="27">edf</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">#graph3--add attributes</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">n &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">ndf &lt;-</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw">create_node_df</span>(</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="dt">n =</span> n,</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">    <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;N&quot;</span>, <span class="dv">1</span><span class="op">:</span>n),</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="dt">type =</span> <span class="st">&quot;a&quot;</span>,</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">    <span class="dt">style =</span> <span class="st">&quot;filled&quot;</span>,</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">    <span class="dt">color =</span> <span class="st">&quot;aqua&quot;</span>,</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">    <span class="dt">shape =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;circle&quot;</span>, n<span class="dv">-1</span>), <span class="st">&quot;triangle&quot;</span>)</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">  )</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">edf &lt;-</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="st">  </span><span class="kw">create_edge_df</span>(</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">    <span class="dt">from =</span> <span class="kw">rep</span>(<span class="dv">2</span>, n),</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">    <span class="dt">to =</span> <span class="dv">1</span><span class="op">:</span>n,</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">    <span class="dt">rel =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">    <span class="dt">length =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb4-19" data-line-number="19">                 <span class="dt">to =</span> n <span class="op">*</span><span class="st"> </span><span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">                 <span class="dt">by =</span> <span class="dv">50</span>),</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21">    <span class="dt">color =</span> <span class="kw">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;brown&quot;</span>),</a>
+<a class="sourceLine" id="cb4-22" data-line-number="22">    <span class="dt">width =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb4-23" data-line-number="23">                <span class="dt">to =</span> <span class="dv">10</span>, </a>
+<a class="sourceLine" id="cb4-24" data-line-number="24">                <span class="dt">by =</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25">    )</a>
+<a class="sourceLine" id="cb4-26" data-line-number="26">    )</a>
+<a class="sourceLine" id="cb4-27" data-line-number="27">edf</a></code></pre></div>
 <pre><code>##   id from to rel length  color width
 ## 1  1    2  1   a     50  green     2
 ## 2  2    2  2   b    100    red     4
 ## 3  3    2  3   c    150 yellow     6
 ## 4  4    2  4   d    200   blue     8
 ## 5  5    2  5   e    250  brown    10</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">graph3 &lt;-<span class="st"> </span><span class="kw">create_graph</span>(<span class="dt">nodes_df =</span> ndf, <span class="dt">edges_df =</span> edf)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">graph3 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">render_graph</span>(<span class="dt">output =</span> <span class="st">&quot;visNetwork&quot;</span>,</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">                        <span class="dt">layout =</span> <span class="st">&quot;tree&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">graph3 &lt;-<span class="st"> </span><span class="kw">create_graph</span>(<span class="dt">nodes_df =</span> ndf, <span class="dt">edges_df =</span> edf)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">graph3 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">render_graph</span>(<span class="dt">output =</span> <span class="st">&quot;visNetwork&quot;</span>,</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">                        <span class="dt">layout =</span> <span class="st">&quot;tree&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:connected-nodes-with-attributes"></span>
-<div id="htmlwidget-466e5725bf2c80eba98a" style="width:50%;height:480px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-466e5725bf2c80eba98a">{"x":{"nodes":{"id":[1,2,3,4,5],"group":["a","a","a","a","a"],"label":["N1","N2","N3","N4","N5"],"style":["filled","filled","filled","filled","filled"],"color":["aqua","aqua","aqua","aqua","aqua"],"shape":["circle","circle","circle","circle","triangle"]},"edges":{"id":[1,2,3,4,5],"from":[2,2,2,2,2],"to":[1,2,3,4,5],"label":["a","b","c","d","e"],"length":[50,100,150,200,250],"color":["green","red","yellow","blue","brown"],"width":[2,4,6,8,10]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":{"to":{"enabled":true,"scaleFactor":1}}},"physics":{"solver":"barnesHut","stabilization":{"enabled":true,"onlyDynamicEdges":false,"fit":true}},"layout":{"improvedLayout":true}},"groups":["a"],"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-17bd1c0560430a937c78" style="width:50%;height:480px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-17bd1c0560430a937c78">{"x":{"nodes":{"id":[1,2,3,4,5],"group":["a","a","a","a","a"],"label":["N1","N2","N3","N4","N5"],"style":["filled","filled","filled","filled","filled"],"color":["aqua","aqua","aqua","aqua","aqua"],"shape":["circle","circle","circle","circle","triangle"]},"edges":{"id":[1,2,3,4,5],"from":[2,2,2,2,2],"to":[1,2,3,4,5],"label":["a","b","c","d","e"],"length":[50,100,150,200,250],"color":["green","red","yellow","blue","brown"],"width":[2,4,6,8,10]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":{"to":{"enabled":true,"scaleFactor":1}}},"physics":{"solver":"barnesHut","stabilization":{"enabled":true,"onlyDynamicEdges":false,"fit":true}},"layout":{"improvedLayout":true}},"groups":["a"],"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 3.3: connected nodes with attributes
 </p>

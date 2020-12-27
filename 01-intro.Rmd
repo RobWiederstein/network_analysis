@@ -1,20 +1,23 @@
 # Introduction {#intro}
 
+```{r intro-libraries, include=F}
+x <- c("magick", "igraph", "kableExtra", "knitr", "webshot")
+sapply(x, library, character.only = T)
+```
+
 ## Terms
 
-"A network is not just a metaphor: it is a precise, mathematical construct of nodes (vertices, actors) N and edges (ties, relations) E that can be directed or undirected." [@jasneyIntroductionSocialNetwork2018]
+"A network is not just a metaphor: it is a precise, mathematical construct of nodes (vertices, actors) N and edges (ties, relations) E that can be directed or undirected. We can include information
+(attributes) on the nodes as well as the edges." [@jasneyIntroductionSocialNetwork2018]
 
 ```{r node-graph, fig.show="hold", echo=FALSE, out.width="50%", fig.cap="a node"}
-library(DiagrammeR)
-#graph 1 - unconnected
-n <-  12
-ndf <-
-  create_node_df(
-    n = n,
-    label = paste0("N", 1:n)
-  )
-graph1 <- create_graph(nodes_df = ndf)
-graph1 %>% render_graph()
+g1 <- graph_from_literal(a-+b, a+-c, b-+c)
+V(g1)$color <- 1
+V(g1)$color[2] <- 2
+E(g1)
+plot(g1, 
+     vertex.size = 50)
+
 ```
 
 ## Input formats
@@ -37,8 +40,32 @@ knitr::include_graphics('./imgs/jasney-adj-matrix.png')
 
 The rows and colunms of an incidence matrix do not have to be equal.  Its shape can be rectangular in addition to square. `igraph` can read an incidence matrix using the `graph_from_incidence_matrix()`.
 
-
-
+<div class = "row">
+<div class = "col-md-6">
+```{r example-incidence-matrix, echo=F}
+# data
+set.seed(1)
+data <- matrix(sample(0:2, 30, replace=TRUE), nrow=6)
+colnames(data) <- letters[1:5]
+rownames(data) <- LETTERS[1:6]
+#
+data %>%
+        kbl() %>%
+        kable_styling("striped", "condensed", full_width = T) %>%
+        column_spec(1, bold = T, border_right = T) %>%
+        row_spec(0, bold = T)
+```
+</div>
+<div class = "col-md-6">
+```{r plot-incidence-matrix, echo = F, fig.cap="Plot generated from incidency matrix."}
+# create the network object
+network <- graph_from_incidence_matrix(data)
+plot(network, 
+     vertex.size = 35,
+     label.cex = 25)
+```
+</div>
+</div>
 
 ### Edge list
 

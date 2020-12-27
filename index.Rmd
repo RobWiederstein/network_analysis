@@ -2,7 +2,6 @@
 title: "Network Analysis in R"
 author: "Robert Wiederstein"
 date: "`r Sys.Date()`"
-output: pdf_document
 description: This is a series of tutorials on network applications.
 documentclass: book
 link-citations: yes

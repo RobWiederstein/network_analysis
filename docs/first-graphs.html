@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2020-12-24" />
+<meta name="date" content="2020-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,6 +56,8 @@
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
 <script src="libs/vis-4.20.1/vis.min.js"></script>
 <script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
@@ -142,7 +144,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -155,9 +156,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Network Analysis in R</a></li>
-
-<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#why-read-this-book"><i class="fa fa-check"></i><b>0.1</b> Why Read this Book</a></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#purpose"><i class="fa fa-check"></i><b>0.2</b> Purpose</a></li>
@@ -178,9 +176,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
 <li class="chapter" data-level="3" data-path="DiagR.html"><a href="DiagR.html"><i class="fa fa-check"></i><b>3</b> DiagrammeR Package</a></li>
 <li class="chapter" data-level="4" data-path="igraph.html"><a href="igraph.html"><i class="fa fa-check"></i><b>4</b> igraph</a><ul>
-<li class="chapter" data-level="4.1" data-path="igraph.html"><a href="igraph.html#simple-examples"><i class="fa fa-check"></i><b>4.1</b> Simple Examples</a></li>
+<li class="chapter" data-level="4.1" data-path="igraph.html"><a href="igraph.html#examples"><i class="fa fa-check"></i><b>4.1</b> Examples</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="igraph.html"><a href="igraph.html#simple"><i class="fa fa-check"></i><b>4.1.1</b> Simple</a></li>
+<li class="chapter" data-level="4.1.2" data-path="igraph.html"><a href="igraph.html#complicated"><i class="fa fa-check"></i><b>4.1.2</b> Complicated</a></li>
+</ul></li>
 <li class="chapter" data-level="4.2" data-path="igraph.html"><a href="igraph.html#importation-of-datasets"><i class="fa fa-check"></i><b>4.2</b> Importation of Datasets</a></li>
-<li class="chapter" data-level="4.3" data-path="igraph.html"><a href="igraph.html#separation-spacing-of-nodes"><i class="fa fa-check"></i><b>4.3</b> Separation &amp; Spacing of Nodes</a></li>
+<li class="chapter" data-level="4.3" data-path="igraph.html"><a href="igraph.html#layout-of-nodes"><i class="fa fa-check"></i><b>4.3</b> Layout of Nodes</a></li>
+<li class="chapter" data-level="4.4" data-path="igraph.html"><a href="igraph.html#attributes"><i class="fa fa-check"></i><b>4.4</b> Attributes</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="igraph.html"><a href="igraph.html#vertices"><i class="fa fa-check"></i><b>4.4.1</b> Vertices</a></li>
+<li class="chapter" data-level="4.4.2" data-path="igraph.html"><a href="igraph.html#edges"><i class="fa fa-check"></i><b>4.4.2</b> Edges</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="first-graphs.html"><a href="first-graphs.html"><i class="fa fa-check"></i><b>5</b> First Graphs</a><ul>
 <li class="chapter" data-level="5.1" data-path="first-graphs.html"><a href="first-graphs.html#les-miserable-dataset"><i class="fa fa-check"></i><b>5.1</b> Les Miserable Dataset</a></li>
@@ -191,9 +196,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="sigma.html"><a href="sigma.html#stop-light-1"><i class="fa fa-check"></i><b>6.1</b> Stop light</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -215,13 +217,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 5</span> First Graphs</h1>
 <div id="les-miserable-dataset" class="section level2">
 <h2><span class="header-section-number">5.1</span> Les Miserable Dataset</h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co"># Load igraph</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="kw">library</span>(igraph)</a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co"># Read data</span></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5">lesmis &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/meefen/sna-ed/master/assets/lesmis/lesmis.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co"># check the head (first 6 rows) of the dataset</span></a>
-<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="kw">head</span>(lesmis)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># Load igraph</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">library</span>(igraph)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co"># Read data</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">lesmis &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/meefen/sna-ed/master/assets/lesmis/lesmis.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co"># check the head (first 6 rows) of the dataset</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="kw">head</span>(lesmis)</a></code></pre></div>
 <pre><code>##   Source Target weight
 ## 1      1      0      1
 ## 2      2      0      8
@@ -229,38 +231,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4      3      2      6
 ## 5      4      0      1
 ## 6      5      0      1</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># Create a graph using the graph_from_data_frame function</span></a>
-<a class="sourceLine" id="cb18-2" data-line-number="2">g &lt;-<span class="st"> </span><span class="kw">graph_from_data_frame</span>(lesmis)</a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co"># Plot the graph</span></a>
-<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="kw">plot</span>(g)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># Create a graph using the graph_from_data_frame function</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">g &lt;-<span class="st"> </span><span class="kw">graph_from_data_frame</span>(lesmis)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co"># Plot the graph</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="kw">plot</span>(g)</a></code></pre></div>
 <p><img src="05-first-charts_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co"># make the graph a little prettier</span></a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw">plot</span>(g, <span class="dt">edge.arrow.size=</span>.<span class="dv">2</span>, <span class="dt">vertex.label=</span><span class="ot">NA</span>, <span class="dt">vertex.size=</span><span class="dv">8</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># make the graph a little prettier</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">plot</span>(g, <span class="dt">edge.arrow.size=</span>.<span class="dv">2</span>, <span class="dt">vertex.label=</span><span class="ot">NA</span>, <span class="dt">vertex.size=</span><span class="dv">8</span>)</a></code></pre></div>
 <p><img src="05-first-charts_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
 </div>
 <div id="stop-light" class="section level2">
 <h2><span class="header-section-number">5.2</span> Stop light</h2>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">library</span>(sigmajs)</a>
-<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="kw">library</span>(tibble)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">library</span>(sigmajs)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">library</span>(tibble)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;tibble&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:igraph&#39;:
 ## 
 ##     as_data_frame</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">edges &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">id =</span> <span class="kw">rep</span>(<span class="st">&quot;1&quot;</span>, <span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2">                    <span class="dt">source =</span> <span class="kw">rep</span>(<span class="st">&quot;1&quot;</span>, <span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb23-3" data-line-number="3">                    <span class="dt">target =</span> <span class="kw">as.character</span>(<span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>))</a>
-<a class="sourceLine" id="cb23-4" data-line-number="4">                    )</a>
-<a class="sourceLine" id="cb23-5" data-line-number="5">nodes &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">id =</span> <span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>),</a>
-<a class="sourceLine" id="cb23-6" data-line-number="6">                    <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">&quot;light&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>),</a>
-<a class="sourceLine" id="cb23-7" data-line-number="7">                    <span class="dt">time =</span> <span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">20</span>)</a>
-<a class="sourceLine" id="cb23-8" data-line-number="8">)</a>
-<a class="sourceLine" id="cb23-9" data-line-number="9"><span class="kw">sigmajs</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb23-10" data-line-number="10"><span class="st">  </span><span class="kw">sg_nodes</span>(nodes, id, label, time) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb23-11" data-line-number="11"><span class="st">  </span><span class="kw">sg_edges</span>(edges, id, source, target) </a></code></pre></div>
-<div id="htmlwidget-1f567fb66bb032c1a741" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1f567fb66bb032c1a741">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":"12.640181","y":" 3.843751"},{"id":"2","label":"red","time":" 30","x":"12.177734","y":"15.464822"},{"id":"3","label":"yellow","time":" 10","x":" 4.220843","y":"15.216751"},{"id":"4","label":"green","time":" 20","x":" 7.623199","y":" 8.922517"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">edges &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">id =</span> <span class="kw">rep</span>(<span class="st">&quot;1&quot;</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">                    <span class="dt">source =</span> <span class="kw">rep</span>(<span class="st">&quot;1&quot;</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">                    <span class="dt">target =</span> <span class="kw">as.character</span>(<span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">                    )</a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">nodes &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">id =</span> <span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">                    <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">&quot;light&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>),</a>
+<a class="sourceLine" id="cb14-7" data-line-number="7">                    <span class="dt">time =</span> <span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb14-8" data-line-number="8">)</a>
+<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="kw">sigmajs</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="st">  </span><span class="kw">sg_nodes</span>(nodes, id, label, time) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="st">  </span><span class="kw">sg_edges</span>(edges, id, source, target) </a></code></pre></div>
+<div id="htmlwidget-984cfd61bfe7f56da8ee" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-984cfd61bfe7f56da8ee">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":" 6.200154","y":"15.597670"},{"id":"2","label":"red","time":" 30","x":" 5.400451","y":" 6.910603"},{"id":"3","label":"yellow","time":" 10","x":"16.533664","y":"11.986452"},{"id":"4","label":"green","time":" 20","x":" 9.789581","y":"11.573188"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="les-miserabe" class="section level2">
 <h2><span class="header-section-number">5.3</span> Les Miserabe</h2>
