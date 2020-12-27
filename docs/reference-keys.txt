@@ -46,3 +46,6 @@ les-miserabe
 sigma
 stop-light-1
 glossary
+tab:example-incidence-matrix
+fig:plot-sparse-matrix
+starwars

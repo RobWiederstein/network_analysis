@@ -34,7 +34,7 @@ Building a network graph is challenging because of the number of potential input
 
 ### Adjacency matrix
 
-An adjacency matrix is a square matrix where the number of rows and columns are the same. `igraph` can read an adjacency matrix using the `graph_from_adjacency_matrix()` function.
+An adjacency matrix is a square matrix where the number of rows and columns are the same. `igraph` can read an adjacency matrix using the `graph_from_adjacency_matrix()` function.  The function also accepts a sparse matrix which is sometimes preferred to minimize file sizes and conserve system resources on large datasets.
 
 ```{r jasney-adjacency-matrix, echo=F, out.width="65%", fig.align="center", fig.cap="Nodes with adjacency matrix.  [@jasneyIntroductionSocialNetwork2018]"}
 
@@ -42,14 +42,28 @@ knitr::include_graphics('./imgs/jasney-adj-matrix.png')
 
 ```
 
+```{r sample-sparse-matrix, echo=F}
+library(Matrix)
+my.m <- sample(x = c(0,1), size = 25, replace = T, prob = c(.5, .5))
+my.m <- Matrix(my.m, nrow=5, ncol=5, byrow=FALSE, dimnames=NULL,
+       sparse = TRUE, doDiag = TRUE, forceCheck = FALSE)
+print(my.m)
+   
+```
+
+```{r plot-sparse-matrix, echo=F, fig.align="center", fig.cap="Plot generated from sparse matrix." }
+network <- igraph::graph_from_adjacency_matrix(my.m)
+plot.igraph(network,
+     vertex.size = 50,
+     label.cex = 35)
+```
+
 
 ### Incidence matrix
 
 The rows and colunms of an incidence matrix do not have to be equal.  Its shape can be rectangular in addition to square. `igraph` can read an incidence matrix using the `graph_from_incidence_matrix()`.
 
-<div class = "row">
-<div class = "col-md-6">
-```{r example-incidence-matrix, echo=F}
+```{r example-incidence-matrix, echo=F, fig.align="center", fig.cap="Incidency matrix."}
 # data
 set.seed(1)
 data <- matrix(sample(0:2, 30, replace=TRUE), nrow=6)
@@ -57,19 +71,19 @@ colnames(data) <- letters[1:5]
 rownames(data) <- LETTERS[1:6]
 #
 data %>%
-        kbl() %>%
+        kbl(caption="Example incidency matrix.") %>%
         kable_styling("striped", "condensed", full_width = T) %>%
         column_spec(1, bold = T, border_right = T) %>%
         row_spec(0, bold = T)
 ```
-</div>
-<div class = "col-md-6">
-```{r plot-incidence-matrix, echo = F, fig.cap="Plot generated from incidency matrix."}
+
+```{r plot-incidence-matrix, echo = F, fig.align="center", fig.cap="Plot generated from incidency matrix.", out.width="90%"}
 # create the network object
 network <- graph_from_incidence_matrix(data)
+par(mfrow=c(1,1), mar=c(1, 1, 1, 1))
 plot(network, 
-     vertex.size = 35,
-     label.cex = 25)
+     vertex.size = 50,
+     label.cex = 35)
 ```
 </div>
 </div>
