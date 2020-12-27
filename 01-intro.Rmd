@@ -1,7 +1,7 @@
 # Introduction {#intro}
 
 ```{r intro-libraries, include=F}
-x <- c("magick", "igraph", "kableExtra", "knitr", "webshot")
+x <- c("magick", "igraph", "kableExtra", "knitr", "webshot", "tibble")
 sapply(x, library, character.only = T)
 ```
 
@@ -34,13 +34,37 @@ Building a network graph is challenging because of the number of potential input
 
 ### Adjacency matrix
 
-An adjacency matrix is a square matrix where the number of rows and columns are the same. `igraph` can read an adjacency matrix using the `graph_from_adjacency_matrix()` function.  The function also accepts a sparse matrix which is sometimes preferred to minimize file sizes and conserve system resources on large datasets.
+An adjacency matrix is a square matrix where the number of rows and columns are the same. `igraph` can read an adjacency matrix using the `graph_from_adjacency_matrix()` function.  
 
-```{r jasney-adjacency-matrix, echo=F, out.width="65%", fig.align="center", fig.cap="Nodes with adjacency matrix.  [@jasneyIntroductionSocialNetwork2018]"}
+```{r table-adjacency-matrix, echo=F, out.width="65%", fig.align="center", fig.cap="Nodes with adjacency matrix.  [@jasneyIntroductionSocialNetwork2018]"}
 
-knitr::include_graphics('./imgs/jasney-adj-matrix.png')
-
+# Create df
+set.seed(1)
+data <- matrix(sample(0:2, 36, replace=TRUE, prob = c(.8, .1, .1)), nrow=6)
+colnames(data) = rownames(data) = LETTERS[1:6]
+#table
+#print(data)
+data %>%
+  kbl(caption = "Adjacency Matrix. A '0' denotes no connection.") %>%
+  kable_styling()
 ```
+
+```{r plot-adjacency-matrix,echo=F, out.width="90%", fig.align="center", fig.cap="Nodes with adjacency matrix", fig.height=5}
+
+# build the graph object
+network <- graph_from_adjacency_matrix(data)
+par(mar = c(1, 1, 1, 1))
+# plot it
+plot(network,
+     vertex.size = 50,
+     label.cex = 35
+     )
+```
+
+
+### Sparse Matrix
+
+The function also accepts a sparse matrix which is sometimes preferred to minimize file sizes and conserve system resources on large datasets.
 
 ```{r sample-sparse-matrix, echo=F}
 library(Matrix)
@@ -48,11 +72,11 @@ my.m <- sample(x = c(0,1), size = 25, replace = T, prob = c(.5, .5))
 my.m <- Matrix(my.m, nrow=5, ncol=5, byrow=FALSE, dimnames=NULL,
        sparse = TRUE, doDiag = TRUE, forceCheck = FALSE)
 print(my.m)
-   
 ```
 
 ```{r plot-sparse-matrix, echo=F, fig.align="center", fig.cap="Plot generated from sparse matrix." }
 network <- igraph::graph_from_adjacency_matrix(my.m)
+par(mar = c(1, 1, 1, 1))
 plot.igraph(network,
      vertex.size = 50,
      label.cex = 35)
@@ -85,23 +109,34 @@ plot(network,
      vertex.size = 50,
      label.cex = 35)
 ```
-</div>
-</div>
 
 ### Edge list
 
-An edge list has 2 columns. Each observation represents a connection between two things.  The two column names are alternatively named (1) an origin and a destination or (2)a source and target, depending on the package used.  The column names are often the key to a successful importation of the data.  `igraph` imports an edge list `graph_from_data_frame()` function.
+An edge list has 2 columns. Each observation represents a connection between two things.  The two column names are alternatively named (1) an origin and a destination or (2)a source and target, depending on the package used.  The column names are often the key to a successful importation of the data.  `igraph` imports an edge list `graph_from_edgelist()` function.
 
-```{r jasney-incidence-matrix, echo=F, out.width="65%", fig.align="center", fig.cap="Nodes with edge list.  [@jasneyIntroductionSocialNetwork2018]"}
+```{r table-edges-list, echo=F}
+set.seed(1)
+m <- sample(LETTERS[1:6], 18, replace = T)
+m <- matrix(m, ncol =2)
+colnames(m) <- c("origin", "destination")
+#m <- dplyr::arrange(m, origin)
 
-knitr::include_graphics('./imgs/jasney-edge-table.png')
-
+m1 <- as_tibble(m)
+m1 %>%
+        kbl(caption="Example Edgelist.") %>%
+        kable_styling("striped", "condensed", full_width = T) %>%
+        column_spec(1, bold = T, border_right = T) %>%
+        row_spec(0, bold = T)
 ```
 
-
-
-
-
+```{r plot-edgelist, echo=F, fig.align="center", fig.cap="Plot generated from edgelist.", out.width="90%"}
+# create the network object
+network <- graph_from_edgelist(m)
+par(mfrow=c(1,1), mar=c(1, 1, 1, 1))
+plot(network, 
+     vertex.size = 50,
+     label.cex = 35)
+```
 
 ### Dataframe distinguished
 

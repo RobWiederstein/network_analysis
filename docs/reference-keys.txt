@@ -49,3 +49,9 @@ glossary
 tab:example-incidence-matrix
 fig:plot-sparse-matrix
 starwars
+tab:table-adjacency-matrix
+fig:plot-adjacency-matrix
+sparse-matrix
+tab:jasney-incidence-matrix
+tab:table-edges-list
+fig:plot-edgelist
