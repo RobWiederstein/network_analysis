@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Introduction | Network Analysis in R</title>
-  <meta name="description" content="This is a series of tutorials on network applications." />
+  <meta name="description" content="tutorials on analyzing networks in R." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Introduction | Network Analysis in R" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a series of tutorials on network applications." />
+  <meta property="og:description" content="tutorials on analyzing networks in R." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 1 Introduction | Network Analysis in R" />
   
-  <meta name="twitter:description" content="This is a series of tutorials on network applications." />
+  <meta name="twitter:description" content="tutorials on analyzing networks in R." />
   
 
 <meta name="author" content="Robert Wiederstein" />
@@ -52,98 +52,12 @@
 
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/viz-1.8.2/viz.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
-<script src="libs/vis-4.20.1/vis.min.js"></script>
-<script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
-<script src="libs/sigma-1.2.1/sigma.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.layout.forceAtlas2.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.layout.noverlap.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.renderers.parallelEdges.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.plugins.animate.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.renderers.customShapes.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.plugins.dragNodes.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.renderers.customEdgeShapes.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.plugins.relativeSize.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.renderers.edgeLabels.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.parsers.gexf.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.exporters.svg.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.plugins.neighborhoods.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.plugins.filter.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.renderers.snapshot.min.js"></script>
-<script src="libs/sigmajs-binding-0.1.5/sigmajs.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 
 
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -156,6 +70,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
+<li><a href="./">Network Analysis in R</a></li>
+
+<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#why-read-this-book"><i class="fa fa-check"></i><b>0.1</b> Why Read this Book</a></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#purpose"><i class="fa fa-check"></i><b>0.2</b> Purpose</a></li>
@@ -196,6 +113,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="sigma.html"><a href="sigma.html#stop-light-1"><i class="fa fa-check"></i><b>6.1</b> Stop light</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -217,12 +137,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
 <div id="terms" class="section level2">
 <h2><span class="header-section-number">1.1</span> Terms</h2>
-<p>“A network is not just a metaphor: it is a precise, mathematical construct of nodes (vertices, actors) N and edges (ties, relations) E that can be directed or undirected.” <span class="citation">(Jasney <a href="#ref-jasneyIntroductionSocialNetwork2018">2018</a>)</span></p>
-<div class="figure"><span id="fig:node-graph"></span>
-<div id="htmlwidget-c918a8b5f1b30507f3c9" style="width:50%;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c918a8b5f1b30507f3c9">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"N1\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\"] \n  \"2\" [label = \"N2\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\"] \n  \"3\" [label = \"N3\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\"] \n  \"4\" [label = \"N4\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\"] \n  \"5\" [label = \"N5\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\"] \n  \"6\" [label = \"N6\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\"] \n  \"7\" [label = \"N7\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\"] \n  \"8\" [label = \"N8\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\"] \n  \"9\" [label = \"N9\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\"] \n  \"10\" [label = \"N10\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\"] \n  \"11\" [label = \"N11\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\"] \n  \"12\" [label = \"N12\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p>“A network is not just a metaphor: it is a precise, mathematical construct of nodes (vertices, actors) N and edges (ties, relations) E that can be directed or undirected. We can include information
+(attributes) on the nodes as well as the edges.” <span class="citation">(Jasney <a href="#ref-jasneyIntroductionSocialNetwork2018">2018</a>)</span></p>
+<div class="figure" style="text-align: center"><span id="fig:node-graph"></span>
+<img src="book_network_analysis_in_R_files/figure-html/node-graph-1.png" alt="A network consisting of nodes, N, and directed edges E." width="50%" />
 <p class="caption">
-Figure 1.1: a node
+Figure 1.1: A network consisting of nodes, N, and directed edges E.
 </p>
 </div>
 </div>
@@ -393,7 +313,7 @@ F
 </div>
 <div class="col-md-6">
 <div class="figure"><span id="fig:plot-incidence-matrix"></span>
-<img src="01-intro_files/figure-html/plot-incidence-matrix-1.png" alt="Plot generated from incidency matrix." width="672" />
+<img src="book_network_analysis_in_R_files/figure-html/plot-incidence-matrix-1.png" alt="Plot generated from incidency matrix." width="672" />
 <p class="caption">
 Figure 1.3: Plot generated from incidency matrix.
 </p>

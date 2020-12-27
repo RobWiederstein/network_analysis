@@ -10,13 +10,20 @@ sapply(x, library, character.only = T)
 "A network is not just a metaphor: it is a precise, mathematical construct of nodes (vertices, actors) N and edges (ties, relations) E that can be directed or undirected. We can include information
 (attributes) on the nodes as well as the edges." [@jasneyIntroductionSocialNetwork2018]
 
-```{r node-graph, fig.show="hold", echo=FALSE, out.width="50%", fig.cap="a node"}
+```{r node-graph, echo=FALSE, out.width="50%", fig.align="center", fig.cap="A network consisting of nodes, N, and directed edges E."}
+library(igraph)
 g1 <- graph_from_literal(a-+b, a+-c, b-+c)
 V(g1)$color <- 1
 V(g1)$color[2] <- 2
-E(g1)
+E(g1)$color <- 8
+E(g1)$color[2] <- 3
+E(g1)$lty <- 1
+E(g1)$lty[2] <- 2
 plot(g1, 
-     vertex.size = 50)
+     vertex.size = 100,
+     vertex.label.cex = 3,
+     edge.width = 3)
+
 
 ```
 

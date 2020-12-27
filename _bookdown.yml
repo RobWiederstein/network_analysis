@@ -1,7 +1,6 @@
 book_filename: "book_network_analysis_in_R"
 delete_merged_file: true
 output_dir: "docs"
-new_session: yes
 language:
   ui:
     chapter_name: "Chapter "

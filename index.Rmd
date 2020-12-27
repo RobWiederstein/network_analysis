@@ -2,14 +2,13 @@
 title: "Network Analysis in R"
 author: "Robert Wiederstein"
 date: "`r Sys.Date()`"
-description: This is a series of tutorials on network applications.
-documentclass: book
-link-citations: yes
-bibliography:
-- book.bib
-- packages.bib
 site: bookdown::bookdown_site
+documentclass: book
+#link-citations: yes
+bibliography: [book.bib, packages.bib]
 biblio-style: apalike
+link-citations: yes
+description: tutorials on analyzing networks in R.
 ---
 
 # Preface {-}
@@ -21,7 +20,7 @@ library(bookdown)
 
 ## Why Read this Book
 
-Network analysis is a crucial strategy in understanding the direction and strength of connections between people, places and ideas. Visual representation of networks can speed the discovery process in working with data. 
+Network analysis is a crucial strategy in understanding the direction and strength of connections between people, places and ideas. Visual representation of networks can speed the discovery process in working with data.
 
 ## Purpose
 
