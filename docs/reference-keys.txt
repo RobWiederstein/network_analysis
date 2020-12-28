@@ -55,3 +55,6 @@ sparse-matrix
 tab:jasney-incidence-matrix
 tab:table-edges-list
 fig:plot-edgelist
+tab:unnamed-chunk-1
+datasets
+tab:igraph-datasets

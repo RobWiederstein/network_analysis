@@ -1,7 +1,7 @@
 # Introduction {#intro}
 
 ```{r intro-libraries, include=F}
-x <- c("magick", "igraph", "kableExtra", "knitr", "webshot", "tibble")
+x <- c("magick", "igraph", "kableExtra", "knitr", "webshot", "tibble", "igraphdata")
 sapply(x, library, character.only = T)
 ```
 
@@ -36,7 +36,7 @@ Building a network graph is challenging because of the number of potential input
 
 An adjacency matrix is a square matrix where the number of rows and columns are the same. `igraph` can read an adjacency matrix using the `graph_from_adjacency_matrix()` function.  
 
-```{r table-adjacency-matrix, echo=F, out.width="65%", fig.align="center", fig.cap="Nodes with adjacency matrix.  [@jasneyIntroductionSocialNetwork2018]"}
+```{r table-adjacency-matrix, echo=F, out.width="65%", fig.align="center", fig.cap="Network plot from adjacency matrix.  [@jasneyIntroductionSocialNetwork2018]"}
 
 # Create df
 set.seed(1)
@@ -49,22 +49,22 @@ data %>%
   kable_styling()
 ```
 
-```{r plot-adjacency-matrix,echo=F, out.width="90%", fig.align="center", fig.cap="Nodes with adjacency matrix", fig.height=5}
+```{r plot-adjacency-matrix,echo=F, out.width="90%", fig.align="center", fig.cap="Network plot from adjacency matrix", fig.height=5}
 
 # build the graph object
 network <- graph_from_adjacency_matrix(data)
 par(mar = c(1, 1, 1, 1))
 # plot it
 plot(network,
-     vertex.size = 50,
+     vertex.size = 35,
      label.cex = 35
      )
 ```
 
 
-### Sparse Matrix
+### Sparse matrix
 
-The function also accepts a sparse matrix which is sometimes preferred to minimize file sizes and conserve system resources on large datasets.
+The function,  `graph_from_adjacency_matrix()`, also accepts a sparse matrix which is sometimes preferred to minimize file sizes and conserve system resources on large datasets.
 
 ```{r sample-sparse-matrix, echo=F}
 library(Matrix)
@@ -74,11 +74,11 @@ my.m <- Matrix(my.m, nrow=5, ncol=5, byrow=FALSE, dimnames=NULL,
 print(my.m)
 ```
 
-```{r plot-sparse-matrix, echo=F, fig.align="center", fig.cap="Plot generated from sparse matrix." }
+```{r plot-sparse-matrix, echo=F, fig.align="center", fig.cap="Network plot from sparse matrix." }
 network <- igraph::graph_from_adjacency_matrix(my.m)
 par(mar = c(1, 1, 1, 1))
 plot.igraph(network,
-     vertex.size = 50,
+     vertex.size = 35,
      label.cex = 35)
 ```
 
@@ -101,12 +101,12 @@ data %>%
         row_spec(0, bold = T)
 ```
 
-```{r plot-incidence-matrix, echo = F, fig.align="center", fig.cap="Plot generated from incidency matrix.", out.width="90%"}
+```{r plot-incidence-matrix, echo = F, fig.align="center", fig.cap="Network plot from incidency matrix.", out.width="90%"}
 # create the network object
 network <- graph_from_incidence_matrix(data)
 par(mfrow=c(1,1), mar=c(1, 1, 1, 1))
 plot(network, 
-     vertex.size = 50,
+     vertex.size = 35,
      label.cex = 35)
 ```
 
@@ -129,20 +129,36 @@ m1 %>%
         row_spec(0, bold = T)
 ```
 
-```{r plot-edgelist, echo=F, fig.align="center", fig.cap="Plot generated from edgelist.", out.width="90%"}
+```{r plot-edgelist, echo=F, fig.align="center", fig.cap="Plot generated from edgelist.", out.width="90%", fig.topcaption = T}
 # create the network object
 network <- graph_from_edgelist(m)
 par(mfrow=c(1,1), mar=c(1, 1, 1, 1))
-plot(network, 
-     vertex.size = 50,
-     label.cex = 35)
+plot.igraph(network, 
+     vertex.size = 35,
+     label.cex = 35, 
+     arrow.mode = 0)
 ```
 
 ### Dataframe distinguished
 
-## R packages
+"A data frame may for many purposes be regarded as a matrix with columns possibly of differing modes and attributes." [@rcoreteamIntroduction2020] In other words, a matrix must contain all of the same data type while a dataframe can have columns with differing data types -- numeric, character, factor, etc. Different authors and packages require one or the other and many coerce to the required data type internally without notification to the user. Matrices may offer greater computational efficiency although it may depend on the data types included. (find cite)
 
-Three `R` packages are dedicated to network analysis and are available for download from CRAN:  `igraph`, `ggraph`, and `networkD3`.
+## Datasets
+
+`igraphdata` contains a number of datasets that illustrate the use of network analysis.  The command `data(package="igraphdata")` lists the datasets available. After loading the package, `data("karate")` will load, for example, the "karate" dataset.
+
+```{r igraph-datasets, echo=F}
+
+dt <- data(package="igraphdata")$results[, 3:4]
+dt <- as_tibble(dt)
+dt %>% 
+        kbl(caption="Datasets included in `igraphdata` package.") %>%
+        kable_styling("striped", "condensed", full_width = T) %>%
+        column_spec(1, bold = T, border_right = T) %>%
+        row_spec(0, bold = T)
+```
 
 
-You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+
+
