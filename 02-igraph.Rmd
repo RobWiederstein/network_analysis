@@ -36,7 +36,7 @@ plot.igraph(g6, sub = "(f)", edge.width = 10)
 
 ### Complicated
 
-The complicated graph below was created from the Les Miserable resident dataset in `igraph`. The data contains 77 nodes and 254 edges.
+The complicated graph below was created from the Les Miserable resident dataset in `igraph`. [@knuthStanfordGraphBasePlatform1993] The data contains 77 nodes and 254 edges.
 
 
 ```{r complicated-igraph-node, fig.cap="Network graph of the coappearnce of characters in Les Miserable.", echo=FALSE, warning=FALSE, message=FALSE, fig.align="center"}

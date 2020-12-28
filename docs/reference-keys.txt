@@ -48,3 +48,4 @@ sigma
 stop-light-1
 starwars
 glossary
+sanity-checks
