@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 igraph | Network Analysis in R</title>
+  <title>Chapter 2 igraph | Network Analysis in R</title>
   <meta name="description" content="tutorials on analyzing networks in R." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 igraph | Network Analysis in R" />
+  <meta property="og:title" content="Chapter 2 igraph | Network Analysis in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 igraph | Network Analysis in R" />
+  <meta name="twitter:title" content="Chapter 2 igraph | Network Analysis in R" />
   
   <meta name="twitter:description" content="tutorials on analyzing networks in R." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2020-12-26" />
+<meta name="date" content="2020-12-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="DiagR.html"/>
+<link rel="prev" href="intro.html"/>
 <link rel="next" href="first-graphs.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -55,12 +55,6 @@
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/viz-1.8.2/viz.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
-<link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
-<script src="libs/vis-4.20.1/vis.min.js"></script>
-<script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
 <script src="libs/sigma-1.2.1/sigma.min.js"></script>
 <script src="libs/sigma-1.2.1/plugins/sigma.layout.forceAtlas2.min.js"></script>
 <script src="libs/sigma-1.2.1/plugins/sigma.layout.noverlap.min.js"></script>
@@ -171,35 +165,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#terms"><i class="fa fa-check"></i><b>1.1</b> Terms</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#input-formats"><i class="fa fa-check"></i><b>1.2</b> Input formats</a><ul>
 <li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#adjacency-matrix"><i class="fa fa-check"></i><b>1.2.1</b> Adjacency matrix</a></li>
-<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#incidence-matrix"><i class="fa fa-check"></i><b>1.2.2</b> Incidence matrix</a></li>
-<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#edge-list"><i class="fa fa-check"></i><b>1.2.3</b> Edge list</a></li>
-<li class="chapter" data-level="1.2.4" data-path="intro.html"><a href="intro.html#dataframe-distinguished"><i class="fa fa-check"></i><b>1.2.4</b> Dataframe distinguished</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#sparse-matrix"><i class="fa fa-check"></i><b>1.2.2</b> Sparse matrix</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#incidence-matrix"><i class="fa fa-check"></i><b>1.2.3</b> Incidence matrix</a></li>
+<li class="chapter" data-level="1.2.4" data-path="intro.html"><a href="intro.html#edge-list"><i class="fa fa-check"></i><b>1.2.4</b> Edge list</a></li>
+<li class="chapter" data-level="1.2.5" data-path="intro.html"><a href="intro.html#dataframe-distinguished"><i class="fa fa-check"></i><b>1.2.5</b> Dataframe distinguished</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#r-packages"><i class="fa fa-check"></i><b>1.3</b> R packages</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#datasets"><i class="fa fa-check"></i><b>1.3</b> Datasets</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
-<li class="chapter" data-level="3" data-path="DiagR.html"><a href="DiagR.html"><i class="fa fa-check"></i><b>3</b> DiagrammeR Package</a></li>
-<li class="chapter" data-level="4" data-path="igraph.html"><a href="igraph.html"><i class="fa fa-check"></i><b>4</b> igraph</a><ul>
-<li class="chapter" data-level="4.1" data-path="igraph.html"><a href="igraph.html#examples"><i class="fa fa-check"></i><b>4.1</b> Examples</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="igraph.html"><a href="igraph.html#simple"><i class="fa fa-check"></i><b>4.1.1</b> Simple</a></li>
-<li class="chapter" data-level="4.1.2" data-path="igraph.html"><a href="igraph.html#complicated"><i class="fa fa-check"></i><b>4.1.2</b> Complicated</a></li>
+<li class="chapter" data-level="2" data-path="igraph.html"><a href="igraph.html"><i class="fa fa-check"></i><b>2</b> igraph</a><ul>
+<li class="chapter" data-level="2.1" data-path="igraph.html"><a href="igraph.html#examples"><i class="fa fa-check"></i><b>2.1</b> Examples</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="igraph.html"><a href="igraph.html#simple"><i class="fa fa-check"></i><b>2.1.1</b> Simple</a></li>
+<li class="chapter" data-level="2.1.2" data-path="igraph.html"><a href="igraph.html#complicated"><i class="fa fa-check"></i><b>2.1.2</b> Complicated</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="igraph.html"><a href="igraph.html#importation-of-datasets"><i class="fa fa-check"></i><b>4.2</b> Importation of Datasets</a></li>
-<li class="chapter" data-level="4.3" data-path="igraph.html"><a href="igraph.html#layout-of-nodes"><i class="fa fa-check"></i><b>4.3</b> Layout of Nodes</a></li>
-<li class="chapter" data-level="4.4" data-path="igraph.html"><a href="igraph.html#attributes"><i class="fa fa-check"></i><b>4.4</b> Attributes</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="igraph.html"><a href="igraph.html#vertices"><i class="fa fa-check"></i><b>4.4.1</b> Vertices</a></li>
-<li class="chapter" data-level="4.4.2" data-path="igraph.html"><a href="igraph.html#edges"><i class="fa fa-check"></i><b>4.4.2</b> Edges</a></li>
+<li class="chapter" data-level="2.2" data-path="igraph.html"><a href="igraph.html#importation-of-datasets"><i class="fa fa-check"></i><b>2.2</b> Importation of Datasets</a></li>
+<li class="chapter" data-level="2.3" data-path="igraph.html"><a href="igraph.html#layout-of-nodes"><i class="fa fa-check"></i><b>2.3</b> Layout of Nodes</a></li>
+<li class="chapter" data-level="2.4" data-path="igraph.html"><a href="igraph.html#attributes"><i class="fa fa-check"></i><b>2.4</b> Attributes</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="igraph.html"><a href="igraph.html#vertices"><i class="fa fa-check"></i><b>2.4.1</b> Vertices</a></li>
+<li class="chapter" data-level="2.4.2" data-path="igraph.html"><a href="igraph.html#edges"><i class="fa fa-check"></i><b>2.4.2</b> Edges</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="first-graphs.html"><a href="first-graphs.html"><i class="fa fa-check"></i><b>5</b> First Graphs</a><ul>
-<li class="chapter" data-level="5.1" data-path="first-graphs.html"><a href="first-graphs.html#les-miserable-dataset"><i class="fa fa-check"></i><b>5.1</b> Les Miserable Dataset</a></li>
-<li class="chapter" data-level="5.2" data-path="first-graphs.html"><a href="first-graphs.html#stop-light"><i class="fa fa-check"></i><b>5.2</b> Stop light</a></li>
-<li class="chapter" data-level="5.3" data-path="first-graphs.html"><a href="first-graphs.html#les-miserabe"><i class="fa fa-check"></i><b>5.3</b> Les Miserabe</a></li>
+<li class="chapter" data-level="3" data-path="first-graphs.html"><a href="first-graphs.html"><i class="fa fa-check"></i><b>3</b> First Graphs</a><ul>
+<li class="chapter" data-level="3.1" data-path="first-graphs.html"><a href="first-graphs.html#les-miserable-dataset"><i class="fa fa-check"></i><b>3.1</b> Les Miserable Dataset</a></li>
+<li class="chapter" data-level="3.2" data-path="first-graphs.html"><a href="first-graphs.html#stop-light"><i class="fa fa-check"></i><b>3.2</b> Stop light</a></li>
+<li class="chapter" data-level="3.3" data-path="first-graphs.html"><a href="first-graphs.html#les-miserabe"><i class="fa fa-check"></i><b>3.3</b> Les Miserabe</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="sigma.html"><a href="sigma.html"><i class="fa fa-check"></i><b>6</b> Sigma JS</a><ul>
-<li class="chapter" data-level="6.1" data-path="sigma.html"><a href="sigma.html#stop-light-1"><i class="fa fa-check"></i><b>6.1</b> Stop light</a></li>
+<li class="chapter" data-level="4" data-path="sigma.html"><a href="sigma.html"><i class="fa fa-check"></i><b>4</b> Sigma JS</a><ul>
+<li class="chapter" data-level="4.1" data-path="sigma.html"><a href="sigma.html#stop-light-1"><i class="fa fa-check"></i><b>4.1</b> Stop light</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
+<li class="chapter" data-level="5" data-path="starwars.html"><a href="starwars.html"><i class="fa fa-check"></i><b>5</b> Case Study Star Wars</a></li>
+<li class="chapter" data-level="6" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>6</b> Glossary</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -221,40 +215,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="igraph" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> igraph</h1>
+<h1><span class="header-section-number">Chapter 2</span> igraph</h1>
 <p><code>igraph</code> contains 773 functions. Three different plotting mechanisms exist: <code>igraph</code> for two dimensional plots, <code>tkplot</code> for interactive 2-dimensional plotting and <code>rglplot</code> which is for 3-dimensional plotting and is labeled as “experimental.”</p>
 <div id="examples" class="section level2">
-<h2><span class="header-section-number">4.1</span> Examples</h2>
+<h2><span class="header-section-number">2.1</span> Examples</h2>
 <div id="simple" class="section level3">
-<h3><span class="header-section-number">4.1.1</span> Simple</h3>
+<h3><span class="header-section-number">2.1.1</span> Simple</h3>
 <p>The simple graph below was created from manual entry using igraph’s <code>graph_from_literal</code> function.</p>
 <div class="figure" style="text-align: center"><span id="fig:simple-igraph-node"></span>
 <img src="book_network_analysis_in_R_files/figure-html/simple-igraph-node-1.png" alt="Graph (a) is two nodes connected by edge, graph (b) is two unconnected nodes, graph (c) is two nodes with a directional edge, graph (d) is two nodes with the directional edge reversed, graph (e) is two nodes with a bidirectional edge, and graph (f) is two nodes connected by a weighted edge." width="672" />
 <p class="caption">
-Figure 4.1: Graph (a) is two nodes connected by edge, graph (b) is two unconnected nodes, graph (c) is two nodes with a directional edge, graph (d) is two nodes with the directional edge reversed, graph (e) is two nodes with a bidirectional edge, and graph (f) is two nodes connected by a weighted edge.
+Figure 2.1: Graph (a) is two nodes connected by edge, graph (b) is two unconnected nodes, graph (c) is two nodes with a directional edge, graph (d) is two nodes with the directional edge reversed, graph (e) is two nodes with a bidirectional edge, and graph (f) is two nodes connected by a weighted edge.
 </p>
 </div>
 </div>
 <div id="complicated" class="section level3">
-<h3><span class="header-section-number">4.1.2</span> Complicated</h3>
+<h3><span class="header-section-number">2.1.2</span> Complicated</h3>
 <p>The complicated graph below was created from the Les Miserable resident dataset in <code>igraph</code>. The data contains 77 nodes and 254 edges.</p>
 <div class="figure" style="text-align: center"><span id="fig:complicated-igraph-node"></span>
 <img src="book_network_analysis_in_R_files/figure-html/complicated-igraph-node-1.png" alt="Network graph of the coappearnce of characters in Les Miserable." width="672" />
 <p class="caption">
-Figure 4.2: Network graph of the coappearnce of characters in Les Miserable.
+Figure 2.2: Network graph of the coappearnce of characters in Les Miserable.
 </p>
 </div>
 </div>
 </div>
 <div id="importation-of-datasets" class="section level2">
-<h2><span class="header-section-number">4.2</span> Importation of Datasets</h2>
+<h2><span class="header-section-number">2.2</span> Importation of Datasets</h2>
 </div>
 <div id="layout-of-nodes" class="section level2">
-<h2><span class="header-section-number">4.3</span> Layout of Nodes</h2>
+<h2><span class="header-section-number">2.3</span> Layout of Nodes</h2>
 <p>Nodes may be laid out in a variety of ways and many algorithms are available, depending on the data and the analyst’s personal preference. “It is important to realize that the information in graph layouts is contained in the pattern of which nodes are connected to which others. The locations . . . are chosen based on essentially aesthetic criteria.” <span class="citation">(Borgatti, Everett, and Johnson <a href="#ref-borgattiAnalyzingSocialNetworks2018">2018</a>)</span> According to the igraph documentation, 21 available layouts are available and include:</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:layout-options-igraph">Table 4.1: </span>Available layouts for nodes in <code>igraph</code>.
+<span id="tab:layout-options-igraph">Table 2.1: </span>Available layouts for nodes in <code>igraph</code>.
 </caption>
 <tbody>
 <tr>
@@ -341,35 +335,35 @@ uses the <code>layout_with_fr</code> with graphs less than 1,000 vertices and th
 <div class="figure" style="text-align: center"><span id="fig:igraph-mosaic-layout"></span>
 <img src="book_network_analysis_in_R_files/figure-html/igraph-mosaic-layout-1.png" alt="Examples of available layouts." width="672" />
 <p class="caption">
-Figure 4.3: Examples of available layouts.
+Figure 2.3: Examples of available layouts.
 </p>
 </div>
 </div>
 <div id="attributes" class="section level2">
-<h2><span class="header-section-number">4.4</span> Attributes</h2>
+<h2><span class="header-section-number">2.4</span> Attributes</h2>
 <p>Any chart is comprised of geoms. <code>igraph</code> allows for the color, size, shape to be set in of two ways. The first method is to supply named arguments to the plotting command, in the this case <code>plot.igraph</code>.</p>
 <div id="vertices" class="section level3">
-<h3><span class="header-section-number">4.4.1</span> Vertices</h3>
+<h3><span class="header-section-number">2.4.1</span> Vertices</h3>
 <div class="figure" style="text-align: center"><span id="fig:vertex-attributes"></span>
 <img src="book_network_analysis_in_R_files/figure-html/vertex-attributes-1.png" alt="Selected node attributes." width="672" />
 <p class="caption">
-Figure 4.4: Selected node attributes.
+Figure 2.4: Selected node attributes.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:more-color-examples"></span>
 <img src="book_network_analysis_in_R_files/figure-html/more-color-examples-1.png" alt="Additional node color palettes." width="672" />
 <p class="caption">
-Figure 4.5: Additional node color palettes.
+Figure 2.5: Additional node color palettes.
 </p>
 </div>
 <div id="shapes" class="section level4">
-<h4><span class="header-section-number">4.4.1.1</span> Shapes</h4>
+<h4><span class="header-section-number">2.4.1.1</span> Shapes</h4>
 </div>
 <div id="sizes" class="section level4">
-<h4><span class="header-section-number">4.4.1.2</span> Sizes</h4>
+<h4><span class="header-section-number">2.4.1.2</span> Sizes</h4>
 </div>
 <div id="colors" class="section level4">
-<h4><span class="header-section-number">4.4.1.3</span> Colors</h4>
+<h4><span class="header-section-number">2.4.1.3</span> Colors</h4>
 <p>The argument to set the vertex color in the <code>plot.igraph</code> function is <code>vertex.color</code>. Like plots in base <code>R</code>, color may be set by a number (integer) or name (character) with the name being preferred. The default palette can be retrieved through <code>?igraph::categorical_pal(n)</code>. The colors are visible to those who are color-blind and is eight colors.</p>
 <p>For plot.igraph and integer values, the default igraph palette is used (see the ‘palette’ parameter below. Note that this is different from the R palette.</p>
 <p>If you don’t want (some) vertices to have any color, supply NA as the color name.</p>
@@ -377,11 +371,11 @@ Figure 4.5: Additional node color palettes.
 </div>
 </div>
 <div id="edges" class="section level3">
-<h3><span class="header-section-number">4.4.2</span> Edges</h3>
+<h3><span class="header-section-number">2.4.2</span> Edges</h3>
 <div class="figure" style="text-align: center"><span id="fig:edge-attributes"></span>
 <img src="book_network_analysis_in_R_files/figure-html/edge-attributes-1.png" alt="Selected edge attributes." width="672" />
 <p class="caption">
-Figure 4.6: Selected edge attributes.
+Figure 2.6: Selected edge attributes.
 </p>
 </div>
 
@@ -399,7 +393,7 @@ Figure 4.6: Selected edge attributes.
           </div>
         </div>
       </div>
-<a href="DiagR.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="first-graphs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
