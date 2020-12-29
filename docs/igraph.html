@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2020-12-28" />
+<meta name="date" content="2020-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,25 @@
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/sigma-1.2.1/sigma.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.layout.forceAtlas2.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.layout.noverlap.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.parallelEdges.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.animate.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.customShapes.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.dragNodes.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.customEdgeShapes.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.relativeSize.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.edgeLabels.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.parsers.gexf.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.exporters.svg.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.neighborhoods.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.filter.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.snapshot.min.js"></script>
+<script src="libs/sigmajs-binding-0.1.5/sigmajs.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -326,31 +345,37 @@ uses the <code>layout_with_fr</code> with graphs less than 1,000 vertices and th
 Figure 2.4: Examples of available layouts.
 </p>
 </div>
+<p>In plotting graphs with many nodes, the chosen layout will result in overlapping nodes. The challenge is in spreading the nodes out to the space available. One strategy was described in a stackoverflow <a href="https://stackoverflow.com/questions/39290909/igraph-resolving-tight-overlapping-nodes">question</a> using the <code>qgraph</code> library. The code was was used to reproduce the plot below.</p>
+<div class="figure" style="text-align: center"><span id="fig:spread-node-layout"></span>
+<img src="book_network_analysis_in_R_files/figure-html/spread-node-layout-1.png" alt="Node dispersion of the Fruchterman-Reingold (F-R) layout." width="672" />
+<p class="caption">
+Figure 2.5: Node dispersion of the Fruchterman-Reingold (F-R) layout.
+</p>
+</div>
 </div>
 <div id="attributes" class="section level2">
 <h2><span class="header-section-number">2.3</span> Attributes</h2>
 <p>Any chart is comprised of geoms. <code>igraph</code> allows for the color, size, shape to be set in of two ways. The first method is to supply named arguments to the plotting command, in the this case <code>plot.igraph</code>. The second method is to set the attributes via assignment to the vertex, edge or graph. According to the manual, assignments using the second method do not require “vertex” or “edge” to be prepended.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">#First Method -- supply named arguments to plot</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">plot.igraph</span>(<span class="kw">make_graph</span>(<span class="st">&quot;Bull&quot;</span>),</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">            <span class="dt">vertex.shape =</span> <span class="st">&quot;square&quot;</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">            )</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#Second Method -- set attribute</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">g &lt;-<span class="st"> </span><span class="kw">make_graph</span>(<span class="st">&quot;Bull&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">        </span><span class="kw">set_vertex_attr</span>(<span class="dt">name =</span> <span class="st">&quot;shape&quot;</span>, </a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">                        <span class="dt">value =</span> <span class="st">&quot;square&quot;</span>)</a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="kw">plot</span>(g)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">#First Method -- supply named arguments to plot</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">plot.igraph</span>(<span class="kw">make_graph</span>(<span class="st">&quot;Bull&quot;</span>),</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">            <span class="dt">vertex.shape =</span> <span class="st">&quot;square&quot;</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">            )</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#Second Method -- set vertex attributes</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">g &lt;-<span class="st"> </span><span class="kw">make_graph</span>(<span class="st">&quot;Bull&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">        </span><span class="kw">set_vertex_attr</span>(<span class="dt">name =</span> <span class="st">&quot;shape&quot;</span>, </a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">                        <span class="dt">value =</span> <span class="st">&quot;square&quot;</span>)</a></code></pre></div>
 <div id="vertices" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Vertices</h3>
 <div class="figure" style="text-align: center"><span id="fig:vertex-attributes"></span>
 <img src="book_network_analysis_in_R_files/figure-html/vertex-attributes-1.png" alt="Selected node attributes." width="672" />
 <p class="caption">
-Figure 2.5: Selected node attributes.
+Figure 2.6: Selected node attributes.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:more-color-examples"></span>
 <img src="book_network_analysis_in_R_files/figure-html/more-color-examples-1.png" alt="Additional node color palettes." width="672" />
 <p class="caption">
-Figure 2.6: Additional node color palettes.
+Figure 2.7: Additional node color palettes.
 </p>
 </div>
 <div id="shapes" class="section level4">
@@ -372,7 +397,7 @@ Figure 2.6: Additional node color palettes.
 <div class="figure" style="text-align: center"><span id="fig:edge-attributes"></span>
 <img src="book_network_analysis_in_R_files/figure-html/edge-attributes-1.png" alt="Selected edge attributes." width="672" />
 <p class="caption">
-Figure 2.7: Selected edge attributes.
+Figure 2.8: Selected edge attributes.
 </p>
 </div>
 

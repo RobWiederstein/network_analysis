@@ -8,9 +8,11 @@ tab:table-edges-list
 fig:plot-edgelist
 tab:igraph-datasets
 fig:simple-igraph-node
+fig:notable-graphs-example
 fig:complicated-igraph-node
 tab:layout-options-igraph
 fig:igraph-mosaic-layout
+fig:spread-node-layout
 fig:vertex-attributes
 fig:more-color-examples
 fig:edge-attributes
@@ -28,11 +30,12 @@ incidence-matrix
 edge-list
 dataframe-distinguished
 datasets
+sanity-checks
 igraph
 examples
-simple
-complicated
-importation-of-datasets
+simple-graphs
+notable-graphs
+complicated-graph
 layout-of-nodes
 attributes
 vertices
@@ -48,9 +51,3 @@ sigma
 stop-light-1
 starwars
 glossary
-sanity-checks
-simple-graphs
-notable-graphs
-complicated-graph
-fig:unnamed-chunk-1
-fig:notable-graphs-example
