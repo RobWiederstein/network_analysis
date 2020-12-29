@@ -160,7 +160,7 @@ dt %>%
 
 ## Sanity Checks
 
-A "sanity check" in coding is a method to determine if an error is the result of the code or the data used.  It's probably a safe presumption that a dataset resident within a package is formatted correctly.  However, it may be helpful to check user-built data structures in a program like [Gephi](https://gephi.org/) or [Cytoscope](https://cytoscape.org/). Use of either of the cited applications will require some investment of time (maybe an hour or so), but will prove worthwhile if it saves you from checking code for bugs.
+A "sanity check" in coding is a method to determine if an error is the result of the code or the data used.  It's probably a safe presumption that a dataset resident within a package is formatted correctly.  However, it may be helpful to check user-built data structures in a program like [Gephi](https://gephi.org/) or [Cytoscope](https://cytoscape.org/). Both Gephi and Cytoscope require some familiarity before use.
 
 
 

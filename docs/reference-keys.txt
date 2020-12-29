@@ -49,3 +49,8 @@ stop-light-1
 starwars
 glossary
 sanity-checks
+simple-graphs
+notable-graphs
+complicated-graph
+fig:unnamed-chunk-1
+fig:notable-graphs-example
