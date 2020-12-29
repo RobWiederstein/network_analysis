@@ -51,3 +51,6 @@ sigma
 stop-light-1
 starwars
 glossary
+selection
+r-markdown
+including-plots
