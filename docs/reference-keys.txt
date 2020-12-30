@@ -54,3 +54,4 @@ glossary
 selection
 r-markdown
 including-plots
+load-a-plot
