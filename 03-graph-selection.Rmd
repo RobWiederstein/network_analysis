@@ -1,6 +1,6 @@
 # Selection, Deletion, Addition of Graph elements {#selection}
 
-```{r load-igraph-library, include=FALSE}
+```{r load-igraph-library-00, include=FALSE}
 x <- c("igraph", "tibble", "stringr", "kableExtra", "RColorBrewer", "viridis")
 lapply(x, require, character.only = T, quietly = T)
 ```
