@@ -24,7 +24,7 @@ Network analysis is a crucial strategy in understanding the direction and streng
 
 ## Purpose
 
-The purpose of this book is to speed the conversion of a traditional dataframe to a network diagram with nodes and vertices. Some discusson of basic computations will be included, but formulas are omitted unless necessary for understanding.  Network analysis is challenging due to its reliance on unfamiliar data structures.
+The purpose of this book is to speed the conversion of a traditional dataframe to a network diagram with nodes and vertices. Some discusson of basic computations will be included, but formulas are omitted unless necessary for understanding.  Network analysis is challenging partially due to its reliance on unfamiliar data structures.
 
 ## Collection
 
@@ -37,3 +37,17 @@ A working knowledge of `R` is necessary including how to obtain and load package
 ## Disclaimer
 
 I have no education or background in statistics, informatics or network analysis.  Reliance upon any representation within this publication should occur, if at all,  only after verification from other reliable sources and in consultation with someone with a relevant background.
+
+## Acknowledgements
+
+There were a number of helpful tutorials that deserve explicit mention and public acclaim.  The authors' differing perspectives gave context on how best to learn network analysis with `igraph`.  They include:
+
+- [Katherine Ognyanova, Network Analysis and Visualization with R and igraph](https://kateto.net/networks-r-igraph)
+
+- [Jesse Sadler, Introduction to Network Analysis with R](https://www.jessesadler.com/post/network-analysis-with-r/)
+
+- [David Schoch, Basic Network Analysis in R: using igraph and related packages](http://mr.schochastics.net/netAnaR.html) 
+
+
+
+
