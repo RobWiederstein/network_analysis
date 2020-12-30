@@ -43,6 +43,8 @@ shapes
 sizes
 colors
 edges
+selection
+load-a-plot
 first-graphs
 les-miserable-dataset
 stop-light
@@ -51,7 +53,4 @@ sigma
 stop-light-1
 starwars
 glossary
-selection
-r-markdown
-including-plots
-load-a-plot
+acknowledgements
