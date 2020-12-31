@@ -22,21 +22,6 @@ library(bookdown)
 
 Network analysis is a crucial strategy in understanding the direction and strength of connections between people, places and ideas. Visual representation of networks can speed the discovery process in working with data.
 
-Package downloads are a proxy for the need for or the success of a package.  As of December, 2020, total packages for `R` numbered 16,851 and 385 packages used the word "network" in the title.  The latest monthly downloads yielded both total downloads and a clear leader in the area of network analysis:  `igraph`.  The two plots below show `igraph` downloads to other packages.
-
-```{r r-package-downloads, echo=FALSE, fig.align = "center", fig.cap="The plot above shows the number of downloads for all packages and igraph.", out.width = '65%'}
-
-knitr::include_graphics("./imgs/total_pkg_vs_igraph_downloads_2015-2021.jpg")
-
-```
-```{r top-10-network-packages, echo = FALSE, fig.align = "center", fig.cap = "Top 10 packages with 'network' in their title.  Packages dealing with computer networks like 'RCurl' were omitted.", out.width="65%" }
-
-knitr::include_graphics("./imgs/top_10_netowrk_packages_by_monthly_download.jpg")
-```
-
-
-
-
 ## Purpose
 
 The purpose of this book is to speed the conversion of a traditional dataframe to a network diagram with nodes and vertices. Some discusson of basic computations will be included, but formulas are omitted unless necessary for understanding.  Network analysis is challenging partially due to its reliance on unfamiliar data structures.

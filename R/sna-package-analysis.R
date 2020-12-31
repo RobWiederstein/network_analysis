@@ -52,8 +52,7 @@ p <- p + ggtitle("Total R Package Downloads by Month")
 p
 #total download for igraph package each month
 dl.03 <- dl.00 %>%
-        dplyr::filter(package == "igraph") %>%
-        group_by(end) 
+        dplyr::filter(package == "igraph")
 dl.02$package <- "total"
 dl.04 <- rbind(dl.03[, c(2, 3, 4)], dl.02)
 dl.04$package <- factor(dl.04$package, levels=c("total", "igraph"))
@@ -107,4 +106,9 @@ filename <- "./imgs/top_10_network_packages_by_monthly_download.jpg"
 ggsave(p, filename = filename, height = 4, width = 6, unit = "in")
 
 #save file for table
-
+df.04 <-
+        df.03 %>%
+        dplyr::filter(package %in% top.10.network) %>%
+        select(package, downloads, summary)
+file <- "./tbls/table_top_10_network_pkgs.RData"
+save(df.04, file = file)

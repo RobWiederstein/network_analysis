@@ -1,4 +1,4 @@
-# Appendix A Koenigsburg {-}
+# Appendix A `igraphdata` {-}
 
 ```{r load-libraries-appendix, include=FALSE}
 x <- c("igraph", "igraphdata")

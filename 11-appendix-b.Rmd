@@ -1,0 +1,21 @@
+# Appendix B Top 10 Network Packages in R {-}
+
+```{r load-libraries-for-appendix-b, include = F}
+x <- c("kableExtra")
+sapply(x, library, character.only = T)
+```
+
+```{r img-top-10-network-pkg-downloads, echo=F, fig.show="hold", out.width="50%", fig.align="center", fig.cap="Figure to left shows igraph downloads to total downloads. Figure to right, with y-axis scale and labels changed, shows igraph downloads relative to other network packages.", fig.topcaption=TRUE}
+knitr::include_graphics("./imgs/total_pkg_vs_igraph_downloads_2015-2021.jpg")
+knitr::include_graphics("./imgs/top_10_network_packages_by_monthly_download.jpg")
+```
+
+
+```{r table-top-10-network-pkgs, echo = F}
+load(file = "./tbls/table_top_10_network_pkgs.RData")
+df.04 <- dplyr::arrange(df.04, -downloads)
+
+df.04 %>%
+        kbl(caption = "Top 10 Network Packages by download sorted in descending order.") %>%
+        kable_styling(bootstrap_options = c("striped", "condensed"))
+```

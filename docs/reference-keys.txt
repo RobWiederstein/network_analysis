@@ -56,3 +56,6 @@ glossary
 acknowledgements
 fig:r-package-downloads
 fig:top-10-network-packages
+fig:table-top-10-network-pkgs
+fig:img-top-10-network-pkg-downloads
+tab:table-top-10-network-pkgs

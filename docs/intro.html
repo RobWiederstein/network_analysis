@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2020-12-30" />
+<meta name="date" content="2020-12-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,25 +54,6 @@
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/sigma-1.2.1/sigma.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.layout.forceAtlas2.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.layout.noverlap.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.renderers.parallelEdges.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.plugins.animate.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.renderers.customShapes.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.plugins.dragNodes.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.renderers.customEdgeShapes.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.plugins.relativeSize.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.renderers.edgeLabels.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.parsers.gexf.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.exporters.svg.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.plugins.neighborhoods.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.plugins.filter.min.js"></script>
-<script src="libs/sigma-1.2.1/plugins/sigma.renderers.snapshot.min.js"></script>
-<script src="libs/sigmajs-binding-0.1.5/sigmajs.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -160,6 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#collection"><i class="fa fa-check"></i><b>0.3</b> Collection</a></li>
 <li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>0.4</b> Prerequisites</a></li>
 <li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#disclaimer"><i class="fa fa-check"></i><b>0.5</b> Disclaimer</a></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>0.6</b> Acknowledgements</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#terms"><i class="fa fa-check"></i><b>1.1</b> Terms</a></li>
@@ -221,6 +203,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<p>Package downloads are a proxy for the need for or the success of a package. As of December, 2020, total packages for <code>R</code> numbered 16,851 and 385 packages used the word “network” in the title. The latest monthly downloads yielded both total downloads and a clear leader in the area of network analysis: <code>igraph</code>. The two plots below show <code>igraph</code> downloads to other packages.</p>
+<div class="figure" style="text-align: center"><span id="fig:r-package-downloads"></span>
+<img src="imgs/total_pkg_vs_igraph_downloads_2015-2021.jpg" alt="The plot above shows the number of downloads for all packages and igraph." width="65%" />
+<p class="caption">
+Figure 1.1: The plot above shows the number of downloads for all packages and igraph.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:top-10-network-packages"></span>
+<img src="imgs/top_10_netowrk_packages_by_monthly_download.jpg" alt="Top 10 packages with 'network' in their title.  Packages dealing with computer networks like 'RCurl' were omitted." width="65%" />
+<p class="caption">
+Figure 1.2: Top 10 packages with ‘network’ in their title. Packages dealing with computer networks like ‘RCurl’ were omitted.
+</p>
+</div>
 <div id="terms" class="section level2">
 <h2><span class="header-section-number">1.1</span> Terms</h2>
 <p>“A network is not just a metaphor: it is a precise, mathematical construct of nodes (vertices, actors) N and edges (ties, relations) E that can be directed or undirected. We can include information
@@ -228,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure" style="text-align: center"><span id="fig:node-graph"></span>
 <img src="book_network_analysis_in_R_files/figure-html/node-graph-1.png" alt="A network consisting of nodes, N, and directed edges E." width="50%" />
 <p class="caption">
-Figure 1.1: A network consisting of nodes, N, and directed edges E.
+Figure 1.3: A network consisting of nodes, N, and directed edges E.
 </p>
 </div>
 </div>
@@ -411,7 +406,7 @@ F
 <div class="figure" style="text-align: center"><span id="fig:plot-adjacency-matrix"></span>
 <img src="book_network_analysis_in_R_files/figure-html/plot-adjacency-matrix-1.png" alt="Network plot from adjacency matrix" width="90%" />
 <p class="caption">
-Figure 1.2: Network plot from adjacency matrix
+Figure 1.4: Network plot from adjacency matrix
 </p>
 </div>
 </div>
@@ -428,7 +423,7 @@ Figure 1.2: Network plot from adjacency matrix
 <div class="figure" style="text-align: center"><span id="fig:plot-sparse-matrix"></span>
 <img src="book_network_analysis_in_R_files/figure-html/plot-sparse-matrix-1.png" alt="Network plot from sparse matrix." width="672" />
 <p class="caption">
-Figure 1.3: Network plot from sparse matrix.
+Figure 1.5: Network plot from sparse matrix.
 </p>
 </div>
 </div>
@@ -586,7 +581,7 @@ F
 <div class="figure" style="text-align: center"><span id="fig:plot-incidence-matrix"></span>
 <img src="book_network_analysis_in_R_files/figure-html/plot-incidence-matrix-1.png" alt="Network plot from incidency matrix." width="90%" />
 <p class="caption">
-Figure 1.4: Network plot from incidency matrix.
+Figure 1.6: Network plot from incidency matrix.
 </p>
 </div>
 </div>
@@ -684,7 +679,7 @@ A
 </table>
 <div class="figure" style="text-align: center"><span id="fig:plot-edgelist"></span>
 <p class="caption">
-Figure 1.5: Plot generated from edgelist.
+Figure 1.7: Plot generated from edgelist.
 </p>
 <img src="book_network_analysis_in_R_files/figure-html/plot-edgelist-1.png" alt="Plot generated from edgelist." width="90%" />
 </div>
