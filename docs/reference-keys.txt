@@ -54,3 +54,5 @@ stop-light-1
 starwars
 glossary
 acknowledgements
+fig:r-package-downloads
+fig:top-10-network-packages
