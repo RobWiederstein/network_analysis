@@ -1,3 +1,5 @@
+# (PART) Case Studies {-} 
+
 # Case Study Star Wars {#starwars}
 
 Great analysis of Star Wars and the coappearnce of characters. Data was prepared by [Evelina Gabasova](http://evelinag.com/blog/2016/01-25-social-network-force-awakens/).  The data was available on a github [repo](https://github.com/evelinag/StarWars-social-network).[@gabasovaStarWarsSocial2016]

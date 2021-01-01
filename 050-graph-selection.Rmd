@@ -1,4 +1,4 @@
-# Selection, Deletion, Addition of Graph elements {#selection}
+# Graph Modification {#modification}
 
 ```{r load-igraph-library-00, include=FALSE}
 x <- c("igraph", "tibble", "stringr", "kableExtra", "RColorBrewer", "viridis")

@@ -1,4 +1,4 @@
-# Appendix B Top 10 Network Packages in R {-}
+# Top 10 Network Packages in R
 
 ```{r load-libraries-for-appendix-b, include = F}
 x <- c("kableExtra")

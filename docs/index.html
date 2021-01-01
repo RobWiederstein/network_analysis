@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2020-12-30" />
+<meta name="date" content="2020-12-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,27 @@
 
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/sigma-1.2.1/sigma.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.layout.forceAtlas2.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.layout.noverlap.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.parallelEdges.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.animate.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.customShapes.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.dragNodes.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.customEdgeShapes.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.relativeSize.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.edgeLabels.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.parsers.gexf.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.exporters.svg.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.neighborhoods.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.filter.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.snapshot.min.js"></script>
+<script src="libs/sigmajs-binding-0.1.5/sigmajs.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -141,6 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#disclaimer"><i class="fa fa-check"></i><b>0.5</b> Disclaimer</a></li>
 <li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>0.6</b> Acknowledgements</a></li>
 </ul></li>
+<li class="part"><span><b>I The Basics</b></span></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#terms"><i class="fa fa-check"></i><b>1.1</b> Terms</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#input-formats"><i class="fa fa-check"></i><b>1.2</b> Input formats</a><ul>
@@ -165,20 +187,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="igraph.html"><a href="igraph.html#edges"><i class="fa fa-check"></i><b>2.3.2</b> Edges</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="selection.html"><a href="selection.html"><i class="fa fa-check"></i><b>3</b> Selection, Deletion, Addition of Graph elements</a><ul>
-<li class="chapter" data-level="3.1" data-path="selection.html"><a href="selection.html#load-a-plot"><i class="fa fa-check"></i><b>3.1</b> Load a plot</a></li>
+<li class="chapter" data-level="3" data-path="modification.html"><a href="modification.html"><i class="fa fa-check"></i><b>3</b> Graph Modification</a><ul>
+<li class="chapter" data-level="3.1" data-path="modification.html"><a href="modification.html#load-a-plot"><i class="fa fa-check"></i><b>3.1</b> Load a plot</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="first-graphs.html"><a href="first-graphs.html"><i class="fa fa-check"></i><b>4</b> First Graphs</a><ul>
 <li class="chapter" data-level="4.1" data-path="first-graphs.html"><a href="first-graphs.html#les-miserable-dataset"><i class="fa fa-check"></i><b>4.1</b> Les Miserable Dataset</a></li>
 <li class="chapter" data-level="4.2" data-path="first-graphs.html"><a href="first-graphs.html#stop-light"><i class="fa fa-check"></i><b>4.2</b> Stop light</a></li>
 <li class="chapter" data-level="4.3" data-path="first-graphs.html"><a href="first-graphs.html#les-miserabe"><i class="fa fa-check"></i><b>4.3</b> Les Miserabe</a></li>
 </ul></li>
+<li class="part"><span><b>II Other Packages</b></span></li>
 <li class="chapter" data-level="5" data-path="sigma.html"><a href="sigma.html"><i class="fa fa-check"></i><b>5</b> Sigma JS</a><ul>
 <li class="chapter" data-level="5.1" data-path="sigma.html"><a href="sigma.html#stop-light-1"><i class="fa fa-check"></i><b>5.1</b> Stop light</a></li>
 </ul></li>
+<li class="part"><span><b>III Case Studies</b></span></li>
 <li class="chapter" data-level="6" data-path="starwars.html"><a href="starwars.html"><i class="fa fa-check"></i><b>6</b> Case Study Star Wars</a></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
-<li class="chapter" data-level="" data-path="appendix-a-koenigsburg.html"><a href="appendix-a-koenigsburg.html"><i class="fa fa-check"></i>Appendix A Koenigsburg</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="igraphdata-plots.html"><a href="igraphdata-plots.html"><i class="fa fa-check"></i><b>A</b> <code>igraphdata</code> Plots</a></li>
+<li class="chapter" data-level="B" data-path="top-10-network-packages-in-r.html"><a href="top-10-network-packages-in-r.html"><i class="fa fa-check"></i><b>B</b> Top 10 Network Packages in R</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -202,26 +228,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Network Analysis in R</h1>
 <p class="author"><em>Robert Wiederstein</em></p>
-<p class="date"><em>2020-12-30</em></p>
+<p class="date"><em>2020-12-31</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
 <div id="why-read-this-book" class="section level2">
 <h2><span class="header-section-number">0.1</span> Why Read this Book</h2>
 <p>Network analysis is a crucial strategy in understanding the direction and strength of connections between people, places and ideas. Visual representation of networks can speed the discovery process in working with data.</p>
-<p>Package downloads are a proxy for the need for or the success of a package. As of December, 2020, total packages for <code>R</code> numbered 16,851 and 385 packages used the word “network” in the title. The latest monthly downloads yielded both total downloads and a clear leader in the area of network analysis: <code>igraph</code>. The two plots below show <code>igraph</code> downloads to other packages.</p>
-<div class="figure" style="text-align: center"><span id="fig:r-package-downloads"></span>
-<img src="imgs/total_pkg_vs_igraph_downloads_2015-2021.jpg" alt="The plot above shows the number of downloads for all packages and igraph." width="65%" />
-<p class="caption">
-Figure 0.1: The plot above shows the number of downloads for all packages and igraph.
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:top-10-network-packages"></span>
-<img src="imgs/top_10_netowrk_packages_by_monthly_download.jpg" alt="Top 10 packages with 'network' in their title.  Packages dealing with computer networks like 'RCurl' were omitted." width="65%" />
-<p class="caption">
-Figure 0.2: Top 10 packages with ‘network’ in their title. Packages dealing with computer networks like ‘RCurl’ were omitted.
-</p>
-</div>
 </div>
 <div id="purpose" class="section level2">
 <h2><span class="header-section-number">0.2</span> Purpose</h2>
@@ -250,6 +263,9 @@ Figure 0.2: Top 10 packages with ‘network’ in their title. Packages dealing 
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>

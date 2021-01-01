@@ -1,3 +1,5 @@
+fig:r-package-downloads
+fig:top-10-network-packages
 fig:node-graph
 tab:table-adjacency-matrix
 fig:plot-adjacency-matrix
@@ -16,11 +18,14 @@ fig:spread-node-layout
 fig:vertex-attributes
 fig:more-color-examples
 fig:edge-attributes
+fig:img-top-10-network-pkg-downloads
+tab:table-top-10-network-pkgs
 why-read-this-book
 purpose
 collection
 prerequisites
 disclaimer
+acknowledgements
 intro
 terms
 input-formats
@@ -43,7 +48,7 @@ shapes
 sizes
 colors
 edges
-selection
+modification
 load-a-plot
 first-graphs
 les-miserable-dataset
@@ -53,9 +58,5 @@ sigma
 stop-light-1
 starwars
 glossary
-acknowledgements
-fig:r-package-downloads
-fig:top-10-network-packages
-fig:table-top-10-network-pkgs
-fig:img-top-10-network-pkg-downloads
-tab:table-top-10-network-pkgs
+igraphdata-plots
+top-10-network-packages-in-r

@@ -1,4 +1,6 @@
-# Appendix A `igraphdata` {-}
+# (APPENDIX) Appendix {-} 
+
+# `igraphdata` Plots
 
 ```{r load-libraries-appendix, include=FALSE}
 x <- c("igraph", "igraphdata")

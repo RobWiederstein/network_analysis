@@ -1,3 +1,4 @@
+# (PART) Other Packages {-} 
 # Sigma JS {#sigma}
 
 ```{r, include=F, eval=FALSE}

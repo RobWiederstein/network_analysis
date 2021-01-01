@@ -1,3 +1,5 @@
+# (PART) The Basics {-} 
+
 # Introduction {#intro}
 
 ```{r intro-libraries, include=F}
@@ -15,7 +17,7 @@ knitr::include_graphics("./imgs/total_pkg_vs_igraph_downloads_2015-2021.jpg")
 
 ```{r top-10-network-packages, echo = FALSE, fig.align = "center", fig.cap = "Top 10 packages with 'network' in their title.  Packages dealing with computer networks like 'RCurl' were omitted.", out.width="65%" }
 
-knitr::include_graphics("./imgs/top_10_netowrk_packages_by_monthly_download.jpg")
+knitr::include_graphics("./imgs/top_10_network_packages_by_monthly_download.jpg")
 ```
 
 ## Terms
