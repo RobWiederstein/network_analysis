@@ -1,0 +1,76 @@
+# Graph Modification {#modification}
+
+```{r load-igraph-library-00, include=FALSE}
+x <- c("igraph", "tibble", "stringr", "kableExtra", "RColorBrewer", "viridis")
+lapply(x, require, character.only = T, quietly = T)
+```
+
+## Load plot "House"
+
+```{r load-a-house-plot}
+g1 <- make_graph("house")
+#data structure - full
+g1[]
+#data structure - row
+g1[1, ]
+#data structure - col
+g1[, 2]
+par(mfrow = c(1, 2))
+#plot graph object
+plot(g1,
+     vertex.size = 30,
+     vertex.color = 1, #default
+     main = "Our House"
+     )
+#Name the rooms
+#vertex_attr(graph, name, index = V(graph)) <- value
+vertex_attr(g1, name = "rooms") <- c("LR", "FR", "BR", "DR", "Garage")
+plot(g1,
+     vertex.size = 30,
+     vertex.color = 1,
+     vertex.label = V(g1)$rooms,
+     main = "Has Many Rooms"
+     )
+```
+
+## Get Edges
+```{r get-edges}
+
+# "E" is for edges
+E(g1)
+
+edge_attr(g1, name = "services") <- c("electric", "air_cond", "gas", "cable", "wifi", "water")
+par(mfrow = c(1, 2))
+plot(g1,
+     vertex.size = 30,
+     vertex.color = 1,
+     vertex.label = V(g1)$rooms,
+     main = "With Many Rooms"
+     )
+plot(g1, 
+     vertex.size = 30,
+     vertex.color = 1,
+     vertex.label = V(g1)$rooms,
+     edge.label = E(g1)$services,
+     main = "Is Connected"
+     )
+
+```
+
+```{r}
+
+```
+
+## Get Vertices
+
+```{r get-vertices}
+# "V" is for vertices
+V(g1)
+```
+### Add vertices attribute
+```{r add-vertices-attr}
+V(g1)$letter <- letters[1:length(V(g1))]
+#query attibutes
+vertex_attr(g1)
+```
+

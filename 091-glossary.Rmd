@@ -12,6 +12,8 @@
 
 **Indegree** is the number of received ties.
 
+**Loops** are edges the starting point and the end point is the same node. 
+
 **Networks**
 
 **Network objects** is a class of objects in R designed specifically for network analysis.  They store an adjacency matrix or an edgelist as well as metadata. 
@@ -19,3 +21,5 @@
 **Outdegree** the number of sent ties.
 
 **Directed** networks 
+
+**Sociogram** is a graph of a network.

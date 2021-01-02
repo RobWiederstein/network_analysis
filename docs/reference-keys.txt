@@ -49,7 +49,10 @@ sizes
 colors
 edges
 modification
-load-a-plot
+load-plot-house
+get-edges
+get-vertices
+add-vertices-attribute
 first-graphs
 les-miserable-dataset
 stop-light

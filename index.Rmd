@@ -20,7 +20,11 @@ library(bookdown)
 
 ## Why Read this Book
 
-Network analysis is a crucial strategy in understanding the direction and strength of connections between people, places and ideas. Visual representation of networks can speed the discovery process in working with data.
+Network analysis is a crucial strategy in understanding the direction and strength of connections between people, places and ideas. Visual representation of networks can speed the discovery process in working with data. It has a wide variety of applications and has been used to study social media like twitter, [@grandjeanSocialNetworkAnalysis2016], dispersion of knowledge among inventors, [@brenneckeFirmKnowledgeNetwork2017] and the transmission of disease [@emchIntegrationSpatialSocial2012] , to name just a few.
+
+The imagination of researchers to adopt social network analysis to new paradigms have left academic veterans reluctant to define its terms narrowly.  [@easleyNetworksCrowdsMarkets2012]
+
+Graphs of these networks are referred to as "sociograms" 
 
 ## Purpose
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2020-12-31" />
+<meta name="date" content="2021-01-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -188,7 +188,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="modification.html"><a href="modification.html"><i class="fa fa-check"></i><b>3</b> Graph Modification</a><ul>
-<li class="chapter" data-level="3.1" data-path="modification.html"><a href="modification.html#load-a-plot"><i class="fa fa-check"></i><b>3.1</b> Load a plot</a></li>
+<li class="chapter" data-level="3.1" data-path="modification.html"><a href="modification.html#load-plot-house"><i class="fa fa-check"></i><b>3.1</b> Load plot “House”</a></li>
+<li class="chapter" data-level="3.2" data-path="modification.html"><a href="modification.html#get-edges"><i class="fa fa-check"></i><b>3.2</b> Get Edges</a></li>
+<li class="chapter" data-level="3.3" data-path="modification.html"><a href="modification.html#get-vertices"><i class="fa fa-check"></i><b>3.3</b> Get Vertices</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="modification.html"><a href="modification.html#add-vertices-attribute"><i class="fa fa-check"></i><b>3.3.1</b> Add vertices attribute</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="first-graphs.html"><a href="first-graphs.html"><i class="fa fa-check"></i><b>4</b> First Graphs</a><ul>
 <li class="chapter" data-level="4.1" data-path="first-graphs.html"><a href="first-graphs.html#les-miserable-dataset"><i class="fa fa-check"></i><b>4.1</b> Les Miserable Dataset</a></li>
@@ -228,13 +232,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Network Analysis in R</h1>
 <p class="author"><em>Robert Wiederstein</em></p>
-<p class="date"><em>2020-12-31</em></p>
+<p class="date"><em>2021-01-01</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
 <div id="why-read-this-book" class="section level2">
 <h2><span class="header-section-number">0.1</span> Why Read this Book</h2>
-<p>Network analysis is a crucial strategy in understanding the direction and strength of connections between people, places and ideas. Visual representation of networks can speed the discovery process in working with data.</p>
+<p>Network analysis is a crucial strategy in understanding the direction and strength of connections between people, places and ideas. Visual representation of networks can speed the discovery process in working with data. It has a wide variety of applications and has been used to study social media like twitter, <span class="citation">(Grandjean <a href="#ref-grandjeanSocialNetworkAnalysis2016">2016</a>)</span>, dispersion of knowledge among inventors, <span class="citation">(Brennecke and Rank <a href="#ref-brenneckeFirmKnowledgeNetwork2017">2017</a>)</span> and the transmission of disease <span class="citation">(Emch et al. <a href="#ref-emchIntegrationSpatialSocial2012">2012</a>)</span> , to name just a few.</p>
+<p>The imagination of researchers to adopt social network analysis to new paradigms have left academic veterans reluctant to define its terms narrowly. <span class="citation">(Easley and Kleinberg <a href="#ref-easleyNetworksCrowdsMarkets2012">2012</a>)</span></p>
+<p>Graphs of these networks are referred to as “sociograms”</p>
 </div>
 <div id="purpose" class="section level2">
 <h2><span class="header-section-number">0.2</span> Purpose</h2>
@@ -266,6 +272,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-brenneckeFirmKnowledgeNetwork2017">
+<p>Brennecke, Julia, and Olaf Rank. 2017. “The Firm’s Knowledge Network and the Transfer of Advice Among Corporate InventorsA Multilevel Network Study.” <em>Research Policy</em> 46 (4): 768–83. <a href="https://doi.org/10.1016/j.respol.2017.02.002">https://doi.org/10.1016/j.respol.2017.02.002</a>.</p>
+</div>
+<div id="ref-easleyNetworksCrowdsMarkets2012">
+<p>Easley, David, and Jon Kleinberg. 2012. “Networks, Crowds, and Markets: Reasoning About a Highly Connected World.” <em>Significance</em> 9: 43–44. <a href="https://doi.org/10.1017/CBO9780511761942">https://doi.org/10.1017/CBO9780511761942</a>.</p>
+</div>
+<div id="ref-emchIntegrationSpatialSocial2012">
+<p>Emch, Michael, Elisabeth D Root, Sophia Giebultowicz, Mohammad Ali, Carolina Perez-Heydrich, and Mohammad Yunus. 2012. “Integration of Spatial and Social Network Analysis in Disease Transmission Studies.” <em>Annals of the Association of American Geographers. Association of American Geographers</em> 105 (5): 1004–15. <a href="https://doi.org/10.1080/00045608.2012.671129">https://doi.org/10.1080/00045608.2012.671129</a>.</p>
+</div>
+<div id="ref-grandjeanSocialNetworkAnalysis2016">
+<p>Grandjean, Martin. 2016. “A Social Network Analysis of Twitter: Mapping the Digital Humanities Community.” Edited by Aaron Mauro. <em>Cogent Arts &amp; Humanities</em> 3 (1). Cogent OA: 1171458. <a href="https://doi.org/10.1080/23311983.2016.1171458">https://doi.org/10.1080/23311983.2016.1171458</a>.</p>
+</div>
+</div>
             </section>
 
           </div>
