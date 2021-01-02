@@ -1,5 +1,7 @@
 # Glossary {#glossary}
 
+Great resource [here](http://edshare.soton.ac.uk/922/2/index.html#Specifying_sets).
+
 **Attributes** are a characteristic of the node or edge that is often designated by color, size, or shape of the object. For example, a dashed line for an edge or a blue circle for a node.
 
 **Nodes** are also actors or vertices.  They are things like people, places, ideas that have some connection.  In mathmatical formulas, they often take the variable $N$.
@@ -10,9 +12,13 @@
 
 **Edges** are ties, relations or connections between nodes.  Edges are often designated as $E$.
 
+**Empty graph** is a graph with no vertices or edges.
+
 **Indegree** is the number of received ties.
 
 **Loops** are edges the starting point and the end point is the same node. 
+
+**Neighborhood** of a vertex v in a graph G is the set of vertices adjacent to v. The neighborhood is denoted N(v). The neighborhood does not include v itself. 
 
 **Networks**
 
@@ -23,3 +29,5 @@
 **Directed** networks 
 
 **Sociogram** is a graph of a network.
+
+**Trival graph** a graph with only one vertex and no edges.

@@ -24,8 +24,6 @@ Network analysis is a crucial strategy in understanding the direction and streng
 
 The imagination of researchers to adopt social network analysis to new paradigms have left academic veterans reluctant to define its terms narrowly.  [@easleyNetworksCrowdsMarkets2012]
 
-Graphs of these networks are referred to as "sociograms" 
-
 ## Purpose
 
 The purpose of this book is to speed the conversion of a traditional dataframe to a network diagram with nodes and vertices. Some discusson of basic computations will be included, but formulas are omitted unless necessary for understanding.  Network analysis is challenging partially due to its reliance on unfamiliar data structures.

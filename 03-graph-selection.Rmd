@@ -11,9 +11,9 @@ lapply(x, require, character.only = T, quietly = T)
 g1 <- make_graph("house")
 #data structure - full
 g1[]
-#data structure - row
+#data structure - row 1
 g1[1, ]
-#data structure - col
+#data structure - col 2
 g1[, 2]
 par(mfrow = c(1, 2))
 #plot graph object
@@ -22,8 +22,7 @@ plot(g1,
      vertex.color = 1, #default
      main = "Our House"
      )
-#Name the rooms
-#vertex_attr(graph, name, index = V(graph)) <- value
+#assign attribute & label nodes
 vertex_attr(g1, name = "rooms") <- c("LR", "FR", "BR", "DR", "Garage")
 plot(g1,
      vertex.size = 30,
@@ -34,8 +33,7 @@ plot(g1,
 ```
 
 ## Get Edges
-```{r get-edges}
-
+```{r get-edges-for-house}
 # "E" is for edges
 E(g1)
 
@@ -69,8 +67,11 @@ V(g1)
 ```
 ### Add vertices attribute
 ```{r add-vertices-attr}
-V(g1)$letter <- letters[1:length(V(g1))]
+V(g1)$label <- letters[1:length(V(g1))]
 #query attibutes
 vertex_attr(g1)
+#set_vertex_attr(g1, name = "size", value = seq(10, 50, by =10))
+V(g1)$size <- seq(10, 50, by = 10)
+plot(g1)
 ```
 
