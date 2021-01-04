@@ -1,0 +1,9 @@
+# Case Study -- Airlines {#airlines}
+
+There were several examples dealing with airlines. 
+
+Flowing data has a [tutorial](https://flowingdata.com/2011/05/05/where-do-major-airlines-fly-in-the-united-states/) where Yau cleaned a dataset. The article's title is "Geographic breakdown: Where do major airlines fly?".
+
+A second dataset is from Gephi and is contained in `data/gephy/airlines.graphml.zip`.
+
+Yet a third is a script where I downloaded airline data from Bureau of Transportation Statistics. I opened a separate project in my r-projects directory.  It can be found at `~/Dropbox/coding/rproj/airlines`. 
