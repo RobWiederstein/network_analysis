@@ -18,6 +18,7 @@ fig:spread-node-layout
 fig:vertex-attributes
 fig:more-color-examples
 fig:edge-attributes
+fig:gabasova-starwars-plot
 fig:img-top-10-network-pkg-downloads
 tab:table-top-10-network-pkgs
 why-read-this-book
@@ -60,6 +61,11 @@ les-miserabe
 sigma
 stop-light-1
 starwars
+read-data
+graph-object-error
+create-attributes
+final-plot
+summary
 glossary
 igraphdata-plots
 top-10-network-packages-in-r

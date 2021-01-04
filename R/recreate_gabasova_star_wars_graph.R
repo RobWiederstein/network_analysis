@@ -6,23 +6,13 @@ star.wars <- jsonlite::fromJSON(txt = txt)
 #json was list of two databases:  nodes and edges
 nodes <- star.wars$nodes
 edges <- star.wars$links
-#creat graph object from dataframe
-g <- igraph::graph_from_data_frame(d = edges,
-                                   directed = F,
-                                   vertices = nodes
-                                   )
-#find error--this was not fun.
-ed <- sort(unique(c(edges$source, edges$target)))
-print(paste0("#", setdiff(0:111, ed), " is missing from edge list."))
-#add #79 and connect to 0 (R2D2) -- NA was causing problems
-edges[451, ] <- c(79, 0, 1) #There was no #79 in edgelist
+#Nodes--need to adjust column for 0-based index
+nodes$id <- 0:111 #add id column
+nodes <- dplyr::relocate(nodes, id, name, value, colour)
 #Edges:  create column for edge.width attribute
 edges$talk <- ggplot2::cut_interval(edges$value, 6)
 levels(edges$talk) <- as.character(1:6)
 edges$talk <- as.integer(edges$talk)
-#Nodes--need to adjust column for 0-based index
-nodes$id <- 0:111 #add id column
-nodes <- dplyr::relocate(nodes, id, name, value, colour)
 #create column for vertex.size attribute
 nodes$scenes <- ggplot2::cut_interval(nodes$value, 6)
 levels(nodes$scenes) <- 1:6
@@ -54,4 +44,7 @@ plot(g,
      asp = 0
      )
 
-
+# ed <- sort(unique(c(edges$source, edges$target)))
+# print(paste0("#", setdiff(0:111, ed), " is missing from edge list."))
+# #add #79 and connect to 0 (R2D2) -- NA was causing problems
+# edges[451, ] <- c(79, 0, 1) #There was no #79 in edgelist

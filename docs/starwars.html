@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Case Study Star Wars | Network Analysis in R</title>
+  <title>Chapter 6 Case Study – Star Wars | Network Analysis in R</title>
   <meta name="description" content="tutorials on analyzing networks in R." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Case Study Star Wars | Network Analysis in R" />
+  <meta property="og:title" content="Chapter 6 Case Study – Star Wars | Network Analysis in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Case Study Star Wars | Network Analysis in R" />
+  <meta name="twitter:title" content="Chapter 6 Case Study – Star Wars | Network Analysis in R" />
   
   <meta name="twitter:description" content="tutorials on analyzing networks in R." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2021-01-02" />
+<meta name="date" content="2021-01-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -204,7 +204,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1" data-path="sigma.html"><a href="sigma.html#stop-light-1"><i class="fa fa-check"></i><b>5.1</b> Stop light</a></li>
 </ul></li>
 <li class="part"><span><b>III Case Studies</b></span></li>
-<li class="chapter" data-level="6" data-path="starwars.html"><a href="starwars.html"><i class="fa fa-check"></i><b>6</b> Case Study Star Wars</a></li>
+<li class="chapter" data-level="6" data-path="starwars.html"><a href="starwars.html"><i class="fa fa-check"></i><b>6</b> Case Study – Star Wars</a><ul>
+<li class="chapter" data-level="6.1" data-path="starwars.html"><a href="starwars.html#read-data"><i class="fa fa-check"></i><b>6.1</b> Read Data</a></li>
+<li class="chapter" data-level="6.2" data-path="starwars.html"><a href="starwars.html#graph-object-error"><i class="fa fa-check"></i><b>6.2</b> Graph object error</a></li>
+<li class="chapter" data-level="6.3" data-path="starwars.html"><a href="starwars.html#create-attributes"><i class="fa fa-check"></i><b>6.3</b> Create attributes</a></li>
+<li class="chapter" data-level="6.4" data-path="starwars.html"><a href="starwars.html#final-plot"><i class="fa fa-check"></i><b>6.4</b> Final plot</a></li>
+<li class="chapter" data-level="6.5" data-path="starwars.html"><a href="starwars.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="igraphdata-plots.html"><a href="igraphdata-plots.html"><i class="fa fa-check"></i><b>A</b> <code>igraphdata</code> Plots</a></li>
@@ -230,9 +236,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="starwars" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Case Study Star Wars</h1>
-<p>Great analysis of Star Wars and the coappearnce of characters. Data was prepared by <a href="http://evelinag.com/blog/2016/01-25-social-network-force-awakens/">Evelina Gabasova</a>. The data was available on a github <a href="https://github.com/evelinag/StarWars-social-network">repo</a>.<span class="citation">(Gabasova <a href="#ref-gabasovaStarWarsSocial2016">2016</a>)</span></p>
+<h1><span class="header-section-number">Chapter 6</span> Case Study – Star Wars</h1>
+<p>The coappearance of Star Wars characters across the seven episodes was collected by data scientist Evelina Gabasova and her analysis can be found <a href="http://evelinag.com/blog/2016/01-25-social-network-force-awakens/">here</a>. The individual nodes represent characters in the movies. The characters are connected if they speak together in a scene. The width of the edges is set by how much the characters speak to one another. The size of each node represents the number of scenes that the characters appear in together. Dr. Gabasova separated the two characters Darth Vader and Anakin from one another, yet combined Palpatine and Darth Sidious in a single node. Amidala was merged with Padme. The data is available as a github <a href="https://github.com/evelinag/StarWars-social-network">repo</a>.<span class="citation">(Gabasova <a href="#ref-gabasovaStarWarsSocial2016">2016</a>)</span></p>
+<div class="figure" style="text-align: center"><span id="fig:gabasova-starwars-plot"></span>
+<img src="imgs/gabasova-starwars.png" alt="Gabasova's Starwars social network plot was prepared with D3.js" width="65%" />
+<p class="caption">
+Figure 6.1: Gabasova’s Starwars social network plot was prepared with D3.js
+</p>
+</div>
+<p>In this chapter, the above plot will be recreated using the Star Wars dataset, all seven episodes, using <code>R</code> and <code>igraph</code>. The dataset was downloaded from the repo and is saved at <code>./data/gabasova/starwars-full-interactions-allCharacters.json</code>.</p>
+<div id="read-data" class="section level2">
+<h2><span class="header-section-number">6.1</span> Read Data</h2>
+<p>The data were stored in a <code>json</code> file and required importation using the <code>jsonlite</code> package. Once imported, the dataframes were clearly marked. “Links” was changed to “edges”. There were 112 characters in the seven Star Wars episodes with 450 character interactions.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="co">#import file</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">txt &lt;-<span class="st"> &quot;./data/gabasova/starwars-full-interactions-allCharacters.json&quot;</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">star.wars &lt;-<span class="st"> </span>jsonlite<span class="op">::</span><span class="kw">fromJSON</span>(<span class="dt">txt =</span> txt)</a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="co">#json was list of two databases:  nodes and edges</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5">nodes &lt;-<span class="st"> </span>star.wars<span class="op">$</span>nodes</a>
+<a class="sourceLine" id="cb25-6" data-line-number="6">edges &lt;-<span class="st"> </span>star.wars<span class="op">$</span>links</a></code></pre></div>
+</div>
+<div id="graph-object-error" class="section level2">
+<h2><span class="header-section-number">6.2</span> Graph object error</h2>
+<p>When the function <code>graph_from_data_frame()</code> was applied to the dataframe, an error message was displayed.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co">#create graph object from dataframe--attempt 1</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">g &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(<span class="dt">d =</span> edges,</a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">                                   <span class="dt">directed =</span> F,</a>
+<a class="sourceLine" id="cb26-4" data-line-number="4">                                   <span class="dt">vertices =</span> nodes</a>
+<a class="sourceLine" id="cb26-5" data-line-number="5">                                   )</a></code></pre></div>
+<pre><code>## Error in igraph::graph_from_data_frame(d = edges, directed = F, vertices = nodes): Some vertex names in edge list are not listed in vertex data frame</code></pre>
+<p>Upon creating a separate column labeled “id” and setting its value beginning with “0”, the error did not repeat when the graph object was created.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="co">#Nodes--need to adjust column for 0-based index</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">nodes<span class="op">$</span>id &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">111</span> <span class="co">#add id column</span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">nodes &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">relocate</span>(nodes, id, name, value, colour)</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="co">#create graph object from dataframe -- attempt 2</span></a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">g &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(<span class="dt">d =</span> edges,</a>
+<a class="sourceLine" id="cb28-6" data-line-number="6">                                   <span class="dt">directed =</span> F,</a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">                                   <span class="dt">vertices =</span> nodes</a>
+<a class="sourceLine" id="cb28-8" data-line-number="8">                                   )</a></code></pre></div>
+</div>
+<div id="create-attributes" class="section level2">
+<h2><span class="header-section-number">6.3</span> Create attributes</h2>
+<p>Gabasova’s original plot allowed for width to vary depending on the talk or conversation between the characters. The range of those conversations was between 1 to 77. Efforts to assign edge width based on the absolute values yield non-sensical widths. Instead, a new attribute column was created by cutting the <code>value</code> column into six intervals.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="co">#Edges:  create column for edge.width attribute</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">edges<span class="op">$</span>talk &lt;-<span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">cut_interval</span>(edges<span class="op">$</span>value, <span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="kw">levels</span>(edges<span class="op">$</span>talk) &lt;-<span class="st"> </span><span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb29-4" data-line-number="4">edges<span class="op">$</span>talk &lt;-<span class="st"> </span><span class="kw">as.integer</span>(edges<span class="op">$</span>talk)</a></code></pre></div>
+<p>Additionally, in Gabasova’s original plot, the size of the node varies with the number of scenes that the characters appear in together. The nodes dataframe contains a column listed as <code>value</code>. A new column was created for the <code>vertex.size</code> argument where the interval was cut into six equal sizes.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="co">#Nodes:  create column for vertex.size attribute</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">nodes<span class="op">$</span>scenes &lt;-<span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">cut_interval</span>(nodes<span class="op">$</span>value, <span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="kw">levels</span>(nodes<span class="op">$</span>scenes) &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">nodes<span class="op">$</span>scenes &lt;-<span class="st"> </span><span class="kw">as.character</span>(nodes<span class="op">$</span>scenes)</a></code></pre></div>
+</div>
+<div id="final-plot" class="section level2">
+<h2><span class="header-section-number">6.4</span> Final plot</h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="co">#Create method to spread nodes</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">e &lt;-<span class="st"> </span>edges[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)]<span class="co">#get.edgelist(g)</span></a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">l &lt;-<span class="st"> </span><span class="kw">qgraph.layout.fruchtermanreingold</span>(e,<span class="dt">vcount=</span><span class="kw">vcount</span>(g))</a>
+<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="co">#plot the graph</span></a>
+<a class="sourceLine" id="cb31-5" data-line-number="5"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb31-6" data-line-number="6"><span class="kw">plot</span>(g, </a>
+<a class="sourceLine" id="cb31-7" data-line-number="7">     <span class="dt">layout =</span> <span class="kw">qgraph.layout.fruchtermanreingold</span>(e,</a>
+<a class="sourceLine" id="cb31-8" data-line-number="8">                                                <span class="dt">vcount =</span> <span class="kw">vcount</span>(g),</a>
+<a class="sourceLine" id="cb31-9" data-line-number="9">                                                <span class="dt">area =</span> <span class="dv">8</span> <span class="op">*</span><span class="st"> </span>(<span class="kw">vcount</span>(g) <span class="op">^</span><span class="st"> </span><span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb31-10" data-line-number="10">                                                <span class="dt">repulse.rad =</span> (<span class="kw">vcount</span>(g) <span class="op">^</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb31-11" data-line-number="11">                                                ),</a>
+<a class="sourceLine" id="cb31-12" data-line-number="12">     <span class="dt">vertex.color =</span> <span class="kw">vertex.attributes</span>(g)<span class="op">$</span>colour,</a>
+<a class="sourceLine" id="cb31-13" data-line-number="13">     <span class="dt">vertex.label =</span> <span class="kw">ifelse</span>(<span class="kw">V</span>(g)<span class="op">$</span>value <span class="op">&gt;</span><span class="st"> </span><span class="dv">35</span>, <span class="kw">V</span>(g)<span class="op">$</span>name, <span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb31-14" data-line-number="14">     <span class="dt">vertex.label.color =</span> <span class="st">&quot;black&quot;</span>,</a>
+<a class="sourceLine" id="cb31-15" data-line-number="15">     <span class="dt">vertex.label.cex =</span> <span class="fl">.6</span>,</a>
+<a class="sourceLine" id="cb31-16" data-line-number="16">     <span class="dt">vertex.label.font =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb31-17" data-line-number="17">     <span class="dt">vertex.size =</span> <span class="kw">as.integer</span>(<span class="kw">vertex.attributes</span>(g)<span class="op">$</span>scenes) <span class="op">*</span><span class="st"> </span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb31-18" data-line-number="18">     <span class="dt">vertex.frame.color=</span><span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb31-19" data-line-number="19">     <span class="dt">edge.width =</span> <span class="kw">edge.attributes</span>(g)<span class="op">$</span>talk <span class="op">*</span><span class="st"> </span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb31-20" data-line-number="20">     <span class="dt">edge.color =</span> <span class="st">&quot;#D3D3D3&quot;</span>,</a>
+<a class="sourceLine" id="cb31-21" data-line-number="21">     <span class="dt">asp =</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb31-22" data-line-number="22">     )</a></code></pre></div>
+<p><img src="book_network_analysis_in_R_files/figure-html/starwars-final-plot-formatting-1.png" width="672" /></p>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">6.5</span> Summary</h2>
+<p>The Star Wars characters dataset is similar to the “Les Mis” dataset in that both track the coappearance of characters in famous artistic works one historic from 1584 and one contemporary beginning in 1977. The Star Wars dataset offered more in terms of variables and the colour of the nodes was furnished. The error discussed above was included as it occurs with some frequency that edges and vertices fail to match. It is the subject of several questions on StackOverflow. The entire script describe above is included in the repo as <code>./R/recreate_gabasova_star_wars_graph.R</code></p>
+<p>Overall, the graph as rendered in <code>igraph</code> matched most of the features of the <code>D3</code> graph by Gabasova. One issue that was unresolved was the labels in <code>igraph</code> did not seem so allow the individual “tweaking” that occurred in the first chart. Nonetheless, the Star Wars data allowed for many of the previous concepts to be applied and expanded, making it an excellent case study for skill development.</p>
 
+</div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
