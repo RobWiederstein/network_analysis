@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 igraph | Network Analysis in R</title>
+  <title>Chapter 7 Case Study – SOI Tax Stats | Network Analysis in R</title>
   <meta name="description" content="tutorials on analyzing networks in R." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 igraph | Network Analysis in R" />
+  <meta property="og:title" content="Chapter 7 Case Study – SOI Tax Stats | Network Analysis in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 igraph | Network Analysis in R" />
+  <meta name="twitter:title" content="Chapter 7 Case Study – SOI Tax Stats | Network Analysis in R" />
   
   <meta name="twitter:description" content="tutorials on analyzing networks in R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html"/>
-<link rel="next" href="modification.html"/>
+<link rel="prev" href="starwars.html"/>
+<link rel="next" href="airlines.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -242,202 +242,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="igraph" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> igraph</h1>
-<p><code>igraph</code> contains 773 functions. Three different plotting mechanisms exist: <code>igraph</code> for two dimensional plots, <code>tkplot</code> for interactive 2-dimensional plotting and <code>rglplot</code> which is for 3-dimensional plotting and is labeled as “experimental.” The <code>igraph</code> functions for two dimensional plots is the focus for the next * chapters.</p>
-<div id="examples" class="section level2">
-<h2><span class="header-section-number">2.1</span> Examples</h2>
-<div id="simple-graphs" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Simple Graphs</h3>
-<p>The simple graph below was created from manual entry using igraph’s <code>graph_from_literal</code> function.</p>
-<div class="figure" style="text-align: center"><span id="fig:simple-igraph-node"></span>
-<img src="book_network_analysis_in_R_files/figure-html/simple-igraph-node-1.png" alt="Graph (a) is two nodes connected by edge, graph (b) is two unconnected nodes, graph (c) is two nodes with a directional edge, graph (d) is two nodes with the directional edge reversed, graph (e) is two nodes with a bidirectional edge, and graph (f) is two nodes connected by a weighted edge." width="672" />
+<div id="irs" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Case Study – SOI Tax Stats</h1>
+<p>The IRS provides information on migration from IRS tax forms. Its <a href="https://www.irs.gov/pub/irs-soi/1718inpublicmigdoc.pdf">Migration Data Users guide</a> “provides a detailed description of the State-to-State, County-to-County, and Gross Migration files produced by the Internal Revenue Service (IRS) Statistics of Income (SOI) Division. IRS Migration data for the United States are based on year-to-year address changes reported on individual income tax returns filed with the IRS. They present migration patterns by State or by county and are available for inflows—the number of new residents who moved to a State or county and where they migrated from, and outflows—the number of residents leaving a State or county and where they went. The data also include tabulations on the number of non-migrant returns within a State or county.” The latest year available was for 2017-2018.</p>
+<div id="county-to-county-outflow-data" class="section level2">
+<h2><span class="header-section-number">7.1</span> County-to-county Outflow data</h2>
+<p>“The County-to-County outflow migration files represent the migration flows from the origin state and county, in year one, to the destination state and county, in year two. There are 51 files for each state plus the District of Columbia. Included in the list of county flows are the number of returns that migrated to a foreign location [4]. The migration flows include the following county equivalents (Parishes in Louisiana, Boroughs, Census Areas, and municipalities in Alaska, independent cities, such as Baltimore, Maryland, and the District of Columbia).”</p>
+</div>
+<div id="read-data-1" class="section level2">
+<h2><span class="header-section-number">7.2</span> Read Data</h2>
+<p>The data was prepared prior to import in the book here. The data represent return filers whose address changed from Miami-Dade county in year one to some other county in year 2. Additionally, only counties that received greater than 100 new residents from Miami were included.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="co"># import</span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">edges &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;./data/irs/miami-out-migration-edges.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">nodes &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;./data/irs/miami-out-migration-nodes.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="co"># create network</span></a>
+<a class="sourceLine" id="cb32-5" data-line-number="5">g1 &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(<span class="dt">d =</span> edges,</a>
+<a class="sourceLine" id="cb32-6" data-line-number="6">                                   <span class="dt">directed =</span> T,</a>
+<a class="sourceLine" id="cb32-7" data-line-number="7">                                   <span class="dt">vertices =</span> nodes</a>
+<a class="sourceLine" id="cb32-8" data-line-number="8">)</a></code></pre></div>
+</div>
+<div id="first-plot" class="section level2">
+<h2><span class="header-section-number">7.3</span> First Plot</h2>
+<p>It’s usually a good idea to see if the data will plot first so that any residual and obvious problems can be addressed. Here, a graph object was successfully created and plotted with <code>plot(g1)</code>.</p>
+<div class="figure"><span id="fig:irs-first-plot"></span>
+<img src="book_network_analysis_in_R_files/figure-html/irs-first-plot-1.png" alt="A plot using igraph defaults." width="672" />
 <p class="caption">
-Figure 2.1: Graph (a) is two nodes connected by edge, graph (b) is two unconnected nodes, graph (c) is two nodes with a directional edge, graph (d) is two nodes with the directional edge reversed, graph (e) is two nodes with a bidirectional edge, and graph (f) is two nodes connected by a weighted edge.
+Figure 7.1: A plot using igraph defaults.
 </p>
 </div>
 </div>
-<div id="notable-graphs" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Notable Graphs</h3>
-<div class="figure" style="text-align: center"><span id="fig:notable-graphs-example"></span>
-<img src="book_network_analysis_in_R_files/figure-html/notable-graphs-example-1.png" alt="Nine of 31 'Notable Graphs' from 'make_graph()`" width="576" />
+<div id="open-the-space" class="section level2">
+<h2><span class="header-section-number">7.4</span> Open the Space</h2>
+<p>The plot above is unreadable when rendered with <code>igraph</code> defaults, but shows the importance of formatting. It also shows the difficulty of trying to make sense of the data when it is jumbled. The next step is to simplify the plot so that the formatting process can begin. Three suggestions are to omit labels, reduce vertex size and minimize arrow size.</p>
+<div class="figure" style="text-align: center"><span id="fig:irs-open-space"></span>
+<img src="book_network_analysis_in_R_files/figure-html/irs-open-space-1.png" alt="Formatting arguments to open graphing space." width="672" />
 <p class="caption">
-Figure 2.2: Nine of 31 ‘Notable Graphs’ from ’make_graph()`
-</p>
-</div>
-</div>
-<div id="complicated-graph" class="section level3">
-<h3><span class="header-section-number">2.1.3</span> Complicated Graph</h3>
-<p>The complicated graph below was created from the Les Miserable resident dataset in <code>igraph</code>. <span class="citation">(Knuth <a href="#ref-knuthStanfordGraphBasePlatform1993">1993</a>)</span> The data contains 77 nodes and 254 edges.</p>
-<div class="figure" style="text-align: center"><span id="fig:complicated-igraph-node"></span>
-<img src="book_network_analysis_in_R_files/figure-html/complicated-igraph-node-1.png" alt="Network graph of the coappearnce of characters in Les Miserable." width="672" />
-<p class="caption">
-Figure 2.3: Network graph of the coappearnce of characters in Les Miserable.
-</p>
-</div>
-</div>
-</div>
-<div id="layout-of-nodes" class="section level2">
-<h2><span class="header-section-number">2.2</span> Layout of Nodes</h2>
-<p>Nodes may be laid out in a variety of ways and many algorithms are available, depending on the data and the analyst’s personal preference. “It is important to realize that the information in graph layouts is contained in the pattern of which nodes are connected to which others. The locations . . . are chosen based on essentially aesthetic criteria.” <span class="citation">(Borgatti, Everett, and Johnson <a href="#ref-borgattiAnalyzingSocialNetworks2018">2018</a>)</span> According to the igraph documentation, 21 available layouts are available and include:</p>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:layout-options-igraph">Table 2.1: </span>Available layouts for nodes in <code>igraph</code>.
-</caption>
-<tbody>
-<tr>
-<td style="text-align:left;">
-add_layout_
-</td>
-<td style="text-align:left;">
-component_wise
-</td>
-<td style="text-align:left;">
-layout_as_star
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-layout_as_tree
-</td>
-<td style="text-align:left;">
-layout_in_circle
-</td>
-<td style="text-align:left;">
-layout_nicely
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-layout_on_grid
-</td>
-<td style="text-align:left;">
-layout_on_sphere
-</td>
-<td style="text-align:left;">
-layout_randomly
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-layout_with_dh
-</td>
-<td style="text-align:left;">
-layout_with_fr
-</td>
-<td style="text-align:left;">
-layout_with_gem
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-layout_with_graphopt
-</td>
-<td style="text-align:left;">
-layout_with_kk
-</td>
-<td style="text-align:left;">
-layout_with_lgl
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-layout_with_mds
-</td>
-<td style="text-align:left;">
-layout_with_sugiyama
-</td>
-<td style="text-align:left;">
-layout_
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-merge_coords
-</td>
-<td style="text-align:left;">
-norm_coords
-</td>
-<td style="text-align:left;">
-normalize
-</td>
-</tr>
-</tbody>
-</table>
-<p>Plots were randomly generated from an adjacency matrix as illustrated by <a href="https://www.r-graph-gallery.com/network.html">R-graph-gallery</a>. The <code>layout_nicely</code> function is the default. (verify). The function
-uses the <code>layout_with_fr</code> with graphs less than 1,000 vertices and the <code>layout_with_drl</code> for graphs greater than 1,000 vertices.</p>
-<div class="figure" style="text-align: center"><span id="fig:igraph-mosaic-layout"></span>
-<img src="book_network_analysis_in_R_files/figure-html/igraph-mosaic-layout-1.png" alt="Examples of available layouts." width="672" />
-<p class="caption">
-Figure 2.4: Examples of available layouts.
-</p>
-</div>
-<p>In plotting graphs with many nodes, the chosen layout will result in overlapping nodes. The challenge is in spreading the nodes out to the space available. One strategy was described in a stackoverflow <a href="https://stackoverflow.com/questions/39290909/igraph-resolving-tight-overlapping-nodes">question</a> using the <code>qgraph</code> library. The code was was used to reproduce the plot below.</p>
-<div class="figure" style="text-align: center"><span id="fig:spread-node-layout"></span>
-<img src="book_network_analysis_in_R_files/figure-html/spread-node-layout-1.png" alt="Node dispersion of the Fruchterman-Reingold (F-R) layout." width="672" />
-<p class="caption">
-Figure 2.5: Node dispersion of the Fruchterman-Reingold (F-R) layout.
-</p>
-</div>
-</div>
-<div id="attributes" class="section level2">
-<h2><span class="header-section-number">2.3</span> Attributes</h2>
-<p>Any chart is comprised of geoms. <code>igraph</code> allows for the color, size, shape to be set in of two ways. The first method is to supply named arguments to the plotting command, in the this case <code>plot.igraph</code>. The second method is to set the attributes via assignment to the vertex, edge or graph. According to the manual, assignments using the second method do not require “vertex” or “edge” to be prepended.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">#First Method -- supply named arguments to plot</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">plot.igraph</span>(<span class="kw">make_graph</span>(<span class="st">&quot;Bull&quot;</span>),</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">            <span class="dt">vertex.shape =</span> <span class="st">&quot;square&quot;</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">            )</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#Second Method -- set vertex attributes</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">g &lt;-<span class="st"> </span><span class="kw">make_graph</span>(<span class="st">&quot;Bull&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">        </span><span class="kw">set_vertex_attr</span>(<span class="dt">name =</span> <span class="st">&quot;shape&quot;</span>, </a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">                        <span class="dt">value =</span> <span class="st">&quot;square&quot;</span>)</a></code></pre></div>
-<div id="vertices" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> Vertices</h3>
-<div class="figure" style="text-align: center"><span id="fig:vertex-attributes"></span>
-<img src="book_network_analysis_in_R_files/figure-html/vertex-attributes-1.png" alt="Selected node attributes." width="672" />
-<p class="caption">
-Figure 2.6: Selected node attributes.
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:more-color-examples"></span>
-<img src="book_network_analysis_in_R_files/figure-html/more-color-examples-1.png" alt="Additional node color palettes." width="672" />
-<p class="caption">
-Figure 2.7: Additional node color palettes.
-</p>
-</div>
-<div id="shapes" class="section level4">
-<h4><span class="header-section-number">2.3.1.1</span> Shapes</h4>
-</div>
-<div id="sizes" class="section level4">
-<h4><span class="header-section-number">2.3.1.2</span> Sizes</h4>
-</div>
-<div id="colors" class="section level4">
-<h4><span class="header-section-number">2.3.1.3</span> Colors</h4>
-<p>The argument to set the vertex color in the <code>plot.igraph</code> function is <code>vertex.color</code>. Like plots in base <code>R</code>, color may be set by a number (integer) or name (character) with the name being preferred. The default palette can be retrieved through <code>?igraph::categorical_pal(n)</code>. The colors are visible to those who are color-blind and is eight colors.</p>
-<p>For plot.igraph and integer values, the default igraph palette is used (see the ‘palette’ parameter below. Note that this is different from the R palette.</p>
-<p>If you don’t want (some) vertices to have any color, supply NA as the color name.</p>
-<p>The default value is “SkyBlue2”.</p>
-</div>
-</div>
-<div id="edges" class="section level3">
-<h3><span class="header-section-number">2.3.2</span> Edges</h3>
-<div class="figure" style="text-align: center"><span id="fig:edge-attributes"></span>
-<img src="book_network_analysis_in_R_files/figure-html/edge-attributes-1.png" alt="Selected edge attributes." width="672" />
-<p class="caption">
-Figure 2.8: Selected edge attributes.
+Figure 7.2: Formatting arguments to open graphing space.
 </p>
 </div>
 
-</div>
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-borgattiAnalyzingSocialNetworks2018">
-<p>Borgatti, Stephen P., Martin G. Everett, and Jeffrey C. Johnson. 2018. <em>Analyzing Social Networks</em>. 2nd ed. SAGE Publications Ltd.</p>
-</div>
-<div id="ref-knuthStanfordGraphBasePlatform1993">
-<p>Knuth, Donald Ervin. 1993. <em>The Stanford GraphBase: A Platform for Combinatorial Computing</em>. AcM Press New York.</p>
 </div>
 </div>
             </section>
@@ -445,8 +288,8 @@ Figure 2.8: Selected edge attributes.
           </div>
         </div>
       </div>
-<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="modification.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="starwars.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="airlines.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

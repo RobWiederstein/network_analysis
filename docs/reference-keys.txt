@@ -19,6 +19,8 @@ fig:vertex-attributes
 fig:more-color-examples
 fig:edge-attributes
 fig:gabasova-starwars-plot
+fig:irs-first-plot
+fig:irs-open-space
 fig:img-top-10-network-pkg-downloads
 tab:table-top-10-network-pkgs
 why-read-this-book
@@ -66,6 +68,12 @@ graph-object-error
 create-attributes
 final-plot
 summary
+irs
+county-to-county-outflow-data
+read-data-1
+first-plot
+open-the-space
+airlines
 glossary
 igraphdata-plots
 top-10-network-packages-in-r
