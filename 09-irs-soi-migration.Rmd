@@ -2,6 +2,8 @@
 
 ```{r irs-load-libraries, include=FALSE}
 library(igraph)
+library(tibble)
+library(viridis)
 ```
 
 
@@ -57,6 +59,58 @@ plot.igraph(g1,
             vertex.size = 1,
             edge.arrow.size = .1,
             main = "edge.arrow.size = .1"
+)
+```
+
+## Set Variable for Vertex Size
+
+Vertex size is a graph attribute that is often scaled to a variable.  Here, the size is scaled to the number of returns or persons who moved from Maimi-Dade County.  The `node$returns` variable was cut into quintiles of equal size and assigned to a new column as `quintile`. Since the `nodes` dataframe was changed, it must be converted again into a new graph object. 
+
+```{r irs-vertex-size-variable, echo = T}
+#create variable for vertex.size -- cut number returns into 5
+nodes$quintile <- ggplot2::cut_number(nodes$returns, n = 5)
+levels(nodes$quintile) <- 1:5
+nodes$quintile <- as.character(nodes$quintile)
+nodes$quintile <- as.integer(nodes$quintile)
+```
+
+## Set Vertex Color
+
+The color of the node is often a prominent attribute that can contribute to the understanding of the graph.  Five colors were assigned to each of the quintiles of the `returns` from the `vidiris package`.  Thus, nodes that are large in size realtive to the other nodes and colored yellow are featured prominently in the graph.  These are the counties that received the highest numbers of out-migration from Miami-Dade.
+
+```{r irs-vertex-color, echo = T, messages = F}
+#create node color palette and merge w/ node df
+my.colors <- tibble(quintile = 1:5,
+                    colors = viridis(5, option = "D")
+)
+nodes <- dplyr::left_join(nodes, my.colors, by = "quintile")
+```
+
+```{r irs-plot-node-color-size, echo=FALSE, fig.height=3, fig.align="center", fig.cap="Node attributes set for size and color."}
+par(mfrow = c(1, 2), mar = c(1, 1, 1, 1))
+
+set.seed(1234)
+g2 <- igraph::graph_from_data_frame(d = edges,
+                                          directed = T,
+                                          vertices = nodes
+)
+plot.igraph(g2,
+            vertex.label = NA,
+            vertex.size = V(g2)$quintile ^2,
+            edge.arrow.size = .1,
+            main = "vertex.size"
+)
+set.seed(1234)
+g3 <- igraph::graph_from_data_frame(d = edges,
+                                          directed = T,
+                                          vertices = nodes
+)
+plot.igraph(g3,
+            vertex.label = NA,
+            vertex.size = V(g3)$quintile ^2,
+            vertex.color = V(g3)$colors,
+            edge.arrow.size = .1,
+            main = "vertex.color"
 )
 ```
 

@@ -50,6 +50,7 @@ rm(list = ls())
 # import
 edges <- data.table::fread("./data/irs/miami-out-migration-edges.csv")
 nodes <- data.table::fread("./data/irs/miami-out-migration-nodes.csv")
+set.seed(1234)
 # create network
 g1 <- igraph::graph_from_data_frame(d = edges,
                                    directed = T,
@@ -73,9 +74,42 @@ plot.igraph(g1,
             edge.arrow.size = .1,
             main = "edge.arrow.size = .1"
 )
+list.vertex.attributes(g1)
+#create variable for vertex.size -- cut number returns into 5
+nodes$quintile <- ggplot2::cut_number(nodes$returns, n = 5)
+levels(nodes$quintile) <- 1:5
+nodes$quintile <- as.character(nodes$quintile)
+nodes$quintile <- as.integer(nodes$quintile)
+g2 <- igraph::graph_from_data_frame(d = edges,
+                                          directed = T,
+                                          vertices = nodes
+)
+plot.igraph(g2,
+            vertex.label = NA,
+            vertex.size = V(g2)$quintile ^2,
+            edge.arrow.size = .1,
+            main = "V(g1)$quintile ^2"
+)
 
-
-
+#create color column for vertex.color
+library(viridis)
+library(tibble)
+#create node color palette and merge w/ node df
+my.colors <- tibble(quintile = 1:5,
+                    colors = viridis(5, option = "D")
+)
+nodes <- dplyr::left_join(nodes, my.colors)
+g3 <- igraph::graph_from_data_frame(d = edges,
+                                          directed = T,
+                                          vertices = nodes
+)
+plot.igraph(g3,
+            vertex.label = NA,
+            vertex.size = V(g3)$quintile ^2,
+            vertex.color = V(g3)$colors,
+            edge.arrow.size = .1,
+            main = "V(g3)$colors"
+)
 
 library(qgraph)
 e <- get.edgelist(g)
@@ -92,14 +126,3 @@ plot(g,
      asp = 0,
      main = "Out Migration"
 )
-#create variable for vertex.size
-nodes.2$quintile <- ggplot2::cut_number(nodes.2$returns, n = 5)
-levels(nodes.2$quintile) <- 1:5
-nodes.2$quintile <- as.character(nodes.2$quintile)
-#create color column for vertex.color
-my.colors <- tibble(quintile = 1:5,
-                    colors <- viridis(5, option = "D")
-)
-nodes.2 <- merge(nodes.2, my.colors)
-colnames(nodes.2)[7] <- "color"
-nodes.2 <- dplyr::select(nodes.2, id:color, quintile)

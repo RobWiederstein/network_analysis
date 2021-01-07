@@ -73,7 +73,10 @@ county-to-county-outflow-data
 read-data-1
 first-plot
 open-the-space
+set-variable-for-vertex-size
+set-vertex-color
 airlines
 glossary
 igraphdata-plots
 top-10-network-packages-in-r
+fig:irs-plot-node-color-size
