@@ -48,7 +48,9 @@ There were a number of helpful tutorials that deserve explicit mention and publi
 
 - [Jesse Sadler, Introduction to Network Analysis with R](https://www.jessesadler.com/post/network-analysis-with-r/)
 
-- [David Schoch, Basic Network Analysis in R: using igraph and related packages](http://mr.schochastics.net/netAnaR.html) 
+- [David Schoch, Basic Network Analysis in R: using igraph and related packages](http://mr.schochastics.net/netAnaR.html)
+
+- [Network Visualization Cookbook](https://rstudio-pubs-static.s3.amazonaws.com/341807_7b9d1a4e787146d492115f90ad75cd2d.html#aspect_ratio)
 
 
 

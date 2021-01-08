@@ -114,3 +114,4 @@ plot.igraph(g3,
 )
 ```
 
+## Layout of nodes

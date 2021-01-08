@@ -1,4 +1,5 @@
 #https://www.irs.gov/statistics/soi-tax-stats-migration-data-2017-2018
+library(dplyr)
 #county-to-county-outflow
 url <- "https://www.irs.gov/pub/irs-soi/countyoutflow1718.csv"
 destfile <- paste0("./data/irs/", basename(url))
@@ -15,7 +16,7 @@ move.out.2 <-
         dplyr::filter(y1_countyfips != "000") %>%
         dplyr::filter(!y2_statefips %in%  as.character(c(57:59, 96:98))) %>%
         dplyr::filter(n1 > 100) %>%
-        arrange(-n1)
+        dplyr::arrange(-n1)
 
 # create edge list source to target
 move.out.2$source <- paste0(move.out.2$y1_statefips, move.out.2$y1_countyfips)
@@ -80,6 +81,7 @@ nodes$quintile <- ggplot2::cut_number(nodes$returns, n = 5)
 levels(nodes$quintile) <- 1:5
 nodes$quintile <- as.character(nodes$quintile)
 nodes$quintile <- as.integer(nodes$quintile)
+set.seed(1234)
 g2 <- igraph::graph_from_data_frame(d = edges,
                                           directed = T,
                                           vertices = nodes
@@ -88,7 +90,7 @@ plot.igraph(g2,
             vertex.label = NA,
             vertex.size = V(g2)$quintile ^2,
             edge.arrow.size = .1,
-            main = "V(g1)$quintile ^2"
+            main = "vertex.size"
 )
 
 #create color column for vertex.color
@@ -108,7 +110,32 @@ plot.igraph(g3,
             vertex.size = V(g3)$quintile ^2,
             vertex.color = V(g3)$colors,
             edge.arrow.size = .1,
-            main = "V(g3)$colors"
+            main = "vertex.color"
+)
+
+## Layout Nodes
+#group instate vs. outstate migration
+nodes$instate <- 0
+nodes$instate[which(nodes$state == "FL")] <- 1
+#set initial edge weight
+g4 <- igraph::graph_from_data_frame(d = edges,
+                                    directed = T,
+                                    vertices = nodes
+)
+list.edge.attributes(g4)
+E(g4)$weight = 1
+table(nodes$instate)
+add_edges(g4, combn(which(V(g4)$instate == 1), 2), attr = list(weight = 5))
+
+plot(g4)
+set.seed(1234)
+plot.igraph(g4,
+            vertex.label = NA,
+            vertex.size = V(g3)$quintile ^2,
+            vertex.color = V(g3)$colors[V(G)$instate],
+            edge.arrow.size = .1,
+            layout = layout_with_fr(g4),
+            main = "vertex.color"
 )
 
 library(qgraph)

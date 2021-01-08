@@ -80,3 +80,4 @@ glossary
 igraphdata-plots
 top-10-network-packages-in-r
 fig:irs-plot-node-color-size
+layout-of-nodes-1
