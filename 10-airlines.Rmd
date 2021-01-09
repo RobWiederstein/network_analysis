@@ -7,3 +7,6 @@ Flowing data has a [tutorial](https://flowingdata.com/2011/05/05/where-do-major-
 A second dataset is from Gephi and is contained in `data/gephy/airlines.graphml.zip`.
 
 Yet a third is a script where I downloaded airline data from Bureau of Transportation Statistics. I opened a separate project in my r-projects directory.  It can be found at `~/Dropbox/coding/rproj/airlines`. 
+
+A fourth script is [here](https://www.r-bloggers.com/2018/05/three-ways-of-visualizing-a-graph-on-a-map/) with a randomly generated graph object and 15 countries
+

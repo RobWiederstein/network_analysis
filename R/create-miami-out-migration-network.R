@@ -122,20 +122,28 @@ g4 <- igraph::graph_from_data_frame(d = edges,
                                     directed = T,
                                     vertices = nodes
 )
-list.edge.attributes(g4)
-E(g4)$weight = 1
-table(nodes$instate)
+#Grouped
+g_grouped <- g4
+E(g_grouped)$weight = 1
+plot(g_grouped,
+     vertex.label = V(g_grouped)$instate)
+
+for(i in unique(V(G)$)) {
+        GroupV = which(V(G)$Group1 == i)
+        G_Grouped = add_edges(G_Grouped, combn(GroupV, 2), attr=list(weight=5))
+}table(nodes$instate)
 add_edges(g4, combn(which(V(g4)$instate == 1), 2), attr = list(weight = 5))
 
 plot(g4)
 set.seed(1234)
 plot.igraph(g4,
-            vertex.label = NA,
             vertex.size = V(g3)$quintile ^2,
-            vertex.color = V(g3)$colors[V(G)$instate],
+            vertex.color = V(g4)$colors,
             edge.arrow.size = .1,
             layout = layout_with_fr(g4),
-            main = "vertex.color"
+            main = "vertex.color",
+            vertex.label = V(g4)$state,
+            #vertex.cex = 25
 )
 
 library(qgraph)
