@@ -1,6 +1,7 @@
 library(rvest)
 library(polite)
 library(janitor)
+library(lubridate)
 #scrape
 html <- read_html("https://en.wikipedia.org/wiki/Blue_Riband#Eastbound_record_breakers")
 tables <- html %>% html_table()
@@ -36,8 +37,59 @@ df$minutes <- as.integer(unlist(lapply(a, "[", 3)))
 #
 df$duration <- 0
 for(i in 1:nrow(df)){
-x <- as.numeric(as.duration(period(c(df$days[i], df$hours[i], df$minutes[i]), units = c("days", "hour", "minute"))), "days")
+x <- as.numeric(as.duration(period(c(df$days[i], df$hours[i], df$minutes[i]), 
+                                   units = c("days", "hour", "minute")
+                                   )
+                            ),
+                "days"
+                )
 df$duration[i] <- x
 }
 # speed
 df$knots <- stringr::word(df$speed)
+#geo tag https://developers.google.com/maps/documentation/geolocation/overview
+# https://www.storybench.org/geocode-csv-addresses-r/
+city <- unique(c(df$from, df$to))
+state <- c("Ireland",
+           "England",
+           "England",
+           "England",
+           "England",
+           "France",
+           "Spain",
+           "England",
+           "New York",
+           "Canada",
+           "New York",
+           "New York",
+           "New York",
+           "New York",
+           "New York",
+           "England",
+           "England",
+           "England"
+)
+df.places <- tibble(city = city, 
+                    state = state,
+                    address = paste(city, state, sep = ", "))
+
+
+library(ggmap)
+output <- "latlon"
+source <- "google"
+nameType <- "short"
+my.geocodes <- lapply(df.places$address, function(x){
+        ggmap::geocode(location = x,
+                         output = output,
+                         source = source,
+                         nameType = nameType
+                         )
+}
+)
+df.places$lat <- sapply(my.geocodes, "[[", 2)
+df.places$lon <- sapply(my.geocodes, "[[", 1)
+file <- "./data/rkw/blue-ribald-geocode-places.csv"
+write.csv(df.places, file = file, row.names = F)
+
+
+

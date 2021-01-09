@@ -19,4 +19,8 @@ head(V(g)$id)
 #edglist is 2101 in length.  Nodes are 235 in length
 #Appears to be 2101 flights between 235 airports. There are
 #lat and lon attributes.
+file <- "http://datasets.flowingdata.com/tuts/maparcs/airports.csv"
+airports <- read.csv(file = file, header=TRUE) 
+file <- "http://datasets.flowingdata.com/tuts/maparcs/flights.csv"
+flights <- read.csv(file = file, header=TRUE, as.is=TRUE)
 
