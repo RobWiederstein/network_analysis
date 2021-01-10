@@ -2,6 +2,7 @@ library(rvest)
 library(polite)
 library(janitor)
 library(lubridate)
+library(igraph)
 #scrape
 html <- read_html("https://en.wikipedia.org/wiki/Blue_Riband#Eastbound_record_breakers")
 tables <- html %>% html_table()
@@ -46,10 +47,11 @@ x <- as.numeric(as.duration(period(c(df$days[i], df$hours[i], df$minutes[i]),
 df$duration[i] <- x
 }
 # speed
-df$knots <- stringr::word(df$speed)
+df$knots <- as.numeric(stringr::word(df$speed))
 #geo tag https://developers.google.com/maps/documentation/geolocation/overview
 # https://www.storybench.org/geocode-csv-addresses-r/
 city <- unique(c(df$from, df$to))
+# "Sandy Bank" plots on the west side of UK
 state <- c("Ireland",
            "England",
            "England",
@@ -75,21 +77,59 @@ df.places <- tibble(city = city,
 
 
 library(ggmap)
-output <- "latlon"
-source <- "google"
-nameType <- "short"
 my.geocodes <- lapply(df.places$address, function(x){
         ggmap::geocode(location = x,
-                         output = output,
-                         source = source,
-                         nameType = nameType
-                         )
+                output = "latlon",
+                force = FALSE
+                )
 }
 )
 df.places$lat <- sapply(my.geocodes, "[[", 2)
 df.places$lon <- sapply(my.geocodes, "[[", 1)
+#sanity check --google maps upload
 file <- "./data/rkw/blue-ribald-geocode-places.csv"
 write.csv(df.places, file = file, row.names = F)
+#merge when node dataframe created
+df <- dplyr::select(df, 
+                    ship,
+                    year,
+                    line,
+                    from,
+                    to,
+                    heading,
+                    nm,
+                    duration,
+                    knots
+                    )
+df$n <- 1
+df.1 <-
+        df %>%
+        group_by(from, to) %>%
+        summarize(weight = sum(n))
 
+edges <- df.1
 
+nodes <- tibble(city = unique(c(df$from, df$to)))
+nodes <- merge(nodes, df.places)
+colnames(nodes)[1] <- "id"
 
+g <- igraph::graph_from_data_frame(d = edges,
+                                   directed = T,
+                                   vertices = nodes
+)
+library(qgraph)
+e <- get.edgelist(g)
+l <- qgraph.layout.fruchtermanreingold(e,vcount=vcount(g),
+                                       area=8*(vcount(g)^2),
+                                       repulse.rad=(vcount(g)^3.1))
+igraph::plot.igraph(g,
+                    layout = layout_nicely,
+                    edge.arrow.size = 0,
+                    edge.width = E(g)$weight,
+                    vertex.size = 20,
+                    vertex.shape = "none",
+                    vertex.frame.color = NA,
+                    asp = 0)
+
+file <- "./data/blue_ribald.graphml"
+write_graph(g, file = file, format = "graphml")

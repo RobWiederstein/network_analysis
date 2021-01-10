@@ -52,6 +52,8 @@ There were a number of helpful tutorials that deserve explicit mention and publi
 
 - [Network Visualization Cookbook](https://rstudio-pubs-static.s3.amazonaws.com/341807_7b9d1a4e787146d492115f90ad75cd2d.html#aspect_ratio)
 
+[Janpu Hou, Network Visualization by igraph](https://rstudio-pubs-static.s3.amazonaws.com/337696_c6b008e0766e46bebf1401bea67f7b10.html)
+
 
 
 
