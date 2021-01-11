@@ -9,12 +9,7 @@
   <key id="v_address" for="node" attr.name="address" attr.type="string"/>
   <key id="v_lat" for="node" attr.name="lat" attr.type="double"/>
   <key id="v_lon" for="node" attr.name="lon" attr.type="double"/>
-  <key id="e_year" for="edge" attr.name="year" attr.type="double"/>
-  <key id="e_ship" for="edge" attr.name="ship" attr.type="string"/>
-  <key id="e_heading" for="edge" attr.name="heading" attr.type="string"/>
-  <key id="e_nm" for="edge" attr.name="nm" attr.type="double"/>
-  <key id="e_duration" for="edge" attr.name="duration" attr.type="double"/>
-  <key id="e_knots" for="edge" attr.name="knots" attr.type="double"/>
+  <key id="e_weight" for="edge" attr.name="weight" attr.type="double"/>
   <graph id="G" edgedefault="directed">
     <node id="n0">
       <data key="v_name">Ambrose</data>
@@ -115,967 +110,102 @@
       <data key="v_lon">-8.2942858</data>
     </node>
     <node id="n14">
-      <data key="v_name">Queenstown,</data>
-      <data key="v_state">England</data>
-      <data key="v_address">Queenstown,, England</data>
-      <data key="v_lat">53.825826</data>
-      <data key="v_lon">-3.03216</data>
-    </node>
-    <node id="n15">
       <data key="v_name">Sandy Bank</data>
       <data key="v_state">New York</data>
       <data key="v_address">Sandy Bank, New York</data>
       <data key="v_lat">53.0799164</data>
       <data key="v_lon">-0.1305158</data>
     </node>
-    <node id="n16">
+    <node id="n15">
       <data key="v_name">Sandy Hook</data>
-      <data key="v_state">New York</data>
-      <data key="v_address">Sandy Hook, New York</data>
+      <data key="v_state">New Jersey</data>
+      <data key="v_address">Sandy Hook, New Jersey</data>
       <data key="v_lat">40.4333496</data>
       <data key="v_lon">-73.9885498</data>
     </node>
-    <node id="n17">
-      <data key="v_name">The Needles</data>
-      <data key="v_state">England</data>
-      <data key="v_address">The Needles, England</data>
-      <data key="v_lat">50.6626024</data>
-      <data key="v_lon">-1.5898395</data>
-    </node>
-    <edge source="n13" target="n16">
-      <data key="e_year">1838</data>
-      <data key="e_ship">Sirius</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3583</data>
-      <data key="e_duration">18.5986111111111</data>
-      <data key="e_knots">8.03</data>
-    </edge>
-    <edge source="n2" target="n12">
-      <data key="e_year">1838</data>
-      <data key="e_ship">Great Western</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3220</data>
-      <data key="e_duration">15.5</data>
-      <data key="e_knots">8.66</data>
-    </edge>
-    <edge source="n2" target="n12">
-      <data key="e_year">1838</data>
-      <data key="e_ship">Great Western</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3140</data>
-      <data key="e_duration">14.6666666666667</data>
-      <data key="e_knots">8.92</data>
-    </edge>
-    <edge source="n2" target="n12">
-      <data key="e_year">1839</data>
-      <data key="e_ship">Great Western</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3086</data>
-      <data key="e_duration">13.5</data>
-      <data key="e_knots">9.52</data>
-    </edge>
-    <edge source="n10" target="n9">
-      <data key="e_year">1841</data>
-      <data key="e_ship">Columbia</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2534</data>
-      <data key="e_duration">10.7916666666667</data>
-      <data key="e_knots">9.78</data>
-    </edge>
-    <edge source="n10" target="n12">
-      <data key="e_year">1843</data>
-      <data key="e_ship">Great Western</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3068</data>
-      <data key="e_duration">12.75</data>
-      <data key="e_knots">10.03</data>
-    </edge>
-    <edge source="n10" target="n9">
-      <data key="e_year">1845</data>
-      <data key="e_ship">Cambria</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2534</data>
-      <data key="e_duration">9.85416666666667</data>
-      <data key="e_knots">10.71</data>
-    </edge>
-    <edge source="n10" target="n9">
-      <data key="e_year">1848</data>
-      <data key="e_ship">America</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2534</data>
-      <data key="e_duration">9.01111111111111</data>
-      <data key="e_knots">11.71</data>
-    </edge>
-    <edge source="n10" target="n9">
-      <data key="e_year">1848</data>
-      <data key="e_ship">Europa</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2534</data>
-      <data key="e_duration">8.95833333333333</data>
-      <data key="e_knots">11.79</data>
-    </edge>
-    <edge source="n10" target="n9">
-      <data key="e_year">1850</data>
-      <data key="e_ship">Asia</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2534</data>
-      <data key="e_duration">8.61805555555556</data>
-      <data key="e_knots">12.25</data>
-    </edge>
-    <edge source="n10" target="n12">
-      <data key="e_year">1850</data>
-      <data key="e_ship">Pacific</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3050</data>
-      <data key="e_duration">10.1979166666667</data>
-      <data key="e_knots">12.46</data>
-    </edge>
-    <edge source="n10" target="n12">
-      <data key="e_year">1851</data>
-      <data key="e_ship">Baltic</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3039</data>
-      <data key="e_duration">9.80972222222222</data>
-      <data key="e_knots">12.91</data>
-    </edge>
-    <edge source="n10" target="n12">
-      <data key="e_year">1854</data>
-      <data key="e_ship">Baltic</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3037</data>
-      <data key="e_duration">9.70277777777778</data>
-      <data key="e_knots">13.04</data>
-    </edge>
-    <edge source="n10" target="n16">
-      <data key="e_year">1856</data>
-      <data key="e_ship">Persia</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3045</data>
-      <data key="e_duration">9.67777777777778</data>
-      <data key="e_knots">13.11</data>
-    </edge>
-    <edge source="n13" target="n12">
-      <data key="e_year">1863</data>
-      <data key="e_ship">Scotia</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2820</data>
-      <data key="e_duration">8.125</data>
-      <data key="e_knots">14.46</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1872</data>
-      <data key="e_ship">Adriatic</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2778</data>
-      <data key="e_duration">7.97013888888889</data>
-      <data key="e_knots">14.53</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1875</data>
-      <data key="e_ship">Germanic</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2800</data>
-      <data key="e_duration">7.96319444444444</data>
-      <data key="e_knots">14.65</data>
-    </edge>
-    <edge source="n13" target="n15">
-      <data key="e_year">1875</data>
-      <data key="e_ship">City of Berlin</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2829</data>
-      <data key="e_duration">7.75138888888889</data>
-      <data key="e_knots">15.21</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1876</data>
-      <data key="e_ship">Britannic</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2795</data>
-      <data key="e_duration">7.54930555555556</data>
-      <data key="e_knots">15.43</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1877</data>
-      <data key="e_ship">Germanic</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2830</data>
-      <data key="e_duration">7.48402777777778</data>
-      <data key="e_knots">15.76</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1882</data>
-      <data key="e_ship">Alaska</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2802</data>
-      <data key="e_duration">7.26388888888889</data>
-      <data key="e_knots">16.07</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1882</data>
-      <data key="e_ship">Alaska</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2871</data>
-      <data key="e_duration">7.175</data>
-      <data key="e_knots">16.67</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1882</data>
-      <data key="e_ship">Alaska</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2886</data>
-      <data key="e_duration">7.08194444444444</data>
-      <data key="e_knots">16.98</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1883</data>
-      <data key="e_ship">Alaska</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2844</data>
-      <data key="e_duration">6.99166666666667</data>
-      <data key="e_knots">17.05</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1884</data>
-      <data key="e_ship">Oregon</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2861</data>
-      <data key="e_duration">6.42361111111111</data>
-      <data key="e_knots">18.56</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1885</data>
-      <data key="e_ship">Etruria</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2801</data>
-      <data key="e_duration">6.22986111111111</data>
-      <data key="e_knots">18.73</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1887</data>
-      <data key="e_ship">Umbria</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2848</data>
-      <data key="e_duration">6.175</data>
-      <data key="e_knots">19.22</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1888</data>
-      <data key="e_ship">Etruria</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2854</data>
-      <data key="e_duration">6.07986111111111</data>
-      <data key="e_knots">19.56</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1889</data>
-      <data key="e_ship">City of Paris</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2855</data>
-      <data key="e_duration">5.96319444444444</data>
-      <data key="e_knots">19.95</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1889</data>
-      <data key="e_ship">City of Paris</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2788</data>
-      <data key="e_duration">5.80416666666667</data>
-      <data key="e_knots">20.01</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1891</data>
-      <data key="e_ship">Majestic</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2777</data>
-      <data key="e_duration">5.75555555555556</data>
-      <data key="e_knots">20.1</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1891</data>
-      <data key="e_ship">Teutonic</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2778</data>
-      <data key="e_duration">5.68819444444444</data>
-      <data key="e_knots">20.35</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1892</data>
-      <data key="e_ship">City of Paris</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2785</data>
-      <data key="e_duration">5.66527777777778</data>
-      <data key="e_knots">20.48</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1892</data>
-      <data key="e_ship">City of Paris</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2782</data>
-      <data key="e_duration">5.6</data>
-      <data key="e_knots">20.7</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1893</data>
-      <data key="e_ship">Campania</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2864</data>
-      <data key="e_duration">5.65069444444444</data>
-      <data key="e_knots">21.12</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1894</data>
-      <data key="e_ship">Campania</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2776</data>
-      <data key="e_duration">5.39513888888889</data>
-      <data key="e_knots">21.44</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1894</data>
-      <data key="e_ship">Lucania</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2787</data>
-      <data key="e_duration">5.35972222222222</data>
-      <data key="e_knots">21.65</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1894</data>
-      <data key="e_ship">Lucania</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2782</data>
-      <data key="e_duration">5.325</data>
-      <data key="e_knots">21.75</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1894</data>
-      <data key="e_ship">Lucania</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2779</data>
-      <data key="e_duration">5.30763888888889</data>
-      <data key="e_knots">21.81</data>
-    </edge>
-    <edge source="n17" target="n16">
-      <data key="e_year">1898</data>
-      <data key="e_ship">Kaiser Wilhelm der Grosse</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3120</data>
-      <data key="e_duration">5.83333333333333</data>
-      <data key="e_knots">22.29</data>
-    </edge>
-    <edge source="n6" target="n16">
-      <data key="e_year">1900</data>
-      <data key="e_ship">Deutschland</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3044</data>
-      <data key="e_duration">5.65694444444444</data>
-      <data key="e_knots">22.42</data>
-    </edge>
-    <edge source="n5" target="n16">
-      <data key="e_year">1900</data>
-      <data key="e_ship">Deutschland</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3050</data>
-      <data key="e_duration">5.52013888888889</data>
-      <data key="e_knots">23.02</data>
-    </edge>
-    <edge source="n5" target="n16">
-      <data key="e_year">1901</data>
-      <data key="e_ship">Deutschland</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3141</data>
-      <data key="e_duration">5.675</data>
-      <data key="e_knots">23.06</data>
-    </edge>
-    <edge source="n5" target="n16">
-      <data key="e_year">1902</data>
-      <data key="e_ship">Kronprinz Wilhelm</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3047</data>
-      <data key="e_duration">5.49791666666667</data>
-      <data key="e_knots">23.09</data>
-    </edge>
-    <edge source="n5" target="n16">
-      <data key="e_year">1903</data>
-      <data key="e_ship">Deutschland</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3054</data>
-      <data key="e_duration">5.49583333333333</data>
-      <data key="e_knots">23.15</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1907</data>
-      <data key="e_ship">Lusitania</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2780</data>
-      <data key="e_duration">4.82777777777778</data>
-      <data key="e_knots">23.99</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1908</data>
-      <data key="e_ship">Lusitania</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2889</data>
-      <data key="e_duration">4.84861111111111</data>
-      <data key="e_knots">24.83</data>
-    </edge>
-    <edge source="n13" target="n16">
-      <data key="e_year">1908</data>
-      <data key="e_ship">Lusitania</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2891</data>
-      <data key="e_duration">4.81666666666667</data>
-      <data key="e_knots">25.01</data>
-    </edge>
-    <edge source="n13" target="n1">
-      <data key="e_year">1909</data>
-      <data key="e_ship">Lusitania</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2890</data>
-      <data key="e_duration">4.69444444444444</data>
-      <data key="e_knots">25.65</data>
-    </edge>
-    <edge source="n13" target="n1">
-      <data key="e_year">1909</data>
-      <data key="e_ship">Mauretania</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2784</data>
-      <data key="e_duration">4.45208333333333</data>
-      <data key="e_knots">26.06</data>
-    </edge>
-    <edge source="n5" target="n1">
-      <data key="e_year">1929</data>
-      <data key="e_ship">Bremen</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3164</data>
-      <data key="e_duration">4.7375</data>
-      <data key="e_knots">27.83</data>
-    </edge>
-    <edge source="n5" target="n1">
-      <data key="e_year">1930</data>
-      <data key="e_ship">Europa</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3157</data>
-      <data key="e_duration">4.7125</data>
-      <data key="e_knots">27.91</data>
-    </edge>
-    <edge source="n5" target="n1">
-      <data key="e_year">1933</data>
-      <data key="e_ship">Bremen</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3149</data>
-      <data key="e_duration">4.7</data>
-      <data key="e_knots">27.92</data>
-    </edge>
-    <edge source="n8" target="n1">
-      <data key="e_year">1933</data>
-      <data key="e_ship">Rex</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">3181</data>
-      <data key="e_duration">4.58194444444444</data>
-      <data key="e_knots">28.92</data>
-    </edge>
-    <edge source="n4" target="n1">
-      <data key="e_year">1935</data>
-      <data key="e_ship">Normandie</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2971</data>
-      <data key="e_duration">4.12638888888889</data>
-      <data key="e_knots">29.98</data>
-    </edge>
-    <edge source="n4" target="n1">
-      <data key="e_year">1936</data>
-      <data key="e_ship">Queen Mary</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2907</data>
-      <data key="e_duration">4.01875</data>
-      <data key="e_knots">30.14</data>
-    </edge>
-    <edge source="n4" target="n1">
-      <data key="e_year">1937</data>
-      <data key="e_ship">Normandie</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2906</data>
-      <data key="e_duration">3.95972222222222</data>
-      <data key="e_knots">30.58</data>
-    </edge>
-    <edge source="n4" target="n1">
-      <data key="e_year">1938</data>
-      <data key="e_ship">Queen Mary</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2907</data>
-      <data key="e_duration">3.90833333333333</data>
-      <data key="e_knots">30.99</data>
-    </edge>
-    <edge source="n4" target="n1">
-      <data key="e_year">1952</data>
-      <data key="e_ship">United States</data>
-      <data key="e_heading">w</data>
-      <data key="e_nm">2906</data>
-      <data key="e_duration">3.50833333333333</data>
-      <data key="e_knots">34.51</data>
-    </edge>
-    <edge source="n12" target="n7">
-      <data key="e_year">1838</data>
-      <data key="e_ship">Sirius</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3159</data>
-      <data key="e_knots">7.31</data>
-    </edge>
-    <edge source="n12" target="n2">
-      <data key="e_year">1838</data>
-      <data key="e_ship">Great Western</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3218</data>
-      <data key="e_duration">14.6659722222222</data>
-      <data key="e_knots">9.14</data>
-    </edge>
-    <edge source="n12" target="n2">
-      <data key="e_year">1838</data>
-      <data key="e_ship">Great Western</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3099</data>
-      <data key="e_duration">12.6902777777778</data>
-      <data key="e_knots">10.17</data>
-    </edge>
-    <edge source="n9" target="n10">
-      <data key="e_year">1841</data>
-      <data key="e_ship">Britannia</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2610</data>
-      <data key="e_duration">9.90555555555556</data>
-      <data key="e_knots">10.98</data>
-    </edge>
-    <edge source="n12" target="n10">
-      <data key="e_year">1842</data>
-      <data key="e_ship">Great Western</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3248</data>
-      <data key="e_duration">12.3125</data>
-      <data key="e_knots">10.99</data>
-    </edge>
-    <edge source="n9" target="n10">
-      <data key="e_year">1843</data>
-      <data key="e_ship">Columbia</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2534</data>
-      <data key="e_duration">9.5</data>
-      <data key="e_knots">11.11</data>
-    </edge>
-    <edge source="n9" target="n10">
-      <data key="e_year">1843</data>
-      <data key="e_ship">Hibernia</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2534</data>
-      <data key="e_duration">9.44722222222222</data>
-      <data key="e_knots">11.18</data>
-    </edge>
-    <edge source="n9" target="n10">
-      <data key="e_year">1843</data>
-      <data key="e_ship">Hibernia</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2534</data>
-      <data key="e_duration">8.94722222222222</data>
-      <data key="e_knots">11.8</data>
-    </edge>
-    <edge source="n9" target="n10">
-      <data key="e_year">1849</data>
-      <data key="e_ship">Canada</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2534</data>
-      <data key="e_duration">8.53055555555556</data>
-      <data key="e_knots">12.38</data>
-    </edge>
-    <edge source="n12" target="n10">
-      <data key="e_year">1851</data>
-      <data key="e_ship">Pacific</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3078</data>
-      <data key="e_duration">9.84305555555556</data>
-      <data key="e_knots">13.03</data>
-    </edge>
-    <edge source="n12" target="n10">
-      <data key="e_year">1852</data>
-      <data key="e_ship">Arctic</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3051</data>
-      <data key="e_duration">9.71875</data>
-      <data key="e_knots">13.06</data>
-    </edge>
-    <edge source="n16" target="n10">
-      <data key="e_year">1856</data>
-      <data key="e_ship">Persia</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3048</data>
-      <data key="e_duration">9.43194444444444</data>
-      <data key="e_knots">13.46</data>
-    </edge>
-    <edge source="n16" target="n10">
-      <data key="e_year">1856</data>
-      <data key="e_ship">Persia</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3048</data>
-      <data key="e_duration">9.14166666666667</data>
-      <data key="e_knots">13.89</data>
-    </edge>
-    <edge source="n16" target="n10">
-      <data key="e_year">1856</data>
-      <data key="e_ship">Persia</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3046</data>
-      <data key="e_duration">8.97152777777778</data>
-      <data key="e_knots">14.15</data>
-    </edge>
-    <edge source="n12" target="n13">
-      <data key="e_year">1863</data>
-      <data key="e_ship">Scotia</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2800</data>
-      <data key="e_duration">8.2375</data>
-      <data key="e_knots">14.16</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1869</data>
-      <data key="e_ship">City of Brussels</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2780</data>
-      <data key="e_duration">7.85625</data>
-      <data key="e_knots">14.74</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1873</data>
-      <data key="e_ship">Baltic</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2840</data>
-      <data key="e_duration">7.83958333333333</data>
-      <data key="e_knots">15.09</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1875</data>
-      <data key="e_ship">City of Berlin</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2820</data>
-      <data key="e_duration">7.64444444444444</data>
-      <data key="e_knots">15.37</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1876</data>
-      <data key="e_ship">Germanic</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2894</data>
-      <data key="e_duration">7.63680555555556</data>
-      <data key="e_knots">15.79</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1876</data>
-      <data key="e_ship">Britannic</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2892</data>
-      <data key="e_duration">7.52847222222222</data>
-      <data key="e_knots">15.94</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1879</data>
-      <data key="e_ship">Arizona</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2810</data>
-      <data key="e_duration">7.34097222222222</data>
-      <data key="e_knots">15.96</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1882</data>
-      <data key="e_ship">Alaska</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2791</data>
-      <data key="e_duration">6.91666666666667</data>
-      <data key="e_knots">16.81</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1882</data>
-      <data key="e_ship">Alaska</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2781</data>
-      <data key="e_duration">6.77569444444444</data>
-      <data key="e_knots">17.1</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1884</data>
-      <data key="e_ship">Oregon</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2916</data>
-      <data key="e_duration">7.09583333333333</data>
-      <data key="e_knots">17.12</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1884</data>
-      <data key="e_ship">Oregon</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2916</data>
-      <data key="e_duration">6.70625</data>
-      <data key="e_knots">18.09</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1884</data>
-      <data key="e_ship">Oregon</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2853</data>
-      <data key="e_duration">6.5375</data>
-      <data key="e_knots">18.18</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1884</data>
-      <data key="e_ship">Oregon</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2853</data>
-      <data key="e_duration">6.46458333333333</data>
-      <data key="e_knots">18.39</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1885</data>
-      <data key="e_ship">Etruria</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2822</data>
-      <data key="e_duration">6.375</data>
-      <data key="e_knots">18.44</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1888</data>
-      <data key="e_ship">Etruria</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2981</data>
-      <data key="e_duration">6.20138888888889</data>
-      <data key="e_knots">19.36</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1889</data>
-      <data key="e_ship">City of Paris</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2894</data>
-      <data key="e_duration">6.02013888888889</data>
-      <data key="e_knots">20.03</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1892</data>
-      <data key="e_ship">City of New York</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2814</data>
-      <data key="e_duration">5.83125</data>
-      <data key="e_knots">20.11</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1893</data>
-      <data key="e_ship">Campania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2928</data>
-      <data key="e_duration">5.72708333333333</data>
-      <data key="e_knots">21.3</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1894</data>
-      <data key="e_ship">Lucania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2911</data>
-      <data key="e_duration">5.56111111111111</data>
-      <data key="e_knots">21.81</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1894</data>
-      <data key="e_ship">Lucania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2911</data>
-      <data key="e_duration">5.54097222222222</data>
-      <data key="e_knots">21.9</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1895</data>
-      <data key="e_ship">Lucania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2897</data>
-      <data key="e_duration">5.48611111111111</data>
-      <data key="e_knots">22</data>
-    </edge>
-    <edge source="n16" target="n11">
-      <data key="e_year">1897</data>
-      <data key="e_ship">Kaiser Wilhelm der Grosse</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3065</data>
-      <data key="e_duration">5.72430555555556</data>
-      <data key="e_knots">22.33</data>
-    </edge>
-    <edge source="n16" target="n6">
-      <data key="e_year">1900</data>
-      <data key="e_ship">Deutschland</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3085</data>
-      <data key="e_duration">5.62847222222222</data>
-      <data key="e_knots">22.84</data>
-    </edge>
-    <edge source="n16" target="n6">
-      <data key="e_year">1900</data>
-      <data key="e_ship">Deutschland</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2981</data>
-      <data key="e_duration">5.31805555555556</data>
-      <data key="e_knots">23.36</data>
-    </edge>
-    <edge source="n16" target="n6">
-      <data key="e_year">1901</data>
-      <data key="e_ship">Deutschland</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3083</data>
-      <data key="e_duration">5.49375</data>
-      <data key="e_knots">23.38</data>
-    </edge>
-    <edge source="n16" target="n6">
-      <data key="e_year">1901</data>
-      <data key="e_ship">Deutschland</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3082</data>
-      <data key="e_duration">5.46180555555556</data>
-      <data key="e_knots">23.51</data>
-    </edge>
-    <edge source="n16" target="n6">
-      <data key="e_year">1904</data>
-      <data key="e_ship">Kaiser Wilhelm II</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3112</data>
-      <data key="e_duration">5.49861111111111</data>
-      <data key="e_knots">23.58</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1907</data>
-      <data key="e_ship">Lusitania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2807</data>
-      <data key="e_duration">4.95347222222222</data>
-      <data key="e_knots">23.61</data>
-    </edge>
-    <edge source="n3" target="n13">
-      <data key="e_year">1907</data>
-      <data key="e_ship">Mauretania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2807</data>
-      <data key="e_duration">4.93958333333333</data>
-      <data key="e_knots">23.69</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1908</data>
-      <data key="e_ship">Mauretania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2932</data>
-      <data key="e_duration">5.11180555555556</data>
-      <data key="e_knots">23.9</data>
-    </edge>
-    <edge source="n16" target="n13">
-      <data key="e_year">1908</data>
-      <data key="e_ship">Mauretania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2932</data>
-      <data key="e_duration">5.00347222222222</data>
-      <data key="e_knots">24.42</data>
-    </edge>
-    <edge source="n0" target="n14">
-      <data key="e_year">1909</data>
-      <data key="e_ship">Mauretania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2930</data>
-      <data key="e_duration">4.85208333333333</data>
-      <data key="e_knots">25.16</data>
-    </edge>
-    <edge source="n0" target="n13">
-      <data key="e_year">1909</data>
-      <data key="e_ship">Mauretania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2934</data>
-      <data key="e_duration">4.77430555555556</data>
-      <data key="e_knots">25.61</data>
-    </edge>
-    <edge source="n0" target="n13">
-      <data key="e_year">1909</data>
-      <data key="e_ship">Mauretania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2934</data>
-      <data key="e_duration">4.75763888888889</data>
-      <data key="e_knots">25.7</data>
-    </edge>
-    <edge source="n0" target="n13">
-      <data key="e_year">1909</data>
-      <data key="e_ship">Mauretania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2933</data>
-      <data key="e_duration">4.72291666666667</data>
-      <data key="e_knots">25.88</data>
+    <edge source="n0" target="n4">
+      <data key="e_weight">6</data>
     </edge>
     <edge source="n0" target="n5">
-      <data key="e_year">1924</data>
-      <data key="e_ship">Mauretania</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3198</data>
-      <data key="e_duration">5.07569444444444</data>
-      <data key="e_knots">26.25</data>
+      <data key="e_weight">2</data>
     </edge>
     <edge source="n0" target="n6">
-      <data key="e_year">1929</data>
-      <data key="e_ship">Bremen</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3084</data>
-      <data key="e_duration">4.60416666666667</data>
-      <data key="e_knots">27.91</data>
+      <data key="e_weight">1</data>
     </edge>
-    <edge source="n0" target="n5">
-      <data key="e_year">1933</data>
-      <data key="e_ship">Bremen</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3199</data>
-      <data key="e_duration">4.67708333333333</data>
-      <data key="e_knots">28.51</data>
+    <edge source="n0" target="n13">
+      <data key="e_weight">4</data>
     </edge>
-    <edge source="n0" target="n4">
-      <data key="e_year">1935</data>
-      <data key="e_ship">Normandie</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">3015</data>
-      <data key="e_duration">4.14236111111111</data>
-      <data key="e_knots">30.31</data>
+    <edge source="n2" target="n12">
+      <data key="e_weight">3</data>
     </edge>
-    <edge source="n0" target="n4">
-      <data key="e_year">1936</data>
-      <data key="e_ship">Queen Mary</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2939</data>
-      <data key="e_duration">3.99791666666667</data>
-      <data key="e_knots">30.63</data>
+    <edge source="n3" target="n13">
+      <data key="e_weight">1</data>
     </edge>
-    <edge source="n0" target="n4">
-      <data key="e_year">1937</data>
-      <data key="e_ship">Normandie</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2967</data>
-      <data key="e_duration">4.00416666666667</data>
-      <data key="e_knots">30.99</data>
+    <edge source="n4" target="n1">
+      <data key="e_weight">5</data>
     </edge>
-    <edge source="n0" target="n4">
-      <data key="e_year">1937</data>
-      <data key="e_ship">Normandie</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2936</data>
-      <data key="e_duration">3.92152777777778</data>
-      <data key="e_knots">31.2</data>
+    <edge source="n5" target="n1">
+      <data key="e_weight">3</data>
     </edge>
-    <edge source="n0" target="n4">
-      <data key="e_year">1938</data>
-      <data key="e_ship">Queen Mary</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2938</data>
-      <data key="e_duration">3.8625</data>
-      <data key="e_knots">31.69</data>
+    <edge source="n5" target="n15">
+      <data key="e_weight">4</data>
     </edge>
-    <edge source="n0" target="n4">
-      <data key="e_year">1952</data>
-      <data key="e_ship">United States</data>
-      <data key="e_heading">e</data>
-      <data key="e_nm">2942</data>
-      <data key="e_duration">3.44444444444444</data>
-      <data key="e_knots">35.59</data>
+    <edge source="n6" target="n15">
+      <data key="e_weight">1</data>
+    </edge>
+    <edge source="n8" target="n1">
+      <data key="e_weight">1</data>
+    </edge>
+    <edge source="n9" target="n10">
+      <data key="e_weight">5</data>
+    </edge>
+    <edge source="n10" target="n9">
+      <data key="e_weight">5</data>
+    </edge>
+    <edge source="n10" target="n12">
+      <data key="e_weight">4</data>
+    </edge>
+    <edge source="n10" target="n15">
+      <data key="e_weight">1</data>
+    </edge>
+    <edge source="n11" target="n15">
+      <data key="e_weight">1</data>
+    </edge>
+    <edge source="n12" target="n2">
+      <data key="e_weight">2</data>
+    </edge>
+    <edge source="n12" target="n7">
+      <data key="e_weight">1</data>
+    </edge>
+    <edge source="n12" target="n10">
+      <data key="e_weight">3</data>
+    </edge>
+    <edge source="n12" target="n13">
+      <data key="e_weight">1</data>
+    </edge>
+    <edge source="n13" target="n1">
+      <data key="e_weight">2</data>
+    </edge>
+    <edge source="n13" target="n12">
+      <data key="e_weight">1</data>
+    </edge>
+    <edge source="n13" target="n14">
+      <data key="e_weight">1</data>
+    </edge>
+    <edge source="n13" target="n15">
+      <data key="e_weight">27</data>
+    </edge>
+    <edge source="n15" target="n6">
+      <data key="e_weight">5</data>
+    </edge>
+    <edge source="n15" target="n10">
+      <data key="e_weight">3</data>
+    </edge>
+    <edge source="n15" target="n11">
+      <data key="e_weight">1</data>
+    </edge>
+    <edge source="n15" target="n13">
+      <data key="e_weight">23</data>
     </edge>
   </graph>
 </graphml>

@@ -10,8 +10,8 @@ tables <- html %>% html_table()
 west.bound <- tables[[1]]
 east.bound <- tables[[2]]
 # add heading variable
-west.bound$heading <- "w"
-east.bound$heading <- "e"
+west.bound$heading <- "west"
+east.bound$heading <- "east"
 #combine west.bound and east.bound into df
 df <- tibble(rbind(west.bound, east.bound))
 #clean names
@@ -23,8 +23,10 @@ df$flag <- NULL
 #abbreviate
 df$line <- gsub("British & American", "BritAm", df$line)
 # from
+df$from <- gsub("The ", "", df$from)
 unique(df$from)
 # to
+df$to <- gsub(",", "", df$to)
 unique(df$to)
 # distance
 df$nm <- gsub(",", "", substr(df$distance, start = 1, stop = 5))
@@ -47,7 +49,7 @@ x <- as.numeric(as.duration(period(c(df$days[i], df$hours[i], df$minutes[i]),
 df$duration[i] <- x
 }
 # speed
-df$knots <- as.numeric(stringr::word(df$speed))
+df$speed <- as.numeric(stringr::word(df$speed))
 #geo tag https://developers.google.com/maps/documentation/geolocation/overview
 # https://www.storybench.org/geocode-csv-addresses-r/
 city <- unique(c(df$from, df$to))
@@ -62,13 +64,11 @@ state <- c("Ireland",
            "England",
            "New York",
            "Canada",
+           "New Jersey",
            "New York",
            "New York",
            "New York",
            "New York",
-           "New York",
-           "England",
-           "England",
            "England"
 )
 df.places <- tibble(city = city, 
@@ -99,7 +99,7 @@ df <- dplyr::select(df,
                     heading,
                     nm,
                     duration,
-                    knots
+                    speed
                     )
 df$n <- 1
 df.1 <-
@@ -118,18 +118,71 @@ g <- igraph::graph_from_data_frame(d = edges,
                                    vertices = nodes
 )
 library(qgraph)
-e <- get.edgelist(g)
-l <- qgraph.layout.fruchtermanreingold(e,vcount=vcount(g),
-                                       area=8*(vcount(g)^2),
-                                       repulse.rad=(vcount(g)^3.1))
+l <- layout_with_kk(g)
+#l <- layout_with_fr(g)
+l <- norm_coords(l, ymin=-10, ymax=10, xmin=-10, xmax=10)
+jpeg(file = "./imgs/blue_ribald_network_graph.jpeg",
+     width = 7,
+     height = 5,
+     units = "in",
+     quality = 0, 
+     res = 600)
 igraph::plot.igraph(g,
-                    layout = layout_nicely,
-                    edge.arrow.size = 0,
+                    axes = F,
+                    layout= l,
+                    edge.arrow.size = .2,
                     edge.width = E(g)$weight,
-                    vertex.size = 20,
-                    vertex.shape = "none",
-                    vertex.frame.color = NA,
-                    asp = 0)
-
+                    vertex.size = 5,
+                    vertex.shape = "circle",
+                    vertex.frame.color = "white",
+                    vertex.color = "skyblue",
+                    vertex.label.cex = .75,
+                    vertex.label.dist = -1.3,
+                    margin = c(0, 0, 0, 0),
+                    asp = 0,
+                    main = "Blue Riband Destinations",
+                    sub = "1838 - 1952")
+dev.off()
 file <- "./data/blue_ribald.graphml"
 write_graph(g, file = file, format = "graphml")
+
+
+str(df)
+df.1 <- 
+        df %>%
+        gather(key = key, value = value, -ship, -year, -line, -from, -to, -heading)
+
+library(ggplot2)
+library(dplyr)
+mydf <- dplyr::filter(df.1, key == "duration" | key == "knots")
+p <- ggplot(mydf, aes(year, value, group = heading, color = heading))
+p <- p + geom_line()
+p <- p + facet_grid(. ~ key)
+p
+
+library(maps)
+library(geosphere)
+map("world")
+xlim <- c(-75, 10)
+ylim <- c(40.0000, 55)
+map("world", col="#f2f2f2", fill=TRUE, bg="white", lwd=0.05, xlim=xlim, ylim=ylim)
+
+#from, to , weight and a lat lon
+
+airports <- read.csv("http://datasets.flowingdata.com/tuts/maparcs/airports.csv", header=TRUE) 
+flights <- read.csv("http://datasets.flowingdata.com/tuts/maparcs/flights.csv", header=TRUE, as.is=TRUE)
+
+xlim <- c(-171.738281, -56.601563)
+ylim <- c(12.039321, 71.856229)
+map("world", col="#f2f2f2", fill=TRUE, bg="white", lwd=0.05, xlim=xlim, ylim=ylim)
+fsub <- flights[flights$airline == "AA",]
+
+for (j in 1:length(fsub$airline)) {
+        air1 <- airports[airports$iata == fsub[j,]$airport1,]
+        air2 <- airports[airports$iata == fsub[j,]$airport2,]
+        
+        inter <- gcIntermediate(c(air1[1,]$long, air1[1,]$lat), c(air2[1,]$long, air2[1,]$lat), n=100, addStartEnd=TRUE)
+        
+        lines(inter, col="black", lwd=0.8)
+}
+
