@@ -1,0 +1,118 @@
+"ship","flag","year","line","from","to","heading","nm","duration","speed","n"
+"Sirius","GBR",1838,"BritAm","Queenstown","Sandy Hook","west",3583,18.5986111111111,8.03,1
+"Great Western","GBR",1838,"GW","Avonmouth","New York","west",3220,15.5,8.66,1
+"Great Western","GBR",1838,"GW","Avonmouth","New York","west",3140,14.6666666666667,8.92,1
+"Great Western","GBR",1839,"GW","Avonmouth","New York","west",3086,13.5,9.52,1
+"Columbia","GBR",1841,"Cunard","Liverpool","Halifax","west",2534,10.7916666666667,9.78,1
+"Great Western","GBR",1843,"GW","Liverpool","New York","west",3068,12.75,10.03,1
+"Cambria","GBR",1845,"Cunard","Liverpool","Halifax","west",2534,9.85416666666667,10.71,1
+"America","GBR",1848,"Cunard","Liverpool","Halifax","west",2534,9.01111111111111,11.71,1
+"Europa","GBR",1848,"Cunard","Liverpool","Halifax","west",2534,8.95833333333333,11.79,1
+"Asia","GBR",1850,"Cunard","Liverpool","Halifax","west",2534,8.61805555555556,12.25,1
+"Pacific","USA",1850,"Collins","Liverpool","New York","west",3050,10.1979166666667,12.46,1
+"Baltic","USA",1851,"Collins","Liverpool","New York","west",3039,9.80972222222222,12.91,1
+"Baltic","USA",1854,"Collins","Liverpool","New York","west",3037,9.70277777777778,13.04,1
+"Persia","GBR",1856,"Cunard","Liverpool","Sandy Hook","west",3045,9.67777777777778,13.11,1
+"Scotia","GBR",1863,"Cunard","Queenstown","New York","west",2820,8.125,14.46,1
+"Adriatic","GBR",1872,"W.Star","Queenstown","Sandy Hook","west",2778,7.97013888888889,14.53,1
+"Germanic","GBR",1875,"W.Star","Queenstown","Sandy Hook","west",2800,7.96319444444444,14.65,1
+"City of Berlin","GBR",1875,"Inman","Queenstown","Sandy Bank","west",2829,7.75138888888889,15.21,1
+"Britannic","GBR",1876,"W.Star","Queenstown","Sandy Hook","west",2795,7.54930555555556,15.43,1
+"Germanic","GBR",1877,"W.Star","Queenstown","Sandy Hook","west",2830,7.48402777777778,15.76,1
+"Alaska","GBR",1882,"Guion","Queenstown","Sandy Hook","west",2802,7.26388888888889,16.07,1
+"Alaska","GBR",1882,"Guion","Queenstown","Sandy Hook","west",2871,7.175,16.67,1
+"Alaska","GBR",1882,"Guion","Queenstown","Sandy Hook","west",2886,7.08194444444444,16.98,1
+"Alaska","GBR",1883,"Guion","Queenstown","Sandy Hook","west",2844,6.99166666666667,17.05,1
+"Oregon","GBR",1884,"Guion","Queenstown","Sandy Hook","west",2861,6.42361111111111,18.56,1
+"Etruria","GBR",1885,"Cunard","Queenstown","Sandy Hook","west",2801,6.22986111111111,18.73,1
+"Umbria","GBR",1887,"Cunard","Queenstown","Sandy Hook","west",2848,6.175,19.22,1
+"Etruria","GBR",1888,"Cunard","Queenstown","Sandy Hook","west",2854,6.07986111111111,19.56,1
+"City of Paris","GBR",1889,"Inman","Queenstown","Sandy Hook","west",2855,5.96319444444444,19.95,1
+"City of Paris","GBR",1889,"Inman","Queenstown","Sandy Hook","west",2788,5.80416666666667,20.01,1
+"Majestic","GBR",1891,"W.Star","Queenstown","Sandy Hook","west",2777,5.75555555555556,20.1,1
+"Teutonic","GBR",1891,"W.Star","Queenstown","Sandy Hook","west",2778,5.68819444444444,20.35,1
+"City of Paris","GBR",1892,"Inman","Queenstown","Sandy Hook","west",2785,5.66527777777778,20.48,1
+"City of Paris","GBR",1892,"Inman","Queenstown","Sandy Hook","west",2782,5.6,20.7,1
+"Campania","GBR",1893,"Cunard","Queenstown","Sandy Hook","west",2864,5.65069444444444,21.12,1
+"Campania","GBR",1894,"Cunard","Queenstown","Sandy Hook","west",2776,5.39513888888889,21.44,1
+"Lucania","GBR",1894,"Cunard","Queenstown","Sandy Hook","west",2787,5.35972222222222,21.65,1
+"Lucania","GBR",1894,"Cunard","Queenstown","Sandy Hook","west",2782,5.325,21.75,1
+"Lucania","GBR",1894,"Cunard","Queenstown","Sandy Hook","west",2779,5.30763888888889,21.81,1
+"Kaiser Wilhelm der Grosse","DEU",1898,"NDL","Needles","Sandy Hook","west",3120,5.83333333333333,22.29,1
+"Deutschland","DEU",1900,"Hapag","Eddystone","Sandy Hook","west",3044,5.65694444444444,22.42,1
+"Deutschland","DEU",1900,"Hapag","Cherbourg","Sandy Hook","west",3050,5.52013888888889,23.02,1
+"Deutschland","DEU",1901,"Hapag","Cherbourg","Sandy Hook","west",3141,5.675,23.06,1
+"Kronprinz Wilhelm","DEU",1902,"NDL","Cherbourg","Sandy Hook","west",3047,5.49791666666667,23.09,1
+"Deutschland","DEU",1903,"Hapag","Cherbourg","Sandy Hook","west",3054,5.49583333333333,23.15,1
+"Lusitania","GBR",1907,"Cunard","Queenstown","Sandy Hook","west",2780,4.82777777777778,23.99,1
+"Lusitania","GBR",1908,"Cunard","Queenstown","Sandy Hook","west",2889,4.84861111111111,24.83,1
+"Lusitania","GBR",1908,"Cunard","Queenstown","Sandy Hook","west",2891,4.81666666666667,25.01,1
+"Lusitania","GBR",1909,"Cunard","Queenstown","Ambrose Light","west",2890,4.69444444444444,25.65,1
+"Mauretania","GBR",1909,"Cunard","Queenstown","Ambrose Light","west",2784,4.45208333333333,26.06,1
+"Bremen","DEU",1929,"NDL","Cherbourg","Ambrose Light","west",3164,4.7375,27.83,1
+"Europa","DEU",1930,"NDL","Cherbourg","Ambrose Light","west",3157,4.7125,27.91,1
+"Bremen","DEU",1933,"NDL","Cherbourg","Ambrose Light","west",3149,4.7,27.92,1
+"Rex","ITA",1933,"Italian","Gibraltar","Ambrose Light","west",3181,4.58194444444444,28.92,1
+"Normandie","FRA",1935,"CGT","Bishop Rock","Ambrose Light","west",2971,4.12638888888889,29.98,1
+"Queen Mary","GBR",1936,"C-WS","Bishop Rock","Ambrose Light","west",2907,4.01875,30.14,1
+"Normandie","FRA",1937,"CGT","Bishop Rock","Ambrose Light","west",2906,3.95972222222222,30.58,1
+"Queen Mary","GBR",1938,"C-WS","Bishop Rock","Ambrose Light","west",2907,3.90833333333333,30.99,1
+"United States","USA",1952,"USL","Bishop Rock","Ambrose Light","west",2906,3.50833333333333,34.51,1
+"Sirius","GBR",1838,"BritAm","New York","Falmouth","east",3159,NA,7.31,1
+"Great Western","GBR",1838,"GW","New York","Avonmouth","east",3218,14.6659722222222,9.14,1
+"Great Western","GBR",1838,"GW","New York","Avonmouth","east",3099,12.6902777777778,10.17,1
+"Britannia","GBR",1841,"Cunard","Halifax","Liverpool","east",2610,9.90555555555556,10.98,1
+"Great Western","GBR",1842,"GW","New York","Liverpool","east",3248,12.3125,10.99,1
+"Columbia","GBR",1843,"Cunard","Halifax","Liverpool","east",2534,9.5,11.11,1
+"Hibernia","GBR",1843,"Cunard","Halifax","Liverpool","east",2534,9.44722222222222,11.18,1
+"Hibernia","GBR",1843,"Cunard","Halifax","Liverpool","east",2534,8.94722222222222,11.8,1
+"Canada","GBR",1849,"Cunard","Halifax","Liverpool","east",2534,8.53055555555556,12.38,1
+"Pacific","USA",1851,"Collins","New York","Liverpool","east",3078,9.84305555555556,13.03,1
+"Arctic","USA",1852,"Collins","New York","Liverpool","east",3051,9.71875,13.06,1
+"Persia","GBR",1856,"Cunard","Sandy Hook","Liverpool","east",3048,9.43194444444444,13.46,1
+"Persia","GBR",1856,"Cunard","Sandy Hook","Liverpool","east",3048,9.14166666666667,13.89,1
+"Persia","GBR",1856,"Cunard","Sandy Hook","Liverpool","east",3046,8.97152777777778,14.15,1
+"Scotia","GBR",1863,"Cunard","New York","Queenstown","east",2800,8.2375,14.16,1
+"City of Brussels","GBR",1869,"Inman","Sandy Hook","Queenstown","east",2780,7.85625,14.74,1
+"Baltic","GBR",1873,"W.Star","Sandy Hook","Queenstown","east",2840,7.83958333333333,15.09,1
+"City of Berlin","GBR",1875,"Inman","Sandy Hook","Queenstown","east",2820,7.64444444444444,15.37,1
+"Germanic","GBR",1876,"W.Star","Sandy Hook","Queenstown","east",2894,7.63680555555556,15.79,1
+"Britannic","GBR",1876,"W.Star","Sandy Hook","Queenstown","east",2892,7.52847222222222,15.94,1
+"Arizona","GBR",1879,"Guion","Sandy Hook","Queenstown","east",2810,7.34097222222222,15.96,1
+"Alaska","GBR",1882,"Guion","Sandy Hook","Queenstown","east",2791,6.91666666666667,16.81,1
+"Alaska","GBR",1882,"Guion","Sandy Hook","Queenstown","east",2781,6.77569444444444,17.1,1
+"Oregon","GBR",1884,"Guion","Sandy Hook","Queenstown","east",2916,7.09583333333333,17.12,1
+"Oregon","GBR",1884,"Guion","Sandy Hook","Queenstown","east",2916,6.70625,18.09,1
+"Oregon","GBR",1884,"Cunard","Sandy Hook","Queenstown","east",2853,6.5375,18.18,1
+"Oregon","GBR",1884,"Cunard","Sandy Hook","Queenstown","east",2853,6.46458333333333,18.39,1
+"Etruria","GBR",1885,"Cunard","Sandy Hook","Queenstown","east",2822,6.375,18.44,1
+"Etruria","GBR",1888,"Cunard","Sandy Hook","Queenstown","east",2981,6.20138888888889,19.36,1
+"City of Paris","GBR",1889,"Inman","Sandy Hook","Queenstown","east",2894,6.02013888888889,20.03,1
+"City of New York","GBR",1892,"Inman","Sandy Hook","Queenstown","east",2814,5.83125,20.11,1
+"Campania","GBR",1893,"Cunard","Sandy Hook","Queenstown","east",2928,5.72708333333333,21.3,1
+"Lucania","GBR",1894,"Cunard","Sandy Hook","Queenstown","east",2911,5.56111111111111,21.81,1
+"Lucania","GBR",1894,"Cunard","Sandy Hook","Queenstown","east",2911,5.54097222222222,21.9,1
+"Lucania","GBR",1895,"Cunard","Sandy Hook","Queenstown","east",2897,5.48611111111111,22,1
+"Kaiser Wilhelm der Grosse","DEU",1897,"NDL","Sandy Hook","Needles","east",3065,5.72430555555556,22.33,1
+"Deutschland","DEU",1900,"Hapag","Sandy Hook","Eddystone","east",3085,5.62847222222222,22.84,1
+"Deutschland","DEU",1900,"Hapag","Sandy Hook","Eddystone","east",2981,5.31805555555556,23.36,1
+"Deutschland","DEU",1901,"Hapag","Sandy Hook","Eddystone","east",3083,5.49375,23.38,1
+"Deutschland","DEU",1901,"Hapag","Sandy Hook","Eddystone","east",3082,5.46180555555556,23.51,1
+"Kaiser Wilhelm II","DEU",1904,"NDL","Sandy Hook","Eddystone","east",3112,5.49861111111111,23.58,1
+"Lusitania","GBR",1907,"Cunard","Sandy Hook","Queenstown","east",2807,4.95347222222222,23.61,1
+"Mauretania","GBR",1907,"Cunard","Beady Hook","Queenstown","east",2807,4.93958333333333,23.69,1
+"Mauretania","GBR",1908,"Cunard","Sandy Hook","Queenstown","east",2932,5.11180555555556,23.9,1
+"Mauretania","GBR",1908,"Cunard","Sandy Hook","Queenstown","east",2932,5.00347222222222,24.42,1
+"Mauretania","GBR",1909,"Cunard","Ambrose","Queenstown","east",2930,4.85208333333333,25.16,1
+"Mauretania","GBR",1909,"Cunard","Ambrose","Queenstown","east",2934,4.77430555555556,25.61,1
+"Mauretania","GBR",1909,"Cunard","Ambrose","Queenstown","east",2934,4.75763888888889,25.7,1
+"Mauretania","GBR",1909,"Cunard","Ambrose","Queenstown","east",2933,4.72291666666667,25.88,1
+"Mauretania","GBR",1924,"Cunard","Ambrose","Cherbourg","east",3198,5.07569444444444,26.25,1
+"Bremen","DEU",1929,"NDL","Ambrose","Eddystone","east",3084,4.60416666666667,27.91,1
+"Bremen","DEU",1933,"NDL","Ambrose","Cherbourg","east",3199,4.67708333333333,28.51,1
+"Normandie","FRA",1935,"CGT","Ambrose","Bishop Rock","east",3015,4.14236111111111,30.31,1
+"Queen Mary","GBR",1936,"C-WS","Ambrose","Bishop Rock","east",2939,3.99791666666667,30.63,1
+"Normandie","FRA",1937,"CGT","Ambrose","Bishop Rock","east",2967,4.00416666666667,30.99,1
+"Normandie","FRA",1937,"CGT","Ambrose","Bishop Rock","east",2936,3.92152777777778,31.2,1
+"Queen Mary","GBR",1938,"C-WS","Ambrose","Bishop Rock","east",2938,3.8625,31.69,1
+"United States","USA",1952,"USL","Ambrose","Bishop Rock","east",2942,3.44444444444444,35.59,1

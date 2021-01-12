@@ -1,0 +1,29 @@
+"from","to","weight"
+"Ambrose","Bishop Rock",6
+"Ambrose","Cherbourg",2
+"Ambrose","Eddystone",1
+"Ambrose","Queenstown",4
+"Avonmouth","New York",3
+"Beady Hook","Queenstown",1
+"Bishop Rock","Ambrose Light",5
+"Cherbourg","Ambrose Light",3
+"Cherbourg","Sandy Hook",4
+"Eddystone","Sandy Hook",1
+"Gibraltar","Ambrose Light",1
+"Halifax","Liverpool",5
+"Liverpool","Halifax",5
+"Liverpool","New York",4
+"Liverpool","Sandy Hook",1
+"Needles","Sandy Hook",1
+"New York","Avonmouth",2
+"New York","Falmouth",1
+"New York","Liverpool",3
+"New York","Queenstown",1
+"Queenstown","Ambrose Light",2
+"Queenstown","New York",1
+"Queenstown","Sandy Bank",1
+"Queenstown","Sandy Hook",27
+"Sandy Hook","Eddystone",5
+"Sandy Hook","Liverpool",3
+"Sandy Hook","Needles",1
+"Sandy Hook","Queenstown",23

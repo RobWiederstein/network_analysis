@@ -111,10 +111,10 @@
     </node>
     <node id="n14">
       <data key="v_name">Sandy Bank</data>
-      <data key="v_state">New York</data>
-      <data key="v_address">Sandy Bank, New York</data>
-      <data key="v_lat">53.0799164</data>
-      <data key="v_lon">-0.1305158</data>
+      <data key="v_state">New York, USA</data>
+      <data key="v_address">Sandy Bank, New York, USA</data>
+      <data key="v_lat">40.8013968</data>
+      <data key="v_lon">-73.9578072</data>
     </node>
     <node id="n15">
       <data key="v_name">Sandy Hook</data>
