@@ -115,3 +115,34 @@ plot.igraph(g3,
 ```
 
 ## Layout of nodes
+
+```{r irs-group-nodes}
+g4 <- igraph::graph_from_data_frame(d = edges,
+                                          directed = F,
+                                          vertices = nodes
+)
+plot(g4,
+        vertex.label = NA,
+        vertex.size = V(g3)$quintile ^2,
+        vertex.color = V(g3)$colors,
+        edge.arrow.size = .1,
+        main = "vertex.color"
+     )
+par(mfrow=c(1,2))
+# Community detection based on label propagation:
+
+clp <- cluster_label_prop(g4) 
+class(clp)
+# Community detection returns an object of class "communities" # which igraph knows how to plot:
+plot(clp, 
+        g4,
+        vertex.label = NA,
+        vertex.size = V(g3)$quintile ^2,
+        vertex.color = V(g3)$colors,
+        edge.arrow.size = .1,
+        main = "vertex.color"
+     )
+# We can also plot the communities without relying on their built-in plot:
+V(g4)$community <- clp$membership
+```
+
