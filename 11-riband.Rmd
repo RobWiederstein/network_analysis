@@ -1,10 +1,186 @@
 # Case Study -- Blue Riband {#riband}
 
-The modern cruise passenger, who sees the ship as a major destination in itself, seldom thinks of speed as an interesting criteria for rating ships.  However, this was not always so.  For over a century and a half there was a prize - called the Blue Riband - for speed in the North Atlantic crossing.
- 
-After steam conquered that dangerous ocean, the fastest steamer was awarded a mythical "blue ribbon."  The start may have been Liverpool or Queenstown, but the end was always New York's Sandy Hook, or later, Ambrose Lightship, a distance of 2,800 nautical miles.
- 
-The term was borrowed from horse racing and was not widely used until after 1910. Under the unwritten rules, the record is based on average speed rather than passage time because ships follow different routes. Traditionally, a ship is considered a "record breaker" if it wins the eastbound speed record, but is not credited with the Blue Riband unless it wins the more difficult westbound record against the Gulf Stream.
+```{r riband-load-libraries, include = F}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(gridExtra)
+library(kableExtra)
+library(igraph)
+library(tibble)
+```
+
+```{r riband-load-data, echo = T, include = F}
+#load the total dataset
+file <- "./data/rkw/blue_ribald_total.csv"
+df <- tibble(data.table::fread(file = file))
+```
+
+## Introduction
+
+The "Blue Riband" was a recognition given to the passenger ship that maintained the highest average speed across the northern Atlantic Ocean. The prize was not regularly awarded but rather as a ship bested a previous record.  Some years contained more than one blue riband winner while others had none.
+
+```{r ribald-winners-by-flag, echo = F, message = F}
+flags <-
+        df %>%
+        group_by(flag) %>%
+        summarize(wins = sum(n)) %>%
+        arrange(-wins)
+
+flags %>%
+  kbl(caption = "Winners by Country") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = F, position = "float_right")
+
+```
+
+The west-bound trip typically originated from Western Europe and ended in New York harbor which is reported as "Sandy Hook", "Ambrose Lightship", "Ambrose" or just plain "New York".  It was considered the more difficult journey as the Gulf Stream water currents slowed ship speeds. Ships that won the riband on the western route typically won it on the eastern trip as well.
+
+For perspective, trips across the Atlantic in the late 1700s and early 1800s lasted several weeks with one traveler reporting a trip of 57 days.  The advent of the steamship and its inclusion into ships resulted in faster times and more consistency in trip duration.
+
+Like more contemporary national contests--space and aeronatics, the winning of the blue riband was a source of national pride and a public demonstration of a nation's technology prowess. The contests lasted from 1854 to 1952 and the ships crossed the Atlantic in ever faster times and speeds.
+
+```{r riband-ggplot-charts, echo = F, warning = F, fig.height = 3, fig.align="center", fig.cap="Graphs showing decline in trip duration and the increase in speed.  Note the small difference in east and west bound trips after 1860."}
+df.1 <- 
+        df %>%
+        gather(key = key, value = value, 
+               -ship, -flag, -year, -line, -from, -to, -heading)
+
+mydf1 <- dplyr::filter(df.1, key == "duration")
+p1 <- ggplot(mydf1, aes(year, value, group = heading, color = heading))
+p1 <- p1 + geom_line()
+p1 <- p1 + ggtitle("Trip Duration")
+p1 <- p1 + scale_x_continuous(name = "")
+p1 <- p1 + scale_y_continuous(name = "days")
+
+
+mydf2 <- dplyr::filter(df.1, key == "speed")
+p2 <- ggplot(mydf2, aes(year, value, group = heading, color = heading))
+p2 <- p2 + geom_line()
+p2 <- p2 + ggtitle("Average Speed")
+p2 <- p2 + scale_x_continuous(name = "")
+p2 <- p2 + scale_y_continuous(name = "knots")
+grid.arrange(p1, p2, ncol=2)
+
+```
+
+
+
+The purpose of this case study is to layer a network over a map.  For specifics, the script can be found under the `./R` directory.  The dataset was scraped from a Wikipedia [article](https://en.wikipedia.org/wiki/Blue_Riband) and geotagged using google maps. There are 119 observations which divide almost equally between eastbound and westbound winners.
+
+## Igraph
+
+```{r riband-import-nodes-edges, warning=F}
+#import files
+file <- "./data/rkw/blue_ribald_nodes.csv"
+nodes <- tibble(data.table::fread(file = file))
+file <- "./data/rkw/blue_ribald_edges.csv"
+edges <- tibble(data.table::fread(file = file))
+#create network for graph
+g <- igraph::graph_from_data_frame(d = edges,
+                                   directed = T,
+                                   vertices = nodes
+)
+
+```
+
+
+### Layout with Kamada-Kawai
+
+```{r riband-igraph-layout-kk, fig.height = 4, fig.align="center", fig.cap="Note that the inter-nodal distace is maximized where the nodes have the most connections.  Here, it is between Sandy Hook (New York harbor) and Queenstown."}
+#plot igraph kk
+par(mar = c(1, 1, 1, 1))
+igraph::plot.igraph(g,
+                    axes = F,
+                    layout= layout_with_kk,
+                    edge.arrow.size = .2,
+                    edge.width = E(g)$weight,
+                    vertex.size = 5,
+                    vertex.shape = "circle",
+                    vertex.frame.color = "white",
+                    vertex.color = "skyblue",
+                    vertex.label.cex = .75,
+                    vertex.label.dist = -1.3,
+                    margin = c(0, 0, 0, 0),
+                    asp = 0,
+                    main = "Blue Riband Ports"
+                    )
+```
+
+### Layout with Fruchterman-Reingold
+
+This plot is from the same code as above but with layout set to `layout = layout_with_fr`. 
+
+```{r riband-igraph-layout-frl, echo=F, fig.height = 4, fig.align="center", fig.cap="Note that the inter-nodal distace is minimized where the nodes have the most connections.  Here, the shortest path is between Sandy Hook (New York harbor) and Queenstown."}
+par(mar = c(1, 1, 1, 1))
+igraph::plot.igraph(g,
+                    axes = F,
+                    layout= layout_with_fr,
+                    edge.arrow.size = .2,
+                    edge.width = E(g)$weight,
+                    vertex.size = 5,
+                    vertex.shape = "circle",
+                    vertex.frame.color = "white",
+                    vertex.color = "skyblue",
+                    vertex.label.cex = .75,
+                    vertex.label.dist = -1.3,
+                    margin = c(0, 0, 0, 0),
+                    asp = 0,
+                    main = "Blue Riband Ports"
+                    )
+
+```
+
+## Geosphere
+
+While the above plots are helpful in understanding the frequency of connections between the different ports, they lack the insight that a map could bring to the discussion.  The next plot utilizes the `geosphere` package and is taken from a [tutorial](https://flowingdata.com/2011/05/11/how-to-map-connections-with-great-circles/) by Dr. Nathan Yau at [www.flowingdata.com](https://flowingdata.com).
+
+```{r riband-great-circles-plot, fig.align="center", fig.cap="Paths over north Atlantic Ocean by blue riband winners.  The 'blue' path was the one most commonly taken between Queenstown and Sandy Hook.", messages = F}
+library(maps)
+library(geosphere)
+pal <- colorRampPalette(c("#333333", "white", "#1292db"))
+colors <- pal(100)
+
+#map("world")
+xlim <- c(-80, 10)
+ylim <- c(30, 60)
+map("world", 
+    col="#191919",
+    fill=TRUE, 
+    bg="#000000", 
+    lwd=0.05,
+    mar = c(0, 0, 0, 0),
+    xlim=xlim, 
+    ylim=ylim
+    )
+edges <- dplyr::arrange(edges, weight)
+maxcnt <- max(edges$weight)
+
+for (i in 1:nrow(edges)) {
+        port1 <- nodes[nodes$id == edges[i,]$from,]
+        port2 <- nodes[nodes$id == edges[i,]$to,]
+        inter <- gcIntermediate(c(port1[1,]$lon, port1[1,]$lat), c(port2[1,]$lon, port2[1,]$lat), n=100, addStartEnd=TRUE)
+        colindex <- round( (edges[i,]$weight / maxcnt) * length(colors) )
+        lines(inter, col=colors[colindex], lwd=2)
+}
+```
+
+## NetworkD3 Package
+
+The `networkD3` package was created on the D3.js framework by Michael Bostock. It provides an easy way to allow for movement of the nodes.
+
+```{r riband-D3-plot, fig.height=3, fig.align="center", fig.cap="Hello"}
+
+# Create graph
+networkD3::simpleNetwork(edges, 
+                         linkDistance = 10,
+                         charge = -500)
+```
+
+
+
+
+
+
 
 Resources:
 

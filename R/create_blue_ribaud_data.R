@@ -139,11 +139,9 @@ g <- igraph::graph_from_data_frame(d = edges,
                                    vertices = nodes
 )
 #plot igraph kk
-library(qgraph)
 l <- layout_with_kk(g)
-#l <- layout_with_fr(g)
 l <- norm_coords(l, ymin=-10, ymax=10, xmin=-10, xmax=10)
-jpeg(file = "./imgs/blue_riband_network_graph.jpeg",
+jpeg(file = "./imgs/blue_riband_network_graph_kk_layout.jpeg",
      width = 7,
      height = 5,
      units = "in",
@@ -165,11 +163,31 @@ igraph::plot.igraph(g,
                     main = "Blue Riband Ports",
                     sub = "1838 - 1952")
 dev.off()
-file <- "./data/blue_ribald.graphml"
-write_graph(g, file = file, format = "graphml")
-
-
-str(df)
+#plot igraph fr
+l <- layout_with_fr(g)
+l <- norm_coords(l, ymin=-10, ymax=10, xmin=-10, xmax=10)
+jpeg(file = "./imgs/blue_riband_network_graph_fr_layout.jpeg",
+     width = 7,
+     height = 5,
+     units = "in",
+     quality = 0, 
+     res = 600)
+igraph::plot.igraph(g,
+                    axes = F,
+                    layout= layout_with_fr,
+                    edge.arrow.size = .2,
+                    edge.width = E(g)$weight,
+                    vertex.size = 5,
+                    vertex.shape = "circle",
+                    vertex.frame.color = "white",
+                    vertex.color = "skyblue",
+                    vertex.label.cex = .75,
+                    vertex.label.dist = -1.3,
+                    margin = c(0, 0, 0, 0),
+                    asp = 0,
+                    main = "Blue Riband Ports",
+                    sub = "1838 - 1952")
+dev.off()
 df.2 <- 
         df %>%
         gather(key = key, value = value, 
@@ -205,9 +223,10 @@ pdf(file = "./imgs/blue_riband_great_circles.pdf",
     xlim=xlim, 
     ylim=ylim
     )
-dplyr::arrange(edges, weight)
+edges <- dplyr::arrange(edges, weight)
 maxcnt <- max(edges$weight)
 
+# I never would've have gotten this but for flowingdata!
 for (i in 1:nrow(edges)) {
         port1 <- nodes[nodes$id == edges[i,]$from,]
         port2 <- nodes[nodes$id == edges[i,]$to,]

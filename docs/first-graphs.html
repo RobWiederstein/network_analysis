@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2021-01-11" />
+<meta name="date" content="2021-01-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -73,6 +73,8 @@
 <script src="libs/sigmajs-binding-0.1.5/sigmajs.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
 
 
 <style type="text/css">
@@ -221,7 +223,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.7" data-path="irs.html"><a href="irs.html#layout-of-nodes-1"><i class="fa fa-check"></i><b>7.7</b> Layout of nodes</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="airlines.html"><a href="airlines.html"><i class="fa fa-check"></i><b>8</b> Case Study – Airlines</a></li>
-<li class="chapter" data-level="9" data-path="riband.html"><a href="riband.html"><i class="fa fa-check"></i><b>9</b> Case Study – Blue Riband</a></li>
+<li class="chapter" data-level="9" data-path="riband.html"><a href="riband.html"><i class="fa fa-check"></i><b>9</b> Case Study – Blue Riband</a><ul>
+<li class="chapter" data-level="9.1" data-path="riband.html"><a href="riband.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="riband.html"><a href="riband.html#igraph-1"><i class="fa fa-check"></i><b>9.2</b> Igraph</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="riband.html"><a href="riband.html#layout-with-kamada-kawai"><i class="fa fa-check"></i><b>9.2.1</b> Layout with Kamada-Kawai</a></li>
+<li class="chapter" data-level="9.2.2" data-path="riband.html"><a href="riband.html#layout-with-fruchterman-reingold"><i class="fa fa-check"></i><b>9.2.2</b> Layout with Fruchterman-Reingold</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="riband.html"><a href="riband.html#geosphere"><i class="fa fa-check"></i><b>9.3</b> Geosphere</a></li>
+<li class="chapter" data-level="9.4" data-path="riband.html"><a href="riband.html#networkd3-package"><i class="fa fa-check"></i><b>9.4</b> NetworkD3 Package</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>10</b> Glossary</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="igraphdata-plots.html"><a href="igraphdata-plots.html"><i class="fa fa-check"></i><b>A</b> <code>igraphdata</code> Plots</a></li>
@@ -289,8 +299,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb22-11" data-line-number="11"><span class="kw">sigmajs</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb22-12" data-line-number="12"><span class="st">  </span><span class="kw">sg_nodes</span>(nodes, id, label, time) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb22-13" data-line-number="13"><span class="st">  </span><span class="kw">sg_edges</span>(edges, id, source, target) </a></code></pre></div>
-<div id="htmlwidget-d97eb413dc63891efd6a" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d97eb413dc63891efd6a">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":"14.857470","y":"10.954977"},{"id":"2","label":"red","time":" 30","x":" 8.600251","y":"19.878215"},{"id":"3","label":"yellow","time":" 10","x":" 6.469763","y":" 3.720145"},{"id":"4","label":"green","time":" 20","x":"13.613005","y":"13.483098"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5ebbf5a4c8a7bdf4ec4b" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5ebbf5a4c8a7bdf4ec4b">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":" 4.003999","y":"7.606285"},{"id":"2","label":"red","time":" 30","x":"12.066594","y":"7.010474"},{"id":"3","label":"yellow","time":" 10","x":" 3.496805","y":"1.211637"},{"id":"4","label":"green","time":" 20","x":"11.610469","y":"3.604839"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="les-miserabe" class="section level2">
 <h2><span class="header-section-number">4.3</span> Les Miserabe</h2>

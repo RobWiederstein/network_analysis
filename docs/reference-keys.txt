@@ -22,6 +22,12 @@ fig:gabasova-starwars-plot
 fig:irs-first-plot
 fig:irs-open-space
 fig:irs-plot-node-color-size
+tab:ribald-winners-by-flag
+fig:riband-ggplot-charts
+fig:riband-igraph-layout-kk
+fig:riband-igraph-layout-frl
+fig:riband-great-circles-plot
+fig:riband-D3-plot
 fig:img-top-10-network-pkg-downloads
 tab:table-top-10-network-pkgs
 why-read-this-book
@@ -79,6 +85,12 @@ set-vertex-color
 layout-of-nodes-1
 airlines
 riband
+introduction
+igraph-1
+layout-with-kamada-kawai
+layout-with-fruchterman-reingold
+geosphere
+networkd3-package
 glossary
 igraphdata-plots
 top-10-network-packages-in-r

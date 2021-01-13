@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2021-01-11" />
+<meta name="date" content="2021-01-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -73,6 +73,8 @@
 <script src="libs/sigmajs-binding-0.1.5/sigmajs.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
 
 
 <style type="text/css">
@@ -221,7 +223,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.7" data-path="irs.html"><a href="irs.html#layout-of-nodes-1"><i class="fa fa-check"></i><b>7.7</b> Layout of nodes</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="airlines.html"><a href="airlines.html"><i class="fa fa-check"></i><b>8</b> Case Study – Airlines</a></li>
-<li class="chapter" data-level="9" data-path="riband.html"><a href="riband.html"><i class="fa fa-check"></i><b>9</b> Case Study – Blue Riband</a></li>
+<li class="chapter" data-level="9" data-path="riband.html"><a href="riband.html"><i class="fa fa-check"></i><b>9</b> Case Study – Blue Riband</a><ul>
+<li class="chapter" data-level="9.1" data-path="riband.html"><a href="riband.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="riband.html"><a href="riband.html#igraph-1"><i class="fa fa-check"></i><b>9.2</b> Igraph</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="riband.html"><a href="riband.html#layout-with-kamada-kawai"><i class="fa fa-check"></i><b>9.2.1</b> Layout with Kamada-Kawai</a></li>
+<li class="chapter" data-level="9.2.2" data-path="riband.html"><a href="riband.html#layout-with-fruchterman-reingold"><i class="fa fa-check"></i><b>9.2.2</b> Layout with Fruchterman-Reingold</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="riband.html"><a href="riband.html#geosphere"><i class="fa fa-check"></i><b>9.3</b> Geosphere</a></li>
+<li class="chapter" data-level="9.4" data-path="riband.html"><a href="riband.html#networkd3-package"><i class="fa fa-check"></i><b>9.4</b> NetworkD3 Package</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>10</b> Glossary</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="igraphdata-plots.html"><a href="igraphdata-plots.html"><i class="fa fa-check"></i><b>A</b> <code>igraphdata</code> Plots</a></li>
@@ -256,8 +266,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb23-6" data-line-number="6"><span class="kw">sigmajs</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb23-7" data-line-number="7"><span class="st">  </span><span class="kw">sg_nodes</span>(nodes, id, label, size, color) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb23-8" data-line-number="8"><span class="st">  </span><span class="kw">sg_edges</span>(edges, id, source, target) </a></code></pre></div>
-<div id="htmlwidget-88eb5a3d95ff0085fad9" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-88eb5a3d95ff0085fad9">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"Q95","size":"2","color":"#B1E2A3","x":"18.441044","y":" 6.744661"},{"id":"2","label":"P68","size":"3","color":"#A5DBA3","x":" 9.978747","y":"14.326554"},{"id":"3","label":"D56","size":"4","color":"#9AD4A4","x":"10.792198","y":" 3.985481"},{"id":"4","label":"U99","size":"2","color":"#76BA99","x":"12.861684","y":" 5.115510"},{"id":"5","label":"T46","size":"4","color":"#48998A","x":"11.153252","y":" 3.822521"},{"id":"6","label":"N40","size":"3","color":"#2D7E7E","x":" 6.017091","y":"14.429596"},{"id":"7","label":"U47","size":"2","color":"#236B76","x":" 9.703837","y":"14.440407"},{"id":"8","label":"P94","size":"5","color":"#1C686F","x":"14.391103","y":"14.724735"},{"id":"9","label":"W75","size":"5","color":"#20986D","x":"14.547591","y":"14.909835"},{"id":"10","label":"J88","size":"2","color":"#24C96B","x":"19.250601","y":"15.472098"}],"edges":[{"id":"1","source":"1","target":"9"},{"id":"2","source":"2","target":"8"},{"id":"3","source":"3","target":"6"},{"id":"4","source":"4","target":"10"},{"id":"5","source":"5","target":"3"},{"id":"6","source":"6","target":"2"},{"id":"7","source":"7","target":"5"},{"id":"8","source":"8","target":"10"},{"id":"9","source":"9","target":"7"},{"id":"10","source":"10","target":"8"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9bcd6e20ec85fac36738" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9bcd6e20ec85fac36738">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"D82","size":"4","color":"#B1E2A3","x":"11.076665","y":"19.508443"},{"id":"2","label":"W49","size":"5","color":"#A5DBA3","x":"18.125270","y":" 3.992523"},{"id":"3","label":"R18","size":"2","color":"#9AD4A4","x":"16.982367","y":" 4.235619"},{"id":"4","label":"Q17","size":"5","color":"#76BA99","x":"12.890115","y":"13.173735"},{"id":"5","label":"C29","size":"3","color":"#48998A","x":" 7.926542","y":"15.259217"},{"id":"6","label":"U47","size":"4","color":"#2D7E7E","x":" 8.179875","y":"19.356092"},{"id":"7","label":"N92","size":"4","color":"#236B76","x":"13.503185","y":" 9.581577"},{"id":"8","label":"J88","size":"5","color":"#1C686F","x":"10.976769","y":" 4.294167"},{"id":"9","label":"X24","size":"4","color":"#20986D","x":"10.778530","y":"16.638193"},{"id":"10","label":"A79","size":"3","color":"#24C96B","x":"16.656759","y":" 9.344536"}],"edges":[{"id":"1","source":"1","target":"8"},{"id":"2","source":"2","target":"6"},{"id":"3","source":"3","target":"7"},{"id":"4","source":"4","target":"6"},{"id":"5","source":"5","target":"8"},{"id":"6","source":"6","target":"7"},{"id":"7","source":"7","target":"6"},{"id":"8","source":"8","target":"10"},{"id":"9","source":"9","target":"6"},{"id":"10","source":"10","target":"3"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
 <div id="stop-light-1" class="section level2">
 <h2><span class="header-section-number">5.1</span> Stop light</h2>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">library</span>(sigmajs)</a>
@@ -273,8 +283,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb24-11" data-line-number="11"><span class="kw">sigmajs</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb24-12" data-line-number="12"><span class="st">  </span><span class="kw">sg_nodes</span>(nodes, id, label, time) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb24-13" data-line-number="13"><span class="st">  </span><span class="kw">sg_edges</span>(edges, id, source, target) </a></code></pre></div>
-<div id="htmlwidget-efdbf21ff67a8187cda4" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-efdbf21ff67a8187cda4">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":" 9.921296","y":" 5.378611"},{"id":"2","label":"red","time":" 30","x":"12.987341","y":"10.389715"},{"id":"3","label":"yellow","time":" 10","x":"11.577760","y":" 6.571174"},{"id":"4","label":"green","time":" 20","x":" 4.314399","y":" 6.199815"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7f8bc6fe5479dfb558be" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7f8bc6fe5479dfb558be">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":" 2.535295","y":" 5.056473"},{"id":"2","label":"red","time":" 30","x":"11.675762","y":" 6.506350"},{"id":"3","label":"yellow","time":" 10","x":"12.081683","y":"11.481882"},{"id":"4","label":"green","time":" 20","x":"19.282282","y":"13.370985"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>
