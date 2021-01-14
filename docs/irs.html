@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Case Study – SOI Tax Stats | Network Analysis in R</title>
+  <title>Chapter 8 Case Study – SOI Tax Stats | Network Analysis in R</title>
   <meta name="description" content="tutorials on analyzing networks in R." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Case Study – SOI Tax Stats | Network Analysis in R" />
+  <meta property="og:title" content="Chapter 8 Case Study – SOI Tax Stats | Network Analysis in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Case Study – SOI Tax Stats | Network Analysis in R" />
+  <meta name="twitter:title" content="Chapter 8 Case Study – SOI Tax Stats | Network Analysis in R" />
   
   <meta name="twitter:description" content="tutorials on analyzing networks in R." />
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="first-graphs.html"/>
+<link rel="prev" href="starwars.html"/>
 <link rel="next" href="airlines.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -54,6 +54,27 @@
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/sigma-1.2.1/sigma.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.layout.forceAtlas2.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.layout.noverlap.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.parallelEdges.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.animate.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.customShapes.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.dragNodes.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.customEdgeShapes.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.relativeSize.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.edgeLabels.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.parsers.gexf.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.exporters.svg.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.neighborhoods.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.plugins.filter.min.js"></script>
+<script src="libs/sigma-1.2.1/plugins/sigma.renderers.snapshot.min.js"></script>
+<script src="libs/sigmajs-binding-0.1.5/sigmajs.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
 
 
 <style type="text/css">
@@ -143,72 +164,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#disclaimer"><i class="fa fa-check"></i><b>0.5</b> Disclaimer</a></li>
 <li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>0.6</b> Acknowledgements</a></li>
 </ul></li>
-<li class="part"><span><b>I The Basics</b></span><ul>
-<li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#terms"><i class="fa fa-check"></i><b>0.7</b> Terms</a></li>
-<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#input-formats"><i class="fa fa-check"></i><b>0.8</b> Input formats</a><ul>
-<li class="chapter" data-level="0.8.1" data-path="index.html"><a href="index.html#adjacency-matrix"><i class="fa fa-check"></i><b>0.8.1</b> Adjacency matrix</a></li>
-<li class="chapter" data-level="0.8.2" data-path="index.html"><a href="index.html#sparse-matrix"><i class="fa fa-check"></i><b>0.8.2</b> Sparse matrix</a></li>
-<li class="chapter" data-level="0.8.3" data-path="index.html"><a href="index.html#incidence-matrix"><i class="fa fa-check"></i><b>0.8.3</b> Incidence matrix</a></li>
-<li class="chapter" data-level="0.8.4" data-path="index.html"><a href="index.html#edge-list"><i class="fa fa-check"></i><b>0.8.4</b> Edge list</a></li>
-<li class="chapter" data-level="0.8.5" data-path="index.html"><a href="index.html#dataframe-distinguished"><i class="fa fa-check"></i><b>0.8.5</b> Dataframe distinguished</a></li>
+<li class="part"><span><b>I The Basics</b></span></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#terms"><i class="fa fa-check"></i><b>1.1</b> Terms</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#input-formats"><i class="fa fa-check"></i><b>1.2</b> Input formats</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#adjacency-matrix"><i class="fa fa-check"></i><b>1.2.1</b> Adjacency matrix</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#sparse-matrix"><i class="fa fa-check"></i><b>1.2.2</b> Sparse matrix</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#incidence-matrix"><i class="fa fa-check"></i><b>1.2.3</b> Incidence matrix</a></li>
+<li class="chapter" data-level="1.2.4" data-path="intro.html"><a href="intro.html#edge-list"><i class="fa fa-check"></i><b>1.2.4</b> Edge list</a></li>
+<li class="chapter" data-level="1.2.5" data-path="intro.html"><a href="intro.html#dataframe-distinguished"><i class="fa fa-check"></i><b>1.2.5</b> Dataframe distinguished</a></li>
 </ul></li>
-<li class="chapter" data-level="0.9" data-path="index.html"><a href="index.html#datasets"><i class="fa fa-check"></i><b>0.9</b> Datasets</a></li>
-<li class="chapter" data-level="0.10" data-path="index.html"><a href="index.html#sanity-checks"><i class="fa fa-check"></i><b>0.10</b> Sanity Checks</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#datasets"><i class="fa fa-check"></i><b>1.3</b> Datasets</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#sanity-checks"><i class="fa fa-check"></i><b>1.4</b> Sanity Checks</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="igraph.html"><a href="igraph.html"><i class="fa fa-check"></i><b>1</b> igraph</a><ul>
-<li class="chapter" data-level="1.1" data-path="igraph.html"><a href="igraph.html#examples"><i class="fa fa-check"></i><b>1.1</b> Examples</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="igraph.html"><a href="igraph.html#simple-graphs"><i class="fa fa-check"></i><b>1.1.1</b> Simple Graphs</a></li>
-<li class="chapter" data-level="1.1.2" data-path="igraph.html"><a href="igraph.html#notable-graphs"><i class="fa fa-check"></i><b>1.1.2</b> Notable Graphs</a></li>
-<li class="chapter" data-level="1.1.3" data-path="igraph.html"><a href="igraph.html#complicated-graph"><i class="fa fa-check"></i><b>1.1.3</b> Complicated Graph</a></li>
+<li class="chapter" data-level="2" data-path="igraph.html"><a href="igraph.html"><i class="fa fa-check"></i><b>2</b> igraph</a><ul>
+<li class="chapter" data-level="2.1" data-path="igraph.html"><a href="igraph.html#examples"><i class="fa fa-check"></i><b>2.1</b> Examples</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="igraph.html"><a href="igraph.html#simple-graphs"><i class="fa fa-check"></i><b>2.1.1</b> Simple Graphs</a></li>
+<li class="chapter" data-level="2.1.2" data-path="igraph.html"><a href="igraph.html#notable-graphs"><i class="fa fa-check"></i><b>2.1.2</b> Notable Graphs</a></li>
+<li class="chapter" data-level="2.1.3" data-path="igraph.html"><a href="igraph.html#complicated-graph"><i class="fa fa-check"></i><b>2.1.3</b> Complicated Graph</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="igraph.html"><a href="igraph.html#layout-of-nodes"><i class="fa fa-check"></i><b>1.2</b> Layout of Nodes</a></li>
-<li class="chapter" data-level="1.3" data-path="igraph.html"><a href="igraph.html#attributes"><i class="fa fa-check"></i><b>1.3</b> Attributes</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="igraph.html"><a href="igraph.html#vertices"><i class="fa fa-check"></i><b>1.3.1</b> Vertices</a></li>
-<li class="chapter" data-level="1.3.2" data-path="igraph.html"><a href="igraph.html#edges"><i class="fa fa-check"></i><b>1.3.2</b> Edges</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="modification.html"><a href="modification.html"><i class="fa fa-check"></i><b>2</b> Graph Modification</a><ul>
-<li class="chapter" data-level="2.1" data-path="modification.html"><a href="modification.html#load-plot-house"><i class="fa fa-check"></i><b>2.1</b> Load plot “House”</a></li>
-<li class="chapter" data-level="2.2" data-path="modification.html"><a href="modification.html#get-edges"><i class="fa fa-check"></i><b>2.2</b> Get Edges</a></li>
-<li class="chapter" data-level="2.3" data-path="modification.html"><a href="modification.html#get-vertices"><i class="fa fa-check"></i><b>2.3</b> Get Vertices</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="modification.html"><a href="modification.html#add-vertices-attribute"><i class="fa fa-check"></i><b>2.3.1</b> Add vertices attribute</a></li>
+<li class="chapter" data-level="2.2" data-path="igraph.html"><a href="igraph.html#layout-of-nodes"><i class="fa fa-check"></i><b>2.2</b> Layout of Nodes</a></li>
+<li class="chapter" data-level="2.3" data-path="igraph.html"><a href="igraph.html#attributes"><i class="fa fa-check"></i><b>2.3</b> Attributes</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="igraph.html"><a href="igraph.html#vertices"><i class="fa fa-check"></i><b>2.3.1</b> Vertices</a></li>
+<li class="chapter" data-level="2.3.2" data-path="igraph.html"><a href="igraph.html#edges"><i class="fa fa-check"></i><b>2.3.2</b> Edges</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="first-graphs.html"><a href="first-graphs.html"><i class="fa fa-check"></i><b>3</b> First Graphs</a><ul>
-<li class="chapter" data-level="3.1" data-path="first-graphs.html"><a href="first-graphs.html#les-miserable-dataset"><i class="fa fa-check"></i><b>3.1</b> Les Miserable Dataset</a></li>
-<li class="chapter" data-level="3.2" data-path="first-graphs.html"><a href="first-graphs.html#stop-light"><i class="fa fa-check"></i><b>3.2</b> Stop light</a></li>
-<li class="chapter" data-level="3.3" data-path="first-graphs.html"><a href="first-graphs.html#les-miserabe"><i class="fa fa-check"></i><b>3.3</b> Les Miserabe</a></li>
+<li class="chapter" data-level="3" data-path="modification.html"><a href="modification.html"><i class="fa fa-check"></i><b>3</b> Graph Modification</a><ul>
+<li class="chapter" data-level="3.1" data-path="modification.html"><a href="modification.html#load-plot-house"><i class="fa fa-check"></i><b>3.1</b> Load plot “House”</a></li>
+<li class="chapter" data-level="3.2" data-path="modification.html"><a href="modification.html#get-edges"><i class="fa fa-check"></i><b>3.2</b> Get Edges</a></li>
+<li class="chapter" data-level="3.3" data-path="modification.html"><a href="modification.html#get-vertices"><i class="fa fa-check"></i><b>3.3</b> Get Vertices</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="modification.html"><a href="modification.html#add-vertices-attribute"><i class="fa fa-check"></i><b>3.3.1</b> Add vertices attribute</a></li>
 </ul></li>
-<li class="part"><span><b>II Other Packages</b></span><ul>
-<li class="chapter" data-level="3.4" data-path="first-graphs.html"><a href="first-graphs.html#stop-light-1"><i class="fa fa-check"></i><b>3.4</b> Stop light</a></li>
 </ul></li>
-<li class="part"><span><b>III Case Studies</b></span><ul>
-<li class="chapter" data-level="3.5" data-path="first-graphs.html"><a href="first-graphs.html#read-data"><i class="fa fa-check"></i><b>3.5</b> Read Data</a></li>
-<li class="chapter" data-level="3.6" data-path="first-graphs.html"><a href="first-graphs.html#graph-object-error"><i class="fa fa-check"></i><b>3.6</b> Graph object error</a></li>
-<li class="chapter" data-level="3.7" data-path="first-graphs.html"><a href="first-graphs.html#create-attributes"><i class="fa fa-check"></i><b>3.7</b> Create attributes</a></li>
-<li class="chapter" data-level="3.8" data-path="first-graphs.html"><a href="first-graphs.html#final-plot"><i class="fa fa-check"></i><b>3.8</b> Final plot</a></li>
-<li class="chapter" data-level="3.9" data-path="first-graphs.html"><a href="first-graphs.html#summary"><i class="fa fa-check"></i><b>3.9</b> Summary</a></li>
+<li class="chapter" data-level="4" data-path="first-graphs.html"><a href="first-graphs.html"><i class="fa fa-check"></i><b>4</b> First Graphs</a><ul>
+<li class="chapter" data-level="4.1" data-path="first-graphs.html"><a href="first-graphs.html#les-miserable-dataset"><i class="fa fa-check"></i><b>4.1</b> Les Miserable Dataset</a></li>
+<li class="chapter" data-level="4.2" data-path="first-graphs.html"><a href="first-graphs.html#stop-light"><i class="fa fa-check"></i><b>4.2</b> Stop light</a></li>
+<li class="chapter" data-level="4.3" data-path="first-graphs.html"><a href="first-graphs.html#les-miserabe"><i class="fa fa-check"></i><b>4.3</b> Les Miserabe</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="irs.html"><a href="irs.html"><i class="fa fa-check"></i><b>4</b> Case Study – SOI Tax Stats</a><ul>
-<li class="chapter" data-level="4.1" data-path="irs.html"><a href="irs.html#county-to-county-outflow-data"><i class="fa fa-check"></i><b>4.1</b> County-to-county Outflow data</a></li>
-<li class="chapter" data-level="4.2" data-path="irs.html"><a href="irs.html#read-data-1"><i class="fa fa-check"></i><b>4.2</b> Read Data</a></li>
-<li class="chapter" data-level="4.3" data-path="irs.html"><a href="irs.html#first-plot"><i class="fa fa-check"></i><b>4.3</b> First Plot</a></li>
-<li class="chapter" data-level="4.4" data-path="irs.html"><a href="irs.html#open-the-space"><i class="fa fa-check"></i><b>4.4</b> Open the Space</a></li>
-<li class="chapter" data-level="4.5" data-path="irs.html"><a href="irs.html#set-variable-for-vertex-size"><i class="fa fa-check"></i><b>4.5</b> Set Variable for Vertex Size</a></li>
-<li class="chapter" data-level="4.6" data-path="irs.html"><a href="irs.html#set-vertex-color"><i class="fa fa-check"></i><b>4.6</b> Set Vertex Color</a></li>
-<li class="chapter" data-level="4.7" data-path="irs.html"><a href="irs.html#layout-of-nodes-1"><i class="fa fa-check"></i><b>4.7</b> Layout of nodes</a></li>
+<li class="chapter" data-level="5" data-path="pruning-and-grouping.html"><a href="pruning-and-grouping.html"><i class="fa fa-check"></i><b>5</b> Pruning and Grouping</a><ul>
+<li class="chapter" data-level="5.1" data-path="pruning-and-grouping.html"><a href="pruning-and-grouping.html#pruning"><i class="fa fa-check"></i><b>5.1</b> Pruning</a></li>
+<li class="chapter" data-level="5.2" data-path="pruning-and-grouping.html"><a href="pruning-and-grouping.html#grouping"><i class="fa fa-check"></i><b>5.2</b> Grouping</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="airlines.html"><a href="airlines.html"><i class="fa fa-check"></i><b>5</b> Case Study – Airlines</a></li>
-<li class="chapter" data-level="6" data-path="riband.html"><a href="riband.html"><i class="fa fa-check"></i><b>6</b> Case Study – Blue Riband</a><ul>
-<li class="chapter" data-level="6.1" data-path="riband.html"><a href="riband.html#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
-<li class="chapter" data-level="6.2" data-path="riband.html"><a href="riband.html#igraph-1"><i class="fa fa-check"></i><b>6.2</b> Igraph</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="riband.html"><a href="riband.html#layout-with-kamada-kawai"><i class="fa fa-check"></i><b>6.2.1</b> Layout with Kamada-Kawai</a></li>
-<li class="chapter" data-level="6.2.2" data-path="riband.html"><a href="riband.html#layout-with-fruchterman-reingold"><i class="fa fa-check"></i><b>6.2.2</b> Layout with Fruchterman-Reingold</a></li>
+<li class="part"><span><b>II Other Packages</b></span></li>
+<li class="chapter" data-level="6" data-path="sigma.html"><a href="sigma.html"><i class="fa fa-check"></i><b>6</b> Sigma JS</a><ul>
+<li class="chapter" data-level="6.1" data-path="sigma.html"><a href="sigma.html#stop-light-1"><i class="fa fa-check"></i><b>6.1</b> Stop light</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="riband.html"><a href="riband.html#geosphere"><i class="fa fa-check"></i><b>6.3</b> Geosphere</a></li>
-<li class="chapter" data-level="6.4" data-path="riband.html"><a href="riband.html#networkd3-package"><i class="fa fa-check"></i><b>6.4</b> NetworkD3 Package</a></li>
+<li class="part"><span><b>III Case Studies</b></span></li>
+<li class="chapter" data-level="7" data-path="starwars.html"><a href="starwars.html"><i class="fa fa-check"></i><b>7</b> Case Study – Star Wars</a><ul>
+<li class="chapter" data-level="7.1" data-path="starwars.html"><a href="starwars.html#read-data"><i class="fa fa-check"></i><b>7.1</b> Read Data</a></li>
+<li class="chapter" data-level="7.2" data-path="starwars.html"><a href="starwars.html#graph-object-error"><i class="fa fa-check"></i><b>7.2</b> Graph object error</a></li>
+<li class="chapter" data-level="7.3" data-path="starwars.html"><a href="starwars.html#create-attributes"><i class="fa fa-check"></i><b>7.3</b> Create attributes</a></li>
+<li class="chapter" data-level="7.4" data-path="starwars.html"><a href="starwars.html#final-plot"><i class="fa fa-check"></i><b>7.4</b> Final plot</a></li>
+<li class="chapter" data-level="7.5" data-path="starwars.html"><a href="starwars.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>7</b> Glossary</a></li>
+<li class="chapter" data-level="8" data-path="irs.html"><a href="irs.html"><i class="fa fa-check"></i><b>8</b> Case Study – SOI Tax Stats</a><ul>
+<li class="chapter" data-level="8.1" data-path="irs.html"><a href="irs.html#county-to-county-outflow-data"><i class="fa fa-check"></i><b>8.1</b> County-to-county Outflow data</a></li>
+<li class="chapter" data-level="8.2" data-path="irs.html"><a href="irs.html#read-data-1"><i class="fa fa-check"></i><b>8.2</b> Read Data</a></li>
+<li class="chapter" data-level="8.3" data-path="irs.html"><a href="irs.html#first-plot"><i class="fa fa-check"></i><b>8.3</b> First Plot</a></li>
+<li class="chapter" data-level="8.4" data-path="irs.html"><a href="irs.html#open-the-space"><i class="fa fa-check"></i><b>8.4</b> Open the Space</a></li>
+<li class="chapter" data-level="8.5" data-path="irs.html"><a href="irs.html#set-variable-for-vertex-size"><i class="fa fa-check"></i><b>8.5</b> Set Variable for Vertex Size</a></li>
+<li class="chapter" data-level="8.6" data-path="irs.html"><a href="irs.html#set-vertex-color"><i class="fa fa-check"></i><b>8.6</b> Set Vertex Color</a></li>
+<li class="chapter" data-level="8.7" data-path="irs.html"><a href="irs.html#layout-of-nodes-1"><i class="fa fa-check"></i><b>8.7</b> Layout of nodes</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="airlines.html"><a href="airlines.html"><i class="fa fa-check"></i><b>9</b> Case Study – Airlines</a></li>
+<li class="chapter" data-level="10" data-path="riband.html"><a href="riband.html"><i class="fa fa-check"></i><b>10</b> Case Study – Blue Riband</a><ul>
+<li class="chapter" data-level="10.1" data-path="riband.html"><a href="riband.html#introduction"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="riband.html"><a href="riband.html#igraph-1"><i class="fa fa-check"></i><b>10.2</b> Igraph</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="riband.html"><a href="riband.html#layout-with-kamada-kawai"><i class="fa fa-check"></i><b>10.2.1</b> Layout with Kamada-Kawai</a></li>
+<li class="chapter" data-level="10.2.2" data-path="riband.html"><a href="riband.html#layout-with-fruchterman-reingold"><i class="fa fa-check"></i><b>10.2.2</b> Layout with Fruchterman-Reingold</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="riband.html"><a href="riband.html#geosphere"><i class="fa fa-check"></i><b>10.3</b> Geosphere</a></li>
+<li class="chapter" data-level="10.4" data-path="riband.html"><a href="riband.html#networkd3-package"><i class="fa fa-check"></i><b>10.4</b> NetworkD3 Package</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>11</b> Glossary</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="igraphdata-plots.html"><a href="igraphdata-plots.html"><i class="fa fa-check"></i><b>A</b> <code>igraphdata</code> Plots</a></li>
 <li class="chapter" data-level="B" data-path="top-10-network-packages-in-r.html"><a href="top-10-network-packages-in-r.html"><i class="fa fa-check"></i><b>B</b> Top 10 Network Packages in R</a></li>
@@ -233,70 +261,100 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="irs" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Case Study – SOI Tax Stats</h1>
+<h1><span class="header-section-number">Chapter 8</span> Case Study – SOI Tax Stats</h1>
 <p>The IRS provides information on migration from IRS tax forms. Its <a href="https://www.irs.gov/pub/irs-soi/1718inpublicmigdoc.pdf">Migration Data Users guide</a> “provides a detailed description of the State-to-State, County-to-County, and Gross Migration files produced by the Internal Revenue Service (IRS) Statistics of Income (SOI) Division. IRS Migration data for the United States are based on year-to-year address changes reported on individual income tax returns filed with the IRS. They present migration patterns by State or by county and are available for inflows—the number of new residents who moved to a State or county and where they migrated from, and outflows—the number of residents leaving a State or county and where they went. The data also include tabulations on the number of non-migrant returns within a State or county.” The latest year available was for 2017-2018.</p>
 <div id="county-to-county-outflow-data" class="section level2">
-<h2><span class="header-section-number">4.1</span> County-to-county Outflow data</h2>
+<h2><span class="header-section-number">8.1</span> County-to-county Outflow data</h2>
 <p>“The County-to-County outflow migration files represent the migration flows from the origin state and county, in year one, to the destination state and county, in year two. There are 51 files for each state plus the District of Columbia. Included in the list of county flows are the number of returns that migrated to a foreign location [4]. The migration flows include the following county equivalents (Parishes in Louisiana, Boroughs, Census Areas, and municipalities in Alaska, independent cities, such as Baltimore, Maryland, and the District of Columbia).”</p>
 </div>
 <div id="read-data-1" class="section level2">
-<h2><span class="header-section-number">4.2</span> Read Data</h2>
+<h2><span class="header-section-number">8.2</span> Read Data</h2>
 <p>The data was prepared prior to import in the book here. The data represent return filers whose address changed from Miami-Dade county in year one to some other county in year 2. Additionally, only counties that received greater than 100 new residents from Miami were included.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># import</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">edges &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;./data/irs/miami-out-migration-edges.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">nodes &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;./data/irs/miami-out-migration-nodes.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># create network</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">g1 &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(<span class="dt">d =</span> edges,</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">                                   <span class="dt">directed =</span> T,</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">                                   <span class="dt">vertices =</span> nodes</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="co"># import</span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">edges &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;./data/irs/miami-out-migration-edges.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">nodes &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;./data/irs/miami-out-migration-nodes.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="co"># create network</span></a>
+<a class="sourceLine" id="cb32-5" data-line-number="5">g1 &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(<span class="dt">d =</span> edges,</a>
+<a class="sourceLine" id="cb32-6" data-line-number="6">                                   <span class="dt">directed =</span> T,</a>
+<a class="sourceLine" id="cb32-7" data-line-number="7">                                   <span class="dt">vertices =</span> nodes</a>
+<a class="sourceLine" id="cb32-8" data-line-number="8">)</a></code></pre></div>
 </div>
 <div id="first-plot" class="section level2">
-<h2><span class="header-section-number">4.3</span> First Plot</h2>
+<h2><span class="header-section-number">8.3</span> First Plot</h2>
 <p>It’s usually a good idea to see if the data will plot first so that any residual and obvious problems can be addressed. Here, a graph object was successfully created and plotted with <code>plot(g1)</code>.</p>
 <div class="figure" style="text-align: center"><span id="fig:irs-first-plot"></span>
 <img src="book_network_analysis_in_R_files/figure-html/irs-first-plot-1.png" alt="A plot using igraph defaults." width="672" />
 <p class="caption">
-Figure 4.1: A plot using igraph defaults.
+Figure 8.1: A plot using igraph defaults.
 </p>
 </div>
 </div>
 <div id="open-the-space" class="section level2">
-<h2><span class="header-section-number">4.4</span> Open the Space</h2>
+<h2><span class="header-section-number">8.4</span> Open the Space</h2>
 <p>The plot above is unreadable when rendered with <code>igraph</code> defaults, but shows the importance of formatting. It also shows the difficulty of trying to make sense of the data when it is jumbled. The next step is to simplify the plot so that the formatting process can begin. Three suggestions are to omit labels, reduce vertex size and minimize arrow size.</p>
 <div class="figure" style="text-align: center"><span id="fig:irs-open-space"></span>
 <img src="book_network_analysis_in_R_files/figure-html/irs-open-space-1.png" alt="Formatting arguments to open graphing space." width="672" />
 <p class="caption">
-Figure 4.2: Formatting arguments to open graphing space.
+Figure 8.2: Formatting arguments to open graphing space.
 </p>
 </div>
 </div>
 <div id="set-variable-for-vertex-size" class="section level2">
-<h2><span class="header-section-number">4.5</span> Set Variable for Vertex Size</h2>
+<h2><span class="header-section-number">8.5</span> Set Variable for Vertex Size</h2>
 <p>Vertex size is a graph attribute that is often scaled to a variable. Here, the size is scaled to the number of returns or persons who moved from Maimi-Dade County. The <code>node$returns</code> variable was cut into quintiles of equal size and assigned to a new column as <code>quintile</code>. Since the <code>nodes</code> dataframe was changed, it must be converted again into a new graph object.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">#create variable for vertex.size -- cut number returns into 5</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">nodes<span class="op">$</span>quintile &lt;-<span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">cut_number</span>(nodes<span class="op">$</span>returns, <span class="dt">n =</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">levels</span>(nodes<span class="op">$</span>quintile) &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">nodes<span class="op">$</span>quintile &lt;-<span class="st"> </span><span class="kw">as.character</span>(nodes<span class="op">$</span>quintile)</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">nodes<span class="op">$</span>quintile &lt;-<span class="st"> </span><span class="kw">as.integer</span>(nodes<span class="op">$</span>quintile)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co">#create variable for vertex.size -- cut number returns into 5</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">nodes<span class="op">$</span>quintile &lt;-<span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">cut_number</span>(nodes<span class="op">$</span>returns, <span class="dt">n =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="kw">levels</span>(nodes<span class="op">$</span>quintile) &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">nodes<span class="op">$</span>quintile &lt;-<span class="st"> </span><span class="kw">as.character</span>(nodes<span class="op">$</span>quintile)</a>
+<a class="sourceLine" id="cb33-5" data-line-number="5">nodes<span class="op">$</span>quintile &lt;-<span class="st"> </span><span class="kw">as.integer</span>(nodes<span class="op">$</span>quintile)</a></code></pre></div>
 </div>
 <div id="set-vertex-color" class="section level2">
-<h2><span class="header-section-number">4.6</span> Set Vertex Color</h2>
+<h2><span class="header-section-number">8.6</span> Set Vertex Color</h2>
 <p>The color of the node is often a prominent attribute that can contribute to the understanding of the graph. Five colors were assigned to each of the quintiles of the <code>returns</code> from the <code>vidiris package</code>. Thus, nodes that are large in size realtive to the other nodes and colored yellow are featured prominently in the graph. These are the counties that received the highest numbers of out-migration from Miami-Dade.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">#create node color palette and merge w/ node df</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">my.colors &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">quintile =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">                    <span class="dt">colors =</span> <span class="kw">viridis</span>(<span class="dv">5</span>, <span class="dt">option =</span> <span class="st">&quot;D&quot;</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">)</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">nodes &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(nodes, my.colors, <span class="dt">by =</span> <span class="st">&quot;quintile&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co">#create node color palette and merge w/ node df</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">my.colors &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">quintile =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">                    <span class="dt">colors =</span> <span class="kw">viridis</span>(<span class="dv">5</span>, <span class="dt">option =</span> <span class="st">&quot;D&quot;</span>)</a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">)</a>
+<a class="sourceLine" id="cb34-5" data-line-number="5">nodes &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(nodes, my.colors, <span class="dt">by =</span> <span class="st">&quot;quintile&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:irs-plot-node-color-size"></span>
 <img src="book_network_analysis_in_R_files/figure-html/irs-plot-node-color-size-1.png" alt="Node attributes set for size and color." width="672" />
 <p class="caption">
-Figure 4.3: Node attributes set for size and color.
+Figure 8.3: Node attributes set for size and color.
 </p>
 </div>
 </div>
 <div id="layout-of-nodes-1" class="section level2">
-<h2><span class="header-section-number">4.7</span> Layout of nodes</h2>
+<h2><span class="header-section-number">8.7</span> Layout of nodes</h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">g4 &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(<span class="dt">d =</span> edges,</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">                                          <span class="dt">directed =</span> F,</a>
+<a class="sourceLine" id="cb35-3" data-line-number="3">                                          <span class="dt">vertices =</span> nodes</a>
+<a class="sourceLine" id="cb35-4" data-line-number="4">)</a>
+<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="kw">plot</span>(g4,</a>
+<a class="sourceLine" id="cb35-6" data-line-number="6">        <span class="dt">vertex.label =</span> <span class="ot">NA</span>,</a>
+<a class="sourceLine" id="cb35-7" data-line-number="7">        <span class="dt">vertex.size =</span> <span class="kw">V</span>(g3)<span class="op">$</span>quintile <span class="op">^</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb35-8" data-line-number="8">        <span class="dt">vertex.color =</span> <span class="kw">V</span>(g3)<span class="op">$</span>colors,</a>
+<a class="sourceLine" id="cb35-9" data-line-number="9">        <span class="dt">edge.arrow.size =</span> <span class="fl">.1</span>,</a>
+<a class="sourceLine" id="cb35-10" data-line-number="10">        <span class="dt">main =</span> <span class="st">&quot;vertex.color&quot;</span></a>
+<a class="sourceLine" id="cb35-11" data-line-number="11">     )</a></code></pre></div>
+<p><img src="book_network_analysis_in_R_files/figure-html/irs-group-nodes-1.png" width="672" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="co"># Community detection based on label propagation:</span></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">clp &lt;-<span class="st"> </span><span class="kw">cluster_label_prop</span>(g4) </a>
+<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="kw">class</span>(clp)</a></code></pre></div>
+<pre><code>## [1] &quot;communities&quot;</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="co"># Community detection returns an object of class &quot;communities&quot; # which igraph knows how to plot:</span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="kw">plot</span>(clp, </a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">        g4,</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">        <span class="dt">vertex.label =</span> <span class="ot">NA</span>,</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">        <span class="dt">vertex.size =</span> <span class="kw">V</span>(g3)<span class="op">$</span>quintile <span class="op">^</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6">        <span class="dt">vertex.color =</span> <span class="kw">V</span>(g3)<span class="op">$</span>colors,</a>
+<a class="sourceLine" id="cb38-7" data-line-number="7">        <span class="dt">edge.arrow.size =</span> <span class="fl">.1</span>,</a>
+<a class="sourceLine" id="cb38-8" data-line-number="8">        <span class="dt">main =</span> <span class="st">&quot;vertex.color&quot;</span></a>
+<a class="sourceLine" id="cb38-9" data-line-number="9">     )</a>
+<a class="sourceLine" id="cb38-10" data-line-number="10"><span class="co"># We can also plot the communities without relying on their built-in plot:</span></a>
+<a class="sourceLine" id="cb38-11" data-line-number="11"><span class="kw">V</span>(g4)<span class="op">$</span>community &lt;-<span class="st"> </span>clp<span class="op">$</span>membership</a></code></pre></div>
+<p><img src="book_network_analysis_in_R_files/figure-html/irs-group-nodes-2.png" width="672" /></p>
 
 </div>
 </div>
@@ -305,7 +363,7 @@ Figure 4.3: Node attributes set for size and color.
           </div>
         </div>
       </div>
-<a href="first-graphs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="starwars.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="airlines.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -356,6 +414,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

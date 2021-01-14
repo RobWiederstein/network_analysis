@@ -26,6 +26,11 @@ g1 <- igraph::graph_from_data_frame(d = edges,
                                    directed = T,
                                    vertices = nodes
 )
+#remove self-loops, people that moved w/in county
+g1 <- simplify(g1, 
+               remove.multiple = F,
+               remove.loops = T
+               )
 ```
 
 ## First Plot

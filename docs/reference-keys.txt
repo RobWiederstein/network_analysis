@@ -67,6 +67,9 @@ first-graphs
 les-miserable-dataset
 stop-light
 les-miserabe
+pruning-and-grouping
+pruning
+grouping
 sigma
 stop-light-1
 starwars
@@ -94,3 +97,5 @@ networkd3-package
 glossary
 igraphdata-plots
 top-10-network-packages-in-r
+filter-and-group
+understanding-igraph-summary

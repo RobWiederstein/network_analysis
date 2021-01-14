@@ -16,7 +16,9 @@ Great resource [here](http://edshare.soton.ac.uk/922/2/index.html#Specifying_set
 
 **Indegree** is the number of received ties.
 
-**Loops** are edges the starting point and the end point is the same node. 
+**Loops** are edges the starting point and the end point is the same node.
+
+**Multigraph** is one where there are multiple edges connecting the same two nodes.
 
 **Neighborhood** of a vertex v in a graph G is the set of vertices adjacent to v. The neighborhood is denoted N(v). The neighborhood does not include v itself. 
 
@@ -31,3 +33,5 @@ Great resource [here](http://edshare.soton.ac.uk/922/2/index.html#Specifying_set
 **Sociogram** is a graph of a network.
 
 **Trival graph** a graph with only one vertex and no edges.
+
+**Weighted graph or edge-weighted graph** is where the edge list contains a variable assigning the strength or "weight" of the connection.
