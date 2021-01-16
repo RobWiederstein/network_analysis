@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-01-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -269,7 +269,7 @@ Figure 1.3: A network consisting of nodes, N, and directed edges E.
 <p>The “karate” dataset is “a social network between members of a university karate club, led by president John A. and karate instructor Mr. Hi, which are pseudonyms. Sending the”karate&quot; object to the console yields the output below:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;./imgs/intro-karate-summary.png&quot;</span>)</a></code></pre></div>
 <p><img src="imgs/intro-karate-summary.png" width="1057" /></p>
-<p>The first line identifies the object as an <code>igraph</code> graph and then there is 4 character letter-based code. The first character is assigned either a “D” or a “U” which indicates whether the graph is directed or undirected. The second letter is either a “N” or a dash depending on whether the graph is “N”amed or not. The third letter is either a “W” or a “-” depending on if it is weighted. And finally, the fourth character can be a “B” for bipartite or a “-”.</p>
+<p>The first line identifies the object as an <code>igraph</code> graph and then there is 4 character letter-based code. The first character is assigned either a “D” or a “U” which indicates whether the graph is directed or undirected. The second letter is either an “N” or a dash (“-”) depending on whether the graph is “N”amed or not. The third letter is either a “W” or a dash depending on if it is weighted. And finally, the fourth character can be a “B” for bipartite or a dash.</p>
 <p>The two numbers indicate the number of vertices and edges. Here, 34 nodes and 78 vertices comprise the “karate” club. Immediately adjacent to it is the name of the data set, “Zachary’s Karate Club”. And thereafter is the list of the node and vertex attributes. Lastly, the edges of the graph are listed.</p>
 <p>The actual data can be seen by querying with <code>E(graphObject)</code> and <code>V(graphObject)</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">summary</span>(karate)</a></code></pre></div>
@@ -486,7 +486,7 @@ Figure 1.5: Network plot from sparse matrix.
 </div>
 <div id="incidence-matrix" class="section level3">
 <h3><span class="header-section-number">1.3.3</span> Incidence matrix</h3>
-<p>The rows and colunms of an incidence matrix do not have to be equal. Its shape can be rectangular in addition to square. <code>igraph</code> can read an incidence matrix using the <code>graph_from_incidence_matrix()</code>.</p>
+<p>The rows and columns of an incidence matrix do not have to be equal. Its shape can be rectangular in addition to square. <code>igraph</code> can read an incidence matrix using the <code>graph_from_incidence_matrix()</code>.</p>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:example-incidence-matrix">Table 1.2: </span>Example incidency matrix.
@@ -644,7 +644,7 @@ Figure 1.6: Network plot from incidency matrix.
 </div>
 <div id="edge-list" class="section level3">
 <h3><span class="header-section-number">1.3.4</span> Edge list</h3>
-<p>An edge list has 2 columns. Each observation represents a connection between two things. The two column names are alternatively named (1) an origin and a destination or (2)a source and target, depending on the package used. The column names are often the key to a successful importation of the data. <code>igraph</code> imports an edge list <code>graph_from_edgelist()</code> function.</p>
+<p>An edge list has 2 columns. Each observation represents a connection between two things. The two column names are alternatively named (1) an origin and a destination or (2) a source and target, depending on the package used. The correct column names are often the key to a successful importation of the data in many applications. <code>igraph</code> imports an edge list <code>graph_from_edgelist()</code> function.</p>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:table-edges-list">Table 1.3: </span>Example Edgelist.
