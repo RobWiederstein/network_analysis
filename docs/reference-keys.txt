@@ -99,3 +99,5 @@ igraphdata-plots
 top-10-network-packages-in-r
 filter-and-group
 understanding-igraph-summary
+creating-graphs
+manipulating-graphs

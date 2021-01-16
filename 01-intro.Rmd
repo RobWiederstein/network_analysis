@@ -50,9 +50,13 @@ The "karate" dataset is "a social network between members of a university karate
 knitr::include_graphics("./imgs/intro-karate-summary.png")
 ```
 
+Understanding the console output above is critical to the comprehension of the graph object.  Rote memorization will speed the use of `igraph` and graph production.  
+
 The first line identifies the object as an `igraph` graph and then there is 4 character letter-based code. The first character is assigned either a "D" or a "U" which indicates whether the graph is directed or undirected.  The second letter is either an "N" or a dash ("-") depending on whether the graph is "N"amed or not.  The third letter is either a "W" or a dash  depending on if it is weighted.  And finally, the fourth character can be a "B" for bipartite or a dash.
 
 The two numbers indicate the number of vertices and edges.  Here, 34 nodes and 78 vertices comprise the "karate" club. Immediately adjacent to it is the name of the data set, "Zachary's Karate Club". And thereafter is the list of the node and vertex attributes.  Lastly, the edges of the graph are listed.
+
+The parenthetical following the "+attr" tag can take on one of three values:  "g" for graph, "v" for vertices and "e" for edge.  The character following the forward slash within the parentheses can take on one of three values too and refers to data types within `R`: "n" for numeric, "c" for character, "l" for logical.
 
 The actual data can be seen by querying with `E(graphObject)` and `V(graphObject)`.
 ```{r intro-load-karate-data, include = F}
@@ -71,6 +75,16 @@ and
 ```{r intro-karate-vertex-data}
 V(karate)[1:5]
 ```
+## Creating Graphs
+
+There are many ways to create a graph using `igraph`.  In his book on `igraph`, author Csardi grouped a graph's creation into (1) predefined structures, i.e. `make_star()`, (2) conversion of graph structures, ie. `graph_from_literal()`, and (3) sample random graph models, i.e. `sample_gnp()`.  The code below lists possible ways to create a graph.  In illustrating `igraph` functions, many of the graphs creation methods wil be used in subsequent chapters.
+
+```{r intro-graph-creation-list, eval=F}
+grep("^make|^graph_|^sample_", lsf.str("package:igraph"), value = T)
+```
+
+## Manipulating Graphs
+
 
 ## Input formats
 
