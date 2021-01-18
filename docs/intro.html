@@ -269,29 +269,24 @@ Figure 1.3: A network consisting of nodes, N, and directed edges E.
 <div id="understanding-igraph-summary" class="section level2">
 <h2><span class="header-section-number">1.2</span> Understanding <code>igraph</code> Summary</h2>
 <p>The “karate” dataset is “a social network between members of a university karate club, led by president John A. and karate instructor Mr. Hi, which are pseudonyms. Sending the”karate&quot; object to the console yields the output below:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;./imgs/intro-karate-summary.png&quot;</span>)</a></code></pre></div>
 <p><img src="imgs/intro-karate-summary.png" width="1057" /></p>
 <p>Understanding the console output above is critical to the comprehension of the graph object. Rote memorization will speed the use of <code>igraph</code> and graph production.</p>
 <p>The first line identifies the object as an <code>igraph</code> graph and then there is 4 character letter-based code. The first character is assigned either a “D” or a “U” which indicates whether the graph is directed or undirected. The second letter is either an “N” or a dash (“-”) depending on whether the graph is “N”amed or not. The third letter is either a “W” or a dash depending on if it is weighted. And finally, the fourth character can be a “B” for bipartite or a dash.</p>
 <p>The two numbers indicate the number of vertices and edges. Here, 34 nodes and 78 vertices comprise the “karate” club. Immediately adjacent to it is the name of the data set, “Zachary’s Karate Club”. And thereafter is the list of the node and vertex attributes. Lastly, the edges of the graph are listed.</p>
 <p>The parenthetical following the “+attr” tag can take on one of three values: “g” for graph, “v” for vertices and “e” for edge. The character following the forward slash within the parentheses can take on one of three values too and refers to data types within <code>R</code>: “n” for numeric, “c” for character, “l” for logical.</p>
 <p>The actual data can be seen by querying with <code>E(graphObject)</code> and <code>V(graphObject)</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">summary</span>(karate)</a></code></pre></div>
-<pre><code>## IGRAPH 4b458a1 UNW- 34 78 -- Zachary&#39;s karate club network
-## + attr: name (g/c), Citation (g/c), Author (g/c), Faction (v/n), name
-## | (v/c), label (v/c), color (v/n), weight (e/n)</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">E</span>(karate)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">E</span>(karate)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>## + 5/78 edges from 4b458a1 (vertex names):
 ## [1] Mr Hi--Actor 2 Mr Hi--Actor 3 Mr Hi--Actor 4 Mr Hi--Actor 5 Mr Hi--Actor 6</code></pre>
 <p>and</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">V</span>(karate)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">V</span>(karate)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>## + 5/34 vertices, named, from 4b458a1:
 ## [1] Mr Hi   Actor 2 Actor 3 Actor 4 Actor 5</code></pre>
 </div>
 <div id="creating-graphs" class="section level2">
 <h2><span class="header-section-number">1.3</span> Creating Graphs</h2>
-<p>There are many ways to create a graph using <code>igraph</code>. In his book on <code>igraph</code>, author Csardi grouped a graph’s creation into (1) predefined structures, i.e. <code>make_star()</code>, (2) conversion of graph structures, ie. <code>graph_from_literal()</code>, and (3) sample random graph models, i.e. <code>sample_gnp()</code>. The code below lists possible ways to create a graph.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">grep</span>(<span class="st">&quot;^make|^graph_|^sample_&quot;</span>, <span class="kw">lsf.str</span>(<span class="st">&quot;package:igraph&quot;</span>), <span class="dt">value =</span> T)</a></code></pre></div>
+<p>There are many ways to create a graph using <code>igraph</code>. In his book on <code>igraph</code>, author Csardi grouped a graph’s creation into (1) predefined structures, i.e. <code>make_star()</code>, (2) conversion of graph structures, ie. <code>graph_from_literal()</code>, (3) sample random graph models, i.e. <code>sample_gnp()</code> and (4) <code>read_graph()</code>. The code below lists possible ways to create a graph. In illustrating <code>igraph</code> functions, many of the graphs creation methods wil be used in subsequent chapters.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">grep</span>(<span class="st">&quot;^make|^graph_|^sample_&quot;</span>, <span class="kw">lsf.str</span>(<span class="st">&quot;package:igraph&quot;</span>), <span class="dt">value =</span> T)</a></code></pre></div>
 </div>
 <div id="manipulating-graphs" class="section level2">
 <h2><span class="header-section-number">1.4</span> Manipulating Graphs</h2>

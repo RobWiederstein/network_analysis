@@ -1,143 +1,143 @@
-"id","state","countyname","returns","label"
+"id","state","countyname","returns","label","group"
 "04013","AZ","Maricopa ",260,"Maricopa , AZ
-260"
+260",0
 "06001","CA","Alameda ",102,"Alameda , CA
-102"
+102",0
 "06037","CA","Los Angeles ",715,"Los Angeles , CA
-715"
+715",0
 "06059","CA","Orange ",119,"Orange , CA
-119"
+119",0
 "06073","CA","San Diego ",248,"San Diego , CA
-248"
+248",0
 "06075","CA","San Francisco ",141,"San Francisco , CA
-141"
+141",0
 "06085","CA","Santa Clara ",114,"Santa Clara , CA
-114"
+114",0
 "08031","CO","Denver ",179,"Denver , CO
-179"
+179",0
 "08041","CO","El Paso ",133,"El Paso , CO
-133"
+133",0
 "11001","DC","District of Columbia",227,"District of Columbia, DC
-227"
+227",0
 "12001","FL","Alachua ",340,"Alachua , FL
-340"
+340",1
 "12009","FL","Brevard ",361,"Brevard , FL
-361"
+361",1
 "12011","FL","Broward ",16798,"Broward , FL
-16798"
+16798",1
 "12015","FL","Charlotte ",109,"Charlotte , FL
-109"
+109",1
 "12021","FL","Collier ",565,"Collier , FL
-565"
+565",1
 "12031","FL","Duval ",639,"Duval , FL
-639"
+639",1
 "12051","FL","Hendry ",105,"Hendry , FL
-105"
+105",1
 "12055","FL","Highlands ",163,"Highlands , FL
-163"
+163",1
 "12057","FL","Hillsborough ",1576,"Hillsborough , FL
-1576"
+1576",1
 "12061","FL","Indian River ",150,"Indian River , FL
-150"
+150",1
 "12069","FL","Lake ",258,"Lake , FL
-258"
+258",1
 "12071","FL","Lee ",1372,"Lee , FL
-1372"
+1372",1
 "12073","FL","Leon ",230,"Leon , FL
-230"
+230",1
 "12081","FL","Manatee ",215,"Manatee , FL
-215"
+215",1
 "12083","FL","Marion ",272,"Marion , FL
-272"
+272",1
 "12085","FL","Martin ",111,"Martin , FL
-111"
+111",1
 "12086","FL","Miami-Dade  ",1030119,"Miami-Dade  , FL
-1030119"
+1030119",1
 "12087","FL","Monroe ",461,"Monroe , FL
-461"
+461",1
 "12095","FL","Orange ",1812,"Orange , FL
-1812"
+1812",1
 "12097","FL","Osceola ",520,"Osceola , FL
-520"
+520",1
 "12099","FL","Palm Beach ",2433,"Palm Beach , FL
-2433"
+2433",1
 "12101","FL","Pasco ",229,"Pasco , FL
-229"
+229",1
 "12103","FL","Pinellas ",396,"Pinellas , FL
-396"
+396",1
 "12105","FL","Polk ",504,"Polk , FL
-504"
+504",1
 "12109","FL","St. Johns ",107,"St. Johns , FL
-107"
+107",1
 "12111","FL","St. Lucie ",491,"St. Lucie , FL
-491"
+491",1
 "12115","FL","Sarasota ",219,"Sarasota , FL
-219"
+219",1
 "12117","FL","Seminole ",376,"Seminole , FL
-376"
+376",1
 "12127","FL","Volusia ",282,"Volusia , FL
-282"
+282",1
 "13063","GA","Clayton ",141,"Clayton , GA
-141"
+141",0
 "13067","GA","Cobb ",208,"Cobb , GA
-208"
+208",0
 "13089","GA","DeKalb ",245,"DeKalb , GA
-245"
+245",0
 "13121","GA","Fulton ",377,"Fulton , GA
-377"
+377",0
 "13135","GA","Gwinnett ",302,"Gwinnett , GA
-302"
+302",0
 "17031","IL","Cook ",412,"Cook , IL
-412"
+412",0
 "21111","KY","Jefferson ",314,"Jefferson , KY
-314"
+314",0
 "24031","MD","Montgomery ",156,"Montgomery , MD
-156"
+156",0
 "25017","MA","Middlesex ",136,"Middlesex , MA
-136"
+136",0
 "25025","MA","Suffolk ",166,"Suffolk , MA
-166"
+166",0
 "32003","NV","Clark ",466,"Clark , NV
-466"
+466",0
 "34013","NJ","Essex ",105,"Essex , NJ
-105"
+105",0
 "34017","NJ","Hudson ",192,"Hudson , NJ
-192"
+192",0
 "36005","NY","Bronx ",171,"Bronx , NY
-171"
+171",0
 "36047","NY","Kings ",453,"Kings , NY
-453"
+453",0
 "36059","NY","Nassau ",110,"Nassau , NY
-110"
+110",0
 "36061","NY","New York ",654,"New York , NY
-654"
+654",0
 "36081","NY","Queens ",319,"Queens , NY
-319"
+319",0
 "36103","NY","Suffolk ",102,"Suffolk , NY
-102"
+102",0
 "36119","NY","Westchester ",103,"Westchester , NY
-103"
+103",0
 "37119","NC","Mecklenburg ",299,"Mecklenburg , NC
-299"
+299",0
 "37183","NC","Wake ",226,"Wake , NC
-226"
+226",0
 "42101","PA","Philadelphia ",175,"Philadelphia , PA
-175"
+175",0
 "47037","TN","Davidson ",134,"Davidson , TN
-134"
+134",0
 "48029","TX","Bexar ",144,"Bexar , TX
-144"
+144",0
 "48113","TX","Dallas ",297,"Dallas , TX
-297"
+297",0
 "48135","TX","Ector ",127,"Ector , TX
-127"
+127",0
 "48201","TX","Harris ",893,"Harris , TX
-893"
+893",0
 "48439","TX","Tarrant ",185,"Tarrant , TX
-185"
+185",0
 "48453","TX","Travis ",294,"Travis , TX
-294"
+294",0
 "51059","VA","Fairfax ",176,"Fairfax , VA
-176"
+176",0
 "53033","WA","King ",184,"King , WA
-184"
+184",0

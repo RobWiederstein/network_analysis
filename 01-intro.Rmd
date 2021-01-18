@@ -46,7 +46,7 @@ plot(g1,
 
 The "karate" dataset is "a social network between members of a university karate club, led by president John A. and karate instructor Mr. Hi, which are pseudonyms. Sending the "karate" object to the console yields the output below:  
 
-```{r intro-karate-summary}
+```{r intro-karate-summary, echo=F}
 knitr::include_graphics("./imgs/intro-karate-summary.png")
 ```
 
@@ -63,11 +63,6 @@ The actual data can be seen by querying with `E(graphObject)` and `V(graphObject
 data(karate)
 ```
 
-```{r intro-karate-summary-data}
-summary(karate)
-```
-
-
 ```{r intro-karate-edge-data}
 E(karate)[1:5]
 ```
@@ -77,13 +72,36 @@ V(karate)[1:5]
 ```
 ## Creating Graphs
 
-There are many ways to create a graph using `igraph`.  In his book on `igraph`, author Csardi grouped a graph's creation into (1) predefined structures, i.e. `make_star()`, (2) conversion of graph structures, ie. `graph_from_literal()`, and (3) sample random graph models, i.e. `sample_gnp()`.  The code below lists possible ways to create a graph.  In illustrating `igraph` functions, many of the graphs creation methods wil be used in subsequent chapters.
+There are many ways to create a graph using `igraph`.  In his book on `igraph`, author Csardi grouped a graph's creation into (1) predefined structures, i.e. `make_star()`, (2) conversion of graph structures, ie. `graph_from_literal()`, (3) sample random graph models, i.e. `sample_gnp()` and (4) `read_graph()`.  The code below lists possible ways to create a graph.  In illustrating `igraph` functions, many of the graphs creation methods wil be used in subsequent chapters.
 
 ```{r intro-graph-creation-list, eval=F}
 grep("^make|^graph_|^sample_", lsf.str("package:igraph"), value = T)
 ```
 
 ## Manipulating Graphs
+
+```{r intro-manipulate-graphs}
+diamond <- make_graph("Diamond")
+plot(diamond)
+diamond
+diamond[]
+diamond$name
+V(diamond)
+E(diamond)
+V(diamond)$name <- LETTERS[1: vcount(diamond)]
+E(diamond)$weight <- 1:ecount(diamond)
+plot(diamond,
+     edge.width = E(diamond)$weight)
+diamond
+```
+
+```{r}
+g <- make_bipartite_graph( rep(0:1,length=10), c(1:10))
+print(g, v=TRUE)
+plot(g)
+V(g)
+E(g)
+```
 
 
 ## Input formats

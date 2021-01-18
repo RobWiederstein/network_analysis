@@ -4,9 +4,10 @@ Great resource [here](http://edshare.soton.ac.uk/922/2/index.html#Specifying_set
 
 **Attributes** are a characteristic of the node or edge that is often designated by color, size, or shape of the object. For example, a dashed line for an edge or a blue circle for a node.
 
-**Nodes** are also actors or vertices.  They are things like people, places, ideas that have some connection.  In mathmatical formulas, they often take the variable $N$.
 
 **Degree** the number of nodes adjacent to the node under evaluation or the number of lines incident to it.
+
+**Deterministic** is a algorithm that always produces the same layout for the same graph.
 
 **Diameter** is the maximum number of edges.
 
@@ -25,6 +26,8 @@ Great resource [here](http://edshare.soton.ac.uk/922/2/index.html#Specifying_set
 **Networks**
 
 **Network objects** is a class of objects in R designed specifically for network analysis.  They store an adjacency matrix or an edgelist as well as metadata. 
+
+**Nodes** are also actors or vertices.  They are things like people, places, ideas that have some connection.  In mathmatical formulas, they often take the variable $N$.
 
 **Outdegree** the number of sent ties.
 

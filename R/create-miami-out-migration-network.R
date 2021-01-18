@@ -34,6 +34,7 @@ nodes <- tibble(id = unique(c(edges$source, edges$target)))
 nodes.1 <- merge(nodes, edges[2:5], by.x = "id", by.y = "target", all.x = T)
 #nodes.2 <- dplyr::distinct(nodes.1)
 nodes.1$n1 <- as.integer(nodes.1$n1)
+
 nodes.2 <- 
         nodes.1 %>%
         group_by(id, state, countyname) %>%
@@ -41,8 +42,8 @@ nodes.2 <-
 nodes.2 <- dplyr::distinct(nodes.2)
 nodes.2$countyname <- gsub("[Cc]ity|[Cc]ounty|Parrish|Non-migrants", "", nodes.2$countyname)
 nodes.2$label <- paste0(nodes.2$countyname,", ", nodes.2$state, "\n", nodes.2$returns)
-#set miami to 0
-#nodes.2$returns[which(nodes.2$id == "12086")] <- 0
+nodes.2$group <- 0
+nodes.2$group[which(nodes.2$state == "FL")] <- 1
 
 #save file and sweep env
 file <- "./data/irs/miami-out-migration-nodes.csv"
@@ -57,6 +58,7 @@ g1 <- igraph::graph_from_data_frame(d = edges,
                                    directed = T,
                                    vertices = nodes
 )
+g1 <- simplify(g1, remove.multiple = F, remove.loops = T)
 #chart #1 - will it plot?
 plot.igraph(g1)
 #chart #2 - open the space
@@ -115,8 +117,7 @@ plot.igraph(g3,
 
 ## Layout Nodes
 #group instate vs. outstate migration
-nodes$instate <- 0
-nodes$instate[which(nodes$state == "FL")] <- 1
+
 #set initial edge weight
 g4 <- igraph::graph_from_data_frame(d = edges,
                                     directed = T,
