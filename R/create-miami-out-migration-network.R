@@ -104,7 +104,7 @@ my.colors <- tibble(quintile = 1:5,
 )
 nodes <- dplyr::left_join(nodes, my.colors)
 g3 <- igraph::graph_from_data_frame(d = edges,
-                                          directed = T,
+                                          directed = F,
                                           vertices = nodes
 )
 plot.igraph(g3,
@@ -115,50 +115,44 @@ plot.igraph(g3,
             main = "vertex.color"
 )
 
-## Layout Nodes
-#group instate vs. outstate migration
+# ## Layout Nodes
+# edge.weights <- function(community, network, weight.within = 100, weight.between = 1) {
+#         bridges <- crossing(communities = community, graph = network)
+#         weights <- ifelse(test = bridges, yes = weight.between, no = weight.within)
+#         return(weights) 
+# }
+# #detect the communities by multi-level optimization of modularity
+# #communityMiami <- cluster_louvain(g3)
+# communityMiami <- cluster_fast_greedy(g3)
+# #layout
+# miamiLayout <- layout_with_fr(g3)
+# #plot
+# plot(x = communityMiami, 
+#      y = g3, 
+#      edge.width = 1, 
+#      vertex.size = 10, 
+#      vertex.label = NA, 
+#      mark.groups = NULL, 
+#      layout = miamiLayout, 
+#      vertex.color = V(g3)$colors,
+#      main = "Communities in Miami"
+#      #edge.color = c("darkgrey","tomato2")[crossing(Communitykarate, karate) + 1]
+# )
+# #function w/ 
+# E(g3)$weight <- edge.weights(communityMiami, g3)
+# # I use the original layout as a base for the new one
+# miamiLayout <- layout_with_fr(g3, miamiLayout)
+# plot(x = communityMiami, 
+#      y = g3, 
+#      edge.width = 1, 
+#      vertex.size = 10, 
+#      mark.groups = NULL, 
+#      layout = miamiLayout, 
+#      vertex.label = NA, 
+#      col = V(g3)$colors,
+#      c("darkgrey","tomato2")[crossing(communityMiami, g3) + 1],
+#      main = "Communities in Zachary's karate club network (grouped)"
+#      )
 
-#set initial edge weight
-g4 <- igraph::graph_from_data_frame(d = edges,
-                                    directed = T,
-                                    vertices = nodes
-)
-#Grouped
-g_grouped <- g4
-E(g_grouped)$weight = 1
-plot(g_grouped,
-     vertex.label = V(g_grouped)$instate)
 
-for(i in unique(V(G)$)) {
-        GroupV = which(V(G)$Group1 == i)
-        G_Grouped = add_edges(G_Grouped, combn(GroupV, 2), attr=list(weight=5))
-}table(nodes$instate)
-add_edges(g4, combn(which(V(g4)$instate == 1), 2), attr = list(weight = 5))
 
-plot(g4)
-set.seed(1234)
-plot.igraph(g4,
-            vertex.size = V(g3)$quintile ^2,
-            vertex.color = V(g4)$colors,
-            edge.arrow.size = .1,
-            layout = layout_with_fr(g4),
-            main = "vertex.color",
-            vertex.label = V(g4)$state,
-            #vertex.cex = 25
-)
-
-library(qgraph)
-e <- get.edgelist(g)
-l <- qgraph.layout.fruchtermanreingold(e,vcount=vcount(g))
-plot(g,
-     vertex.label.cex = as.integer(vertex.attributes(g)$quintile) / 5,
-     vertex.size = as.integer(vertex.attributes(g)$quintile) ^ 1.75,
-     edge.arrow.size = .1,
-     layout = layout_nicely,
-     mark.groups = c(1L, 8L, 12L, 15L, 18L, 20L, 35L, 36L, 37L, 40L, 41L, 42L, 43L, 
-                     44L, 45L, 48L, 52L, 54L, 58L, 59L, 60L, 62L, 63L, 64L, 66L, 67L, 
-                     68L, 69L, 70L),
-     mark.col="#C5E5E7",
-     asp = 0,
-     main = "Out Migration"
-)

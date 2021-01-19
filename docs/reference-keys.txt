@@ -101,3 +101,5 @@ filter-and-group
 understanding-igraph-summary
 creating-graphs
 manipulating-graphs
+bridges-of-koenigsburg
+ukfaculty

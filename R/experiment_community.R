@@ -3,6 +3,7 @@ karate <- make_graph("Zachary")
 wc <- cluster_walktrap(karate)
 modularity(wc)
 membership(wc)
+plot(karate)
 plot(wc, karate)
 #cluster louvain
 g <- make_full_graph(5) %du% make_full_graph(5) %du% make_full_graph(5)
@@ -19,9 +20,11 @@ g <- add_edges(g, c(1,6, 1,11, 6, 11))
 fc <- cluster_fast_greedy(g)
 membership(fc)
 sizes(fc)
+plot(g)
 plot(fc, g)
 
-# The function does the same; just put your community object in the community slot, your graph in the network one. 
+# The function does the same; just put your community object in the 
+#community slot, your graph in the network one. 
 # I would left the weight.between = 1 and tune the weight.within value.
 edge.weights <- function(community, network, weight.within = 100, weight.between = 1) {
         bridges <- crossing(communities = community, graph = network)
@@ -60,9 +63,9 @@ plot(x = Communitykarate,
      edge.color = c("darkgrey","tomato2")[crossing(Communitykarate, karate) + 1]
 )
 #function w/ 
-E(karate)$weight <- edge.weights(Communitykarate, karate)
+E(g3)$weight <- edge.weights(communityMiami, g3)
 # I use the original layout as a base for the new one
-karateLayoutA <- layout_with_fr(karate, karateLayout)
+karateLayoutA <- layout_with_fr(g3, miamiLayout)
 # the graph with the nodes grouped
 plot(x = Communitykarate, y = karate, edge.width = 1, vertex.size = 10, 
      mark.groups = NULL, layout = karateLayoutA, vertex.label = NA, col = communityColors, 

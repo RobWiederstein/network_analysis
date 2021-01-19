@@ -8,17 +8,36 @@ sapply(x, library, character.only = T)
 
 ```
 
-```{r koenigsberg-matrix, echo=FALSE}
+## Bridges of Koenigsburg
+
+The city of Koenigsberg in Prussia (now Kaliningrad, Russia) was set on both sides of the Pregel River, and included two large islands which were connected to each other and the mainland by seven bridges. The problem was to find a walk through the city that would cross each bridge once and only once. The islands could not be reached by any route other than the bridges, and every bridge must have been crossed completely every time (one could not walk half way onto the bridge and then turn around and later cross the other half from the other side). Euler proved that the problem has no solution.
+
+
+```{r koenigsberg-plot, echo=FALSE}
 data("Koenigsberg")
-Koenigsberg[]
+par(mar = c(1, 1, 5, 1))
+plot(Koenigsberg,
+     vertex.label.dist = 4,
+     main = "The Seven Bridges of Koenigsberg"
+     )
 ```
 
-```{r koenigsberg-plot, echo=F}
 
-par(mar = c(5, 4, 4, 4))
-    plot(Koenigsberg,
-     asp = 0,
-     vertex.label.dist = 4,
-     main = "The Seven Bridges of Koenigsberg")
+## UKfaculty
+
+The personal friendship network of a faculty of a UK university, consisting of 81 vertices (individuals) and 817 directed and weighted connections. The school affiliation of each individual is stored as a vertex attribute. This dataset can serve as a testbed for community detection algorithms.
+
+
+```{r ukfaculty-intro}
+data("UKfaculty")
+V(UKfaculty)[1:5]
+E(UKfaculty)[1:5]
+par(mar = c(0, 0, 0, 0))
+plot(UKfaculty,
+     vertex.size = 1,
+     layout = layout_with_drl,
+     edge.arrow.width = .1,
+     asp = 0
+     )
 ```
 
