@@ -69,7 +69,37 @@ plot.igraph(g1,
 
 ## Layout of Nodes
 
-Nodes may be laid out in a variety of ways and many algorithms are available, depending on the data and the analyst's personal preference. "It is important to realize that the information in graph layouts is contained in the pattern of which nodes are connected to which others.  The locations . . . are chosen based on essentially aesthetic criteria." [@borgattiAnalyzingSocialNetworks2018] According to the igraph documentation, 21 available layouts are available and include:
+Nodes may be laid out in a variety of ways and many algorithms are available, depending on the data and the analyst's personal preference. "It is important to realize that the information in graph layouts is contained in the pattern of which nodes are connected to which others.  The locations . . . are chosen based on essentially aesthetic criteria." [@borgattiAnalyzingSocialNetworks2018]
+
+### Consistent Plotting
+
+Many of the `igraph` layouts are generated through an algorithm and the coordinates change each time it is plotted.  To keep the appearance the same, the `set.seed()` function must be set.
+
+```{r igraph-house-setseed, eval=F}
+set.seed(1234)
+house <- make_graph("house")
+plot.igraph(house)
+```
+
+A second method to retain consistency in plotting is to retain the coordinates in a separate variable as opposed to the `set.seed()` strategy.
+
+```{r igraph-coordinates-variable}
+data("UKfaculty")
+coords <- layout_with_fr(UKfaculty, niter = 1000)
+
+par(mfrow=c(1, 2))
+par(oma=c(0,0,2,0))
+
+plot.igraph(UKfaculty, layout = coords, main = "layout = coords #1", vertex.color = "blue")
+
+plot.igraph(UKfaculty, layout = coords, main = "layout = coords #2", vertex.color = "red")
+
+```
+
+
+### Available Layouts
+
+According to the igraph documentation, 21 available layouts are available and include:
 
 ```{r layout-options-igraph, echo=FALSE, warning=FALSE, message=FALSE, fig.align="center", fig.cap="Available layouts for nodes in igraph."}
 
@@ -134,6 +164,21 @@ plot(g,
 ## Attributes
 
 Any chart is comprised of geoms.  `igraph` allows for the color, size, shape to be set in of two ways.  The first method is to supply named arguments to the plotting command, in the this case `plot.igraph`. The second method is to set the attributes via assignment to the vertex, edge or graph.  According to the manual, assignments using the second method do not require "vertex" or "edge" to be prepended.
+
+Graph attributes are listed anytime the graph object is sent to the console.  See section *. Othewise, attributes of the graph, vertices, and edges can be determed through three functions:  (1) `list.graph.attributes`, (2) `list.vertex.attributes`, and (3) `list.edge.attributes`.  The function length can be cumbersome and the following function may be helpful in list all of them at once. [@knappNetworkVisualizationCookbook]
+
+```{r igraph-list-attribs-function, eval = F}
+#
+get_igraph_attrs <- function(igraph){
+  if(!is_igraph(igraph)) stop("Not a graph object")
+  list(graph_attrs = list.graph.attributes(igraph),
+       vertex_attrs = list.vertex.attributes(igraph),
+       edge_attrs = list.edge.attributes(igraph))
+}
+
+get_igraph_attrs(UKfaculty)
+```
+
 
 ```{r example-attribute-setting, eval=F, attr.source = ".numberLines"}
 #First Method -- supply named arguments to plot

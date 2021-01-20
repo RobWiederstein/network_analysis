@@ -16,18 +16,30 @@ summary(E(g)$weight)
 qplot(E(g)$weight)
 table(E(g)$weight)
 #community detection algorithms
+#walktrap
 wc <- cluster_walktrap(g)
 modularity(wc)
 membership(wc)
 plot(wc, g)
+#eigen
+ec <- cluster_leading_eigen(g)
+modularity(ec)
+membership(ec)
+plot(ec, g,
+     edge.arrow.width = 0)
+#louvai
+lc <- cluster_fast_greedy(g)
+
 
 par(mar = c(0, 0, 0, 0))
 set.seed(1234)
-plot.igraph(UKfaculty,
-            vertex.size = 1,
-            layout = layout_with_drl,
-            edge.arrow.width = 0,
-            asp = 0
+plot(ec,
+        g,
+        vertex.size = 8,
+        layout = layout_with_drl,
+        edge.arrow.width = 0,
+        edge.color = "gray",
+        asp = 0
             
 )
 V()

@@ -38,6 +38,9 @@ disclaimer
 acknowledgements
 intro
 terms
+understanding-igraph-summary
+creating-graphs
+manipulating-graphs
 input-formats
 adjacency-matrix
 sparse-matrix
@@ -52,6 +55,8 @@ simple-graphs
 notable-graphs
 complicated-graph
 layout-of-nodes
+consistent-plotting
+available-layouts
 attributes
 vertices
 shapes
@@ -67,7 +72,7 @@ first-graphs
 les-miserable-dataset
 stop-light
 les-miserabe
-pruning-and-grouping
+filter-and-group
 pruning
 grouping
 sigma
@@ -96,10 +101,6 @@ geosphere
 networkd3-package
 glossary
 igraphdata-plots
-top-10-network-packages-in-r
-filter-and-group
-understanding-igraph-summary
-creating-graphs
-manipulating-graphs
 bridges-of-koenigsburg
 ukfaculty
+top-10-network-packages-in-r

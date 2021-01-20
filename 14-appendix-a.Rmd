@@ -33,11 +33,13 @@ data("UKfaculty")
 V(UKfaculty)[1:5]
 E(UKfaculty)[1:5]
 par(mar = c(0, 0, 0, 0))
-plot(UKfaculty,
+set.seed(1234)
+plot.igraph(UKfaculty,
      vertex.size = 1,
      layout = layout_with_drl,
      edge.arrow.width = .1,
      asp = 0
+
      )
 ```
 
