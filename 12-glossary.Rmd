@@ -2,6 +2,8 @@
 
 Great resource [here](http://edshare.soton.ac.uk/922/2/index.html#Specifying_sets).
 
+**Adjacent** is when two vertices are connected by an edge.  The vertices are also referred as neighbors.
+
 **Attributes** are a characteristic of the node or edge that is often designated by color, size, or shape of the object. For example, a dashed line for an edge or a blue circle for a node.
 
 

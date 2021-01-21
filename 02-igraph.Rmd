@@ -1,9 +1,10 @@
 # igraph {#igraph}
 
 ```{r load-igraph-library, include=FALSE}
-x <- c("igraph", "tibble", "stringr", "kableExtra", "RColorBrewer", "viridis")
+x <- c("igraph", "tibble", "stringr", "kableExtra", "RColorBrewer", "viridis", "magrittr", "igraphdata", "ggplot2")
 lapply(x, require, character.only = T, quietly = T)
 ```
+
 `igraph` contains `r length(lsf.str("package:igraph"))` functions. Three different plotting mechanisms exist: `igraph` for two dimensional plots, `tkplot` for interactive 2-dimensional plotting and `rglplot` which is for 3-dimensional plotting and is labeled as "experimental." The `igraph` functions for two dimensional plots is the focus for the next * chapters. 
 
 ## Examples
@@ -73,42 +74,59 @@ Nodes may be laid out in a variety of ways and many algorithms are available, de
 
 ### Consistent Plotting
 
-Many of the `igraph` layouts are generated through an algorithm and the coordinates change each time it is plotted.  To keep the appearance the same, the `set.seed()` function must be set.
+Many of the `igraph` layouts are generated through an algorithm and the coordinates change each time it is plotted.  Part of the iterative process in visualization is to change different graphing parameters to reach the most visually pleasing chart.  Thus, drafters may want to keep the layout the same as colors, size, etc. are changed.  To keep the layout the same, the `set.seed()` function must be set.
 
 ```{r igraph-house-setseed, eval=F}
 set.seed(1234)
-house <- make_graph("house")
-plot.igraph(house)
+make_graph("house") %>% plot(main = "set.seed(1234)")
 ```
 
 A second method to retain consistency in plotting is to retain the coordinates in a separate variable as opposed to the `set.seed()` strategy.
 
-```{r igraph-coordinates-variable}
-data("UKfaculty")
-coords <- layout_with_fr(UKfaculty, niter = 1000)
+```{r igraph-coordinates-variable, fig.align="center"}
+data("karate")
+coords <- layout_with_fr(karate, niter = 1000)
 
 par(mfrow=c(1, 2))
 par(oma=c(0,0,2,0))
+#Note layout set to "coords"
+plot.igraph(karate, layout = coords, main = "layout = coords #1", vertex.label = NA, vertex.color = "blue")
 
-plot.igraph(UKfaculty, layout = coords, main = "layout = coords #1", vertex.color = "blue")
+plot.igraph(karate, layout = coords, main = "layout = coords #2", vertex.label = NA, vertex.color = "red")
 
-plot.igraph(UKfaculty, layout = coords, main = "layout = coords #2", vertex.color = "red")
+```
 
+### More on Coordinates
+
+```{r igraph-random-graphs, echo = F}
+set.seed(1234)
+g <- sample_pa(25)
+coords <- layout_randomly(g)
+coords1 <- as_tibble(coords)
+names(coords1) <- c("x", "y")
+par(mfrow = c(3, 1),
+    mar = c(2, 2, 2, 2)
+    )
+plot(coords1$x, coords1$y)
+plot.igraph(g, layout = coords, asp = 0, vertex.size = 3,
+            vertex.label = NA, axes = T, edge.color = "white")
+plot.igraph(g, layout = coords, asp = 0, vertex.size = 3,
+            vertex.label = NA, axes = T, edge.arrow.size = 0)
 ```
 
 
 ### Available Layouts
 
-According to the igraph documentation, 21 available layouts are available and include:
+According to the igraph documentation, 19 available layouts are available and include:
 
 ```{r layout-options-igraph, echo=FALSE, warning=FALSE, message=FALSE, fig.align="center", fig.cap="Available layouts for nodes in igraph."}
 
 library(stringr)
-a <- str_trim(unlist(str_split("add_layout_, component_wise, layout_as_star, layout_as_tree, layout_in_circle, layout_nicely, layout_on_grid, layout_on_sphere, layout_randomly, layout_with_dh, layout_with_fr, layout_with_gem, layout_with_graphopt, layout_with_kk, layout_with_lgl, layout_with_mds, layout_with_sugiyama, layout_, merge_coords, norm_coords, normalize", ",")), side = "both")
-m <- matrix(a, nrow = 7, ncol = 3, byrow = T)
-m %>%
-  kbl(caption = "Available layouts for nodes in `igraph`.") %>%
-  kable_styling()
+grep("^layout_", lsf.str("package:igraph"), value = T) %>%
+  append(c("", "")) %>%
+       matrix(nrow = 7, ncol = 3, byrow = T) %>%
+      kbl(caption = "Available layouts for nodes in `igraph`.") %>%
+      kable_styling()
 ```
 
 Plots were randomly generated from an adjacency matrix as illustrated by [R-graph-gallery](https://www.r-graph-gallery.com/network.html). The `layout_nicely` function is the default.  (verify).  The function 
@@ -161,9 +179,13 @@ plot(g,
      main = "F-R modified")
 ```
 
+
+
 ## Attributes
 
 Any chart is comprised of geoms.  `igraph` allows for the color, size, shape to be set in of two ways.  The first method is to supply named arguments to the plotting command, in the this case `plot.igraph`. The second method is to set the attributes via assignment to the vertex, edge or graph.  According to the manual, assignments using the second method do not require "vertex" or "edge" to be prepended.
+
+Some `igraph` attributes are treated specially like `color`, `layout`, `name`, `shape`, `type`, and `weight`. Use of these terms in code operations could result in the program producing surprising and unexpected results.  The "best practice is to use attribute names starting with an **uppercase letter** to make sure that they have no influence on igraph’s internal functions." [@csardiStatisticalAnalysisNetwork2014]
 
 Graph attributes are listed anytime the graph object is sent to the console.  See section *. Othewise, attributes of the graph, vertices, and edges can be determed through three functions:  (1) `list.graph.attributes`, (2) `list.vertex.attributes`, and (3) `list.edge.attributes`.  The function length can be cumbersome and the following function may be helpful in list all of them at once. [@knappNetworkVisualizationCookbook]
 
