@@ -13,25 +13,29 @@ lapply(x, require, character.only = T, quietly = T)
 
 The simple graph below was created from manual entry using igraph's `graph_from_literal` function.
 
-```{r simple-igraph-node, fig.cap="Graph (a) is two nodes connected by edge, graph (b) is two unconnected nodes, graph (c) is two nodes with a directional edge, graph (d) is two nodes with the directional edge reversed, graph (e) is two nodes with a bidirectional edge, and graph (f) is two nodes connected by a weighted edge.", echo=FALSE, fig.align="center"}
+```{r simple-igraph-node, fig.cap="Graph (a) is two nodes connected by edge, graph (b) is two unconnected nodes, graph (c) is two nodes with a directional edge, graph (d) is two nodes with the directional edge reversed, graph (e) is two nodes with a bidirectional edge, graph (f) is two nodes connected by a weighted edge, graph (g) is a single node with a loop, and graph (h) is a multigraph.", echo=FALSE, fig.align="center"}
 
 library(grid)
 library(gridExtra)
 filename <- "./imgs/introductory_plots.jpg"
-par(mfrow=c(2, 3))
-igraph_options(vertex.size = 150, arrow.size = .1, vertex.label.font = 16)
+par(mfrow=c(2, 4))
+igraph_options(vertex.size = 100, arrow.size = .1, vertex.label.font = 16)
 g1 <- graph_from_literal(A--B)
 g2 <- graph_from_literal(A, B)
 g3 <- graph_from_literal(A-+B)
 g4 <- graph_from_literal(A+-B)
 g5 <- graph_from_literal(A++B)
 g6 <- graph_from_literal(B--A)
+g7 <- graph_from_literal(A--A, simplify = F)
+g8 <- graph_from_literal(A-+B, A-+B, simplify = F)
 plot.igraph(g1, sub = "(a)")
 plot.igraph(g2, sub = "(b)")
 plot.igraph(g3, sub = "(c)", edge.arrow.size = .5)
 plot.igraph(g4, sub = "(d)", edge.arrow.size = .5)
 plot.igraph(g5, sub = "(e)", edge.width = .5, edge.arrow.size = .5)
 plot.igraph(g6, sub = "(f)", edge.width = 10)
+plot.igraph(g7, sub = "(g)")
+plot.igraph(g8, sub = "(h)", edge.arrow.size = .5)
 
 ```
 
