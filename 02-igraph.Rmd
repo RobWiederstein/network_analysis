@@ -183,6 +183,15 @@ plot(g,
      main = "F-R modified")
 ```
 
+### Node Layout via tkplot
+
+```{r igraph-karate-layout-nicely, fig.height = 4, fig.width = 6, fig.align="center", fig.cap="Vertices coordinates computed via the layout_nicely algorightm."}
+knitr::include_graphics( "./imgs/karate_coords_via_layout_nicely.jpeg")
+```
+
+```{r igraph-karate-layout-tkplot, fig.height = 4, fig.width = 6, fig.align="center", fig.cap="Vertices manually adjusted in tkplot to prevent overlapping and then new coordinates imported for plot."  }
+knitr::include_graphics("./imgs/karate_coords_via_tkplot.jpeg")
+```
 
 
 ## Attributes

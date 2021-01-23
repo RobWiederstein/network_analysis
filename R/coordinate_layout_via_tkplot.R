@@ -2,7 +2,8 @@ library(igraph)
 library(igraphdata)
 data("karate")
 filename <- "./imgs/karate_coords_via_layout_nicely.jpeg"
-jpeg(filename = filename, width = 6, height = 4, units = "in", quality = 95, res = 300, type = "cairo")
+jpeg(filename = filename, width = 6, height = 4, units = "in", 
+     quality = 95, res = 300, type = "cairo")
 par(mar = c(1, 0, 1, 0))
 plot(karate,
      vertex.size = 10,

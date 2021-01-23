@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2021-01-20" />
+<meta name="date" content="2021-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -188,7 +188,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="igraph.html"><a href="igraph.html#layout-of-nodes"><i class="fa fa-check"></i><b>2.2</b> Layout of Nodes</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="igraph.html"><a href="igraph.html#consistent-plotting"><i class="fa fa-check"></i><b>2.2.1</b> Consistent Plotting</a></li>
-<li class="chapter" data-level="2.2.2" data-path="igraph.html"><a href="igraph.html#available-layouts"><i class="fa fa-check"></i><b>2.2.2</b> Available Layouts</a></li>
+<li class="chapter" data-level="2.2.2" data-path="igraph.html"><a href="igraph.html#more-on-coordinates"><i class="fa fa-check"></i><b>2.2.2</b> More on Coordinates</a></li>
+<li class="chapter" data-level="2.2.3" data-path="igraph.html"><a href="igraph.html#available-layouts"><i class="fa fa-check"></i><b>2.2.3</b> Available Layouts</a></li>
+<li class="chapter" data-level="2.2.4" data-path="igraph.html"><a href="igraph.html#node-layout-via-tkplot"><i class="fa fa-check"></i><b>2.2.4</b> Node Layout via tkplot</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="igraph.html"><a href="igraph.html#attributes"><i class="fa fa-check"></i><b>2.3</b> Attributes</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="igraph.html"><a href="igraph.html#vertices"><i class="fa fa-check"></i><b>2.3.1</b> Vertices</a></li>
@@ -279,19 +281,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="read-data-1" class="section level2">
 <h2><span class="header-section-number">8.2</span> Read Data</h2>
 <p>The data was prepared prior to import in the book here. The data represent return filers whose address changed from Miami-Dade county in year one to some other county in year 2. Additionally, only counties that received greater than 100 new residents from Miami were included.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co"># import</span></a>
-<a class="sourceLine" id="cb62-2" data-line-number="2">edges &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;./data/irs/miami-out-migration-edges.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb62-3" data-line-number="3">nodes &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;./data/irs/miami-out-migration-nodes.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb62-4" data-line-number="4"><span class="co"># create network</span></a>
-<a class="sourceLine" id="cb62-5" data-line-number="5">g1 &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(<span class="dt">d =</span> edges,</a>
-<a class="sourceLine" id="cb62-6" data-line-number="6">                                   <span class="dt">directed =</span> T,</a>
-<a class="sourceLine" id="cb62-7" data-line-number="7">                                   <span class="dt">vertices =</span> nodes</a>
-<a class="sourceLine" id="cb62-8" data-line-number="8">)</a>
-<a class="sourceLine" id="cb62-9" data-line-number="9"><span class="co">#remove self-loops, people that moved w/in county</span></a>
-<a class="sourceLine" id="cb62-10" data-line-number="10">g1 &lt;-<span class="st"> </span><span class="kw">simplify</span>(g1, </a>
-<a class="sourceLine" id="cb62-11" data-line-number="11">               <span class="dt">remove.multiple =</span> F,</a>
-<a class="sourceLine" id="cb62-12" data-line-number="12">               <span class="dt">remove.loops =</span> T</a>
-<a class="sourceLine" id="cb62-13" data-line-number="13">               )</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="co"># import</span></a>
+<a class="sourceLine" id="cb65-2" data-line-number="2">edges &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;./data/irs/miami-out-migration-edges.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb65-3" data-line-number="3">nodes &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="st">&quot;./data/irs/miami-out-migration-nodes.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb65-4" data-line-number="4"><span class="co"># create network</span></a>
+<a class="sourceLine" id="cb65-5" data-line-number="5">g1 &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(<span class="dt">d =</span> edges,</a>
+<a class="sourceLine" id="cb65-6" data-line-number="6">                                   <span class="dt">directed =</span> T,</a>
+<a class="sourceLine" id="cb65-7" data-line-number="7">                                   <span class="dt">vertices =</span> nodes</a>
+<a class="sourceLine" id="cb65-8" data-line-number="8">)</a>
+<a class="sourceLine" id="cb65-9" data-line-number="9"><span class="co">#remove self-loops, people that moved w/in county</span></a>
+<a class="sourceLine" id="cb65-10" data-line-number="10">g1 &lt;-<span class="st"> </span><span class="kw">simplify</span>(g1, </a>
+<a class="sourceLine" id="cb65-11" data-line-number="11">               <span class="dt">remove.multiple =</span> F,</a>
+<a class="sourceLine" id="cb65-12" data-line-number="12">               <span class="dt">remove.loops =</span> T</a>
+<a class="sourceLine" id="cb65-13" data-line-number="13">               )</a></code></pre></div>
 </div>
 <div id="first-plot" class="section level2">
 <h2><span class="header-section-number">8.3</span> First Plot</h2>
@@ -316,20 +318,20 @@ Figure 8.2: Formatting arguments to open graphing space.
 <div id="set-variable-for-vertex-size" class="section level2">
 <h2><span class="header-section-number">8.5</span> Set Variable for Vertex Size</h2>
 <p>Vertex size is a graph attribute that is often scaled to a variable. Here, the size is scaled to the number of returns or persons who moved from Maimi-Dade County. The <code>node$returns</code> variable was cut into quintiles of equal size and assigned to a new column as <code>quintile</code>. Since the <code>nodes</code> dataframe was changed, it must be converted again into a new graph object.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="co">#create variable for vertex.size -- cut number returns into 5</span></a>
-<a class="sourceLine" id="cb63-2" data-line-number="2">nodes<span class="op">$</span>quintile &lt;-<span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">cut_number</span>(nodes<span class="op">$</span>returns, <span class="dt">n =</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb63-3" data-line-number="3"><span class="kw">levels</span>(nodes<span class="op">$</span>quintile) &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb63-4" data-line-number="4">nodes<span class="op">$</span>quintile &lt;-<span class="st"> </span><span class="kw">as.character</span>(nodes<span class="op">$</span>quintile)</a>
-<a class="sourceLine" id="cb63-5" data-line-number="5">nodes<span class="op">$</span>quintile &lt;-<span class="st"> </span><span class="kw">as.integer</span>(nodes<span class="op">$</span>quintile)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="co">#create variable for vertex.size -- cut number returns into 5</span></a>
+<a class="sourceLine" id="cb66-2" data-line-number="2">nodes<span class="op">$</span>quintile &lt;-<span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">cut_number</span>(nodes<span class="op">$</span>returns, <span class="dt">n =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb66-3" data-line-number="3"><span class="kw">levels</span>(nodes<span class="op">$</span>quintile) &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb66-4" data-line-number="4">nodes<span class="op">$</span>quintile &lt;-<span class="st"> </span><span class="kw">as.character</span>(nodes<span class="op">$</span>quintile)</a>
+<a class="sourceLine" id="cb66-5" data-line-number="5">nodes<span class="op">$</span>quintile &lt;-<span class="st"> </span><span class="kw">as.integer</span>(nodes<span class="op">$</span>quintile)</a></code></pre></div>
 </div>
 <div id="set-vertex-color" class="section level2">
 <h2><span class="header-section-number">8.6</span> Set Vertex Color</h2>
 <p>The color of the node is often a prominent attribute that can contribute to the understanding of the graph. Five colors were assigned to each of the quintiles of the <code>returns</code> from the <code>vidiris package</code>. Thus, nodes that are large in size realtive to the other nodes and colored yellow are featured prominently in the graph. These are the counties that received the highest numbers of out-migration from Miami-Dade.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="co">#create node color palette and merge w/ node df</span></a>
-<a class="sourceLine" id="cb64-2" data-line-number="2">my.colors &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">quintile =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</a>
-<a class="sourceLine" id="cb64-3" data-line-number="3">                    <span class="dt">colors =</span> <span class="kw">viridis</span>(<span class="dv">5</span>, <span class="dt">option =</span> <span class="st">&quot;D&quot;</span>)</a>
-<a class="sourceLine" id="cb64-4" data-line-number="4">)</a>
-<a class="sourceLine" id="cb64-5" data-line-number="5">nodes &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(nodes, my.colors, <span class="dt">by =</span> <span class="st">&quot;quintile&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="co">#create node color palette and merge w/ node df</span></a>
+<a class="sourceLine" id="cb67-2" data-line-number="2">my.colors &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">quintile =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb67-3" data-line-number="3">                    <span class="dt">colors =</span> <span class="kw">viridis</span>(<span class="dv">5</span>, <span class="dt">option =</span> <span class="st">&quot;D&quot;</span>)</a>
+<a class="sourceLine" id="cb67-4" data-line-number="4">)</a>
+<a class="sourceLine" id="cb67-5" data-line-number="5">nodes &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(nodes, my.colors, <span class="dt">by =</span> <span class="st">&quot;quintile&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:irs-plot-node-color-size"></span>
 <img src="book_network_analysis_in_R_files/figure-html/irs-plot-node-color-size-1.png" alt="Node attributes set for size and color." width="672" />
 <p class="caption">
@@ -339,35 +341,35 @@ Figure 8.3: Node attributes set for size and color.
 </div>
 <div id="layout-of-nodes-1" class="section level2">
 <h2><span class="header-section-number">8.7</span> Layout of nodes</h2>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">g4 &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(<span class="dt">d =</span> edges,</a>
-<a class="sourceLine" id="cb65-2" data-line-number="2">                                          <span class="dt">directed =</span> F,</a>
-<a class="sourceLine" id="cb65-3" data-line-number="3">                                          <span class="dt">vertices =</span> nodes</a>
-<a class="sourceLine" id="cb65-4" data-line-number="4">)</a>
-<a class="sourceLine" id="cb65-5" data-line-number="5"><span class="kw">plot</span>(g4,</a>
-<a class="sourceLine" id="cb65-6" data-line-number="6">        <span class="dt">vertex.label =</span> <span class="ot">NA</span>,</a>
-<a class="sourceLine" id="cb65-7" data-line-number="7">        <span class="dt">vertex.size =</span> <span class="kw">V</span>(g3)<span class="op">$</span>quintile <span class="op">^</span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb65-8" data-line-number="8">        <span class="dt">vertex.color =</span> <span class="kw">V</span>(g3)<span class="op">$</span>colors,</a>
-<a class="sourceLine" id="cb65-9" data-line-number="9">        <span class="dt">edge.arrow.size =</span> <span class="fl">.1</span>,</a>
-<a class="sourceLine" id="cb65-10" data-line-number="10">        <span class="dt">main =</span> <span class="st">&quot;vertex.color&quot;</span></a>
-<a class="sourceLine" id="cb65-11" data-line-number="11">     )</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1">g4 &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">graph_from_data_frame</span>(<span class="dt">d =</span> edges,</a>
+<a class="sourceLine" id="cb68-2" data-line-number="2">                                          <span class="dt">directed =</span> F,</a>
+<a class="sourceLine" id="cb68-3" data-line-number="3">                                          <span class="dt">vertices =</span> nodes</a>
+<a class="sourceLine" id="cb68-4" data-line-number="4">)</a>
+<a class="sourceLine" id="cb68-5" data-line-number="5"><span class="kw">plot</span>(g4,</a>
+<a class="sourceLine" id="cb68-6" data-line-number="6">        <span class="dt">vertex.label =</span> <span class="ot">NA</span>,</a>
+<a class="sourceLine" id="cb68-7" data-line-number="7">        <span class="dt">vertex.size =</span> <span class="kw">V</span>(g3)<span class="op">$</span>quintile <span class="op">^</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb68-8" data-line-number="8">        <span class="dt">vertex.color =</span> <span class="kw">V</span>(g3)<span class="op">$</span>colors,</a>
+<a class="sourceLine" id="cb68-9" data-line-number="9">        <span class="dt">edge.arrow.size =</span> <span class="fl">.1</span>,</a>
+<a class="sourceLine" id="cb68-10" data-line-number="10">        <span class="dt">main =</span> <span class="st">&quot;vertex.color&quot;</span></a>
+<a class="sourceLine" id="cb68-11" data-line-number="11">     )</a></code></pre></div>
 <p><img src="book_network_analysis_in_R_files/figure-html/irs-group-nodes-1.png" width="672" /></p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="co"># Community detection based on label propagation:</span></a>
-<a class="sourceLine" id="cb66-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb66-4" data-line-number="4">clp &lt;-<span class="st"> </span><span class="kw">cluster_label_prop</span>(g4) </a>
-<a class="sourceLine" id="cb66-5" data-line-number="5"><span class="kw">class</span>(clp)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb69-2" data-line-number="2"><span class="co"># Community detection based on label propagation:</span></a>
+<a class="sourceLine" id="cb69-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb69-4" data-line-number="4">clp &lt;-<span class="st"> </span><span class="kw">cluster_label_prop</span>(g4) </a>
+<a class="sourceLine" id="cb69-5" data-line-number="5"><span class="kw">class</span>(clp)</a></code></pre></div>
 <pre><code>## [1] &quot;communities&quot;</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="co"># Community detection returns an object of class &quot;communities&quot; # which igraph knows how to plot:</span></a>
-<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="kw">plot</span>(clp, </a>
-<a class="sourceLine" id="cb68-3" data-line-number="3">        g4,</a>
-<a class="sourceLine" id="cb68-4" data-line-number="4">        <span class="dt">vertex.label =</span> <span class="ot">NA</span>,</a>
-<a class="sourceLine" id="cb68-5" data-line-number="5">        <span class="dt">vertex.size =</span> <span class="kw">V</span>(g3)<span class="op">$</span>quintile <span class="op">^</span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb68-6" data-line-number="6">        <span class="dt">vertex.color =</span> <span class="kw">V</span>(g3)<span class="op">$</span>colors,</a>
-<a class="sourceLine" id="cb68-7" data-line-number="7">        <span class="dt">edge.arrow.size =</span> <span class="fl">.1</span>,</a>
-<a class="sourceLine" id="cb68-8" data-line-number="8">        <span class="dt">main =</span> <span class="st">&quot;vertex.color&quot;</span></a>
-<a class="sourceLine" id="cb68-9" data-line-number="9">     )</a>
-<a class="sourceLine" id="cb68-10" data-line-number="10"><span class="co"># We can also plot the communities without relying on their built-in plot:</span></a>
-<a class="sourceLine" id="cb68-11" data-line-number="11"><span class="kw">V</span>(g4)<span class="op">$</span>community &lt;-<span class="st"> </span>clp<span class="op">$</span>membership</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="co"># Community detection returns an object of class &quot;communities&quot; # which igraph knows how to plot:</span></a>
+<a class="sourceLine" id="cb71-2" data-line-number="2"><span class="kw">plot</span>(clp, </a>
+<a class="sourceLine" id="cb71-3" data-line-number="3">        g4,</a>
+<a class="sourceLine" id="cb71-4" data-line-number="4">        <span class="dt">vertex.label =</span> <span class="ot">NA</span>,</a>
+<a class="sourceLine" id="cb71-5" data-line-number="5">        <span class="dt">vertex.size =</span> <span class="kw">V</span>(g3)<span class="op">$</span>quintile <span class="op">^</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb71-6" data-line-number="6">        <span class="dt">vertex.color =</span> <span class="kw">V</span>(g3)<span class="op">$</span>colors,</a>
+<a class="sourceLine" id="cb71-7" data-line-number="7">        <span class="dt">edge.arrow.size =</span> <span class="fl">.1</span>,</a>
+<a class="sourceLine" id="cb71-8" data-line-number="8">        <span class="dt">main =</span> <span class="st">&quot;vertex.color&quot;</span></a>
+<a class="sourceLine" id="cb71-9" data-line-number="9">     )</a>
+<a class="sourceLine" id="cb71-10" data-line-number="10"><span class="co"># We can also plot the communities without relying on their built-in plot:</span></a>
+<a class="sourceLine" id="cb71-11" data-line-number="11"><span class="kw">V</span>(g4)<span class="op">$</span>community &lt;-<span class="st"> </span>clp<span class="op">$</span>membership</a></code></pre></div>
 <p><img src="book_network_analysis_in_R_files/figure-html/irs-group-nodes-2.png" width="672" /></p>
 
 </div>

@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2021-01-20" />
+<meta name="date" content="2021-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -188,7 +188,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="igraph.html"><a href="igraph.html#layout-of-nodes"><i class="fa fa-check"></i><b>2.2</b> Layout of Nodes</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="igraph.html"><a href="igraph.html#consistent-plotting"><i class="fa fa-check"></i><b>2.2.1</b> Consistent Plotting</a></li>
-<li class="chapter" data-level="2.2.2" data-path="igraph.html"><a href="igraph.html#available-layouts"><i class="fa fa-check"></i><b>2.2.2</b> Available Layouts</a></li>
+<li class="chapter" data-level="2.2.2" data-path="igraph.html"><a href="igraph.html#more-on-coordinates"><i class="fa fa-check"></i><b>2.2.2</b> More on Coordinates</a></li>
+<li class="chapter" data-level="2.2.3" data-path="igraph.html"><a href="igraph.html#available-layouts"><i class="fa fa-check"></i><b>2.2.3</b> Available Layouts</a></li>
+<li class="chapter" data-level="2.2.4" data-path="igraph.html"><a href="igraph.html#node-layout-via-tkplot"><i class="fa fa-check"></i><b>2.2.4</b> Node Layout via tkplot</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="igraph.html"><a href="igraph.html#attributes"><i class="fa fa-check"></i><b>2.3</b> Attributes</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="igraph.html"><a href="igraph.html#vertices"><i class="fa fa-check"></i><b>2.3.1</b> Vertices</a></li>
@@ -275,22 +277,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pruning" class="section level2">
 <h2><span class="header-section-number">5.1</span> Pruning</h2>
 <p>Pruning is the process of eliminating insignifant or nominal connections from the network graph. There are many methods available and only the simplest of strategies are employed here. The example here is Zachary’s karate club, a resident dataset in the <code>igraphdata</code> package. More information may be found by entering <code>?igraphdata::karate</code>.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">g1 &lt;-<span class="st"> </span><span class="kw">sample_pa</span>(<span class="dv">80</span>)</a>
-<a class="sourceLine" id="cb51-2" data-line-number="2">l &lt;-<span class="st"> </span><span class="kw">layout_with_fr</span>(g1)</a>
-<a class="sourceLine" id="cb51-3" data-line-number="3">l &lt;-<span class="st"> </span><span class="kw">norm_coords</span>(l, <span class="dt">ymin=</span><span class="op">-</span><span class="dv">1</span>, <span class="dt">ymax=</span><span class="dv">1</span>, <span class="dt">xmin=</span><span class="op">-</span><span class="dv">1</span>, <span class="dt">xmax=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb51-4" data-line-number="4"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)) </a>
-<a class="sourceLine" id="cb51-5" data-line-number="5"><span class="kw">plot</span>(g1, <span class="dt">rescale=</span>F, <span class="dt">layout=</span>l<span class="op">*</span><span class="fl">1.0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">g1 &lt;-<span class="st"> </span><span class="kw">sample_pa</span>(<span class="dv">80</span>)</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2">l &lt;-<span class="st"> </span><span class="kw">layout_with_fr</span>(g1)</a>
+<a class="sourceLine" id="cb54-3" data-line-number="3">l &lt;-<span class="st"> </span><span class="kw">norm_coords</span>(l, <span class="dt">ymin=</span><span class="op">-</span><span class="dv">1</span>, <span class="dt">ymax=</span><span class="dv">1</span>, <span class="dt">xmin=</span><span class="op">-</span><span class="dv">1</span>, <span class="dt">xmax=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb54-4" data-line-number="4"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)) </a>
+<a class="sourceLine" id="cb54-5" data-line-number="5"><span class="kw">plot</span>(g1, <span class="dt">rescale=</span>F, <span class="dt">layout=</span>l<span class="op">*</span><span class="fl">1.0</span>)</a></code></pre></div>
 <p><img src="book_network_analysis_in_R_files/figure-html/filter-first-model-1.png" width="672" /></p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;karate&quot;</span>)</a>
-<a class="sourceLine" id="cb52-2" data-line-number="2">karate.new &lt;-<span class="st"> </span><span class="kw">delete_edges</span>(karate, <span class="kw">E</span>(karate)[weight<span class="op">&lt;=</span><span class="dv">3</span>])</a>
-<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb52-4" data-line-number="4"><span class="kw">plot</span>(karate,</a>
-<a class="sourceLine" id="cb52-5" data-line-number="5">     <span class="dt">vertex.label =</span> <span class="ot">NA</span>,</a>
-<a class="sourceLine" id="cb52-6" data-line-number="6">     <span class="dt">vertex.color =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb52-7" data-line-number="7"><span class="kw">hist</span>(<span class="kw">E</span>(karate)<span class="op">$</span>weight)</a>
-<a class="sourceLine" id="cb52-8" data-line-number="8"><span class="kw">plot</span>(karate.new,</a>
-<a class="sourceLine" id="cb52-9" data-line-number="9">     <span class="dt">vertex.label =</span> <span class="ot">NA</span>,</a>
-<a class="sourceLine" id="cb52-10" data-line-number="10">     <span class="dt">vertex.color =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;karate&quot;</span>)</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2">karate.new &lt;-<span class="st"> </span><span class="kw">delete_edges</span>(karate, <span class="kw">E</span>(karate)[weight<span class="op">&lt;=</span><span class="dv">3</span>])</a>
+<a class="sourceLine" id="cb55-3" data-line-number="3"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb55-4" data-line-number="4"><span class="kw">plot</span>(karate,</a>
+<a class="sourceLine" id="cb55-5" data-line-number="5">     <span class="dt">vertex.label =</span> <span class="ot">NA</span>,</a>
+<a class="sourceLine" id="cb55-6" data-line-number="6">     <span class="dt">vertex.color =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb55-7" data-line-number="7"><span class="kw">hist</span>(<span class="kw">E</span>(karate)<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb55-8" data-line-number="8"><span class="kw">plot</span>(karate.new,</a>
+<a class="sourceLine" id="cb55-9" data-line-number="9">     <span class="dt">vertex.label =</span> <span class="ot">NA</span>,</a>
+<a class="sourceLine" id="cb55-10" data-line-number="10">     <span class="dt">vertex.color =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p><img src="book_network_analysis_in_R_files/figure-html/filter-karate-1.png" width="672" /></p>
 </div>
 <div id="grouping" class="section level2">

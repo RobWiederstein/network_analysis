@@ -15,6 +15,8 @@ fig:complicated-igraph-node
 tab:layout-options-igraph
 fig:igraph-mosaic-layout
 fig:spread-node-layout
+fig:igraph-karate-layout-nicely
+fig:igraph-karate-layout-tkplot
 fig:vertex-attributes
 fig:more-color-examples
 fig:edge-attributes
@@ -56,7 +58,9 @@ notable-graphs
 complicated-graph
 layout-of-nodes
 consistent-plotting
+more-on-coordinates
 available-layouts
+node-layout-via-tkplot
 attributes
 vertices
 shapes
@@ -104,4 +108,3 @@ igraphdata-plots
 bridges-of-koenigsburg
 ukfaculty
 top-10-network-packages-in-r
-more-on-coordinates

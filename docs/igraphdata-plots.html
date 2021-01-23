@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2021-01-20" />
+<meta name="date" content="2021-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -188,7 +188,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="igraph.html"><a href="igraph.html#layout-of-nodes"><i class="fa fa-check"></i><b>2.2</b> Layout of Nodes</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="igraph.html"><a href="igraph.html#consistent-plotting"><i class="fa fa-check"></i><b>2.2.1</b> Consistent Plotting</a></li>
-<li class="chapter" data-level="2.2.2" data-path="igraph.html"><a href="igraph.html#available-layouts"><i class="fa fa-check"></i><b>2.2.2</b> Available Layouts</a></li>
+<li class="chapter" data-level="2.2.2" data-path="igraph.html"><a href="igraph.html#more-on-coordinates"><i class="fa fa-check"></i><b>2.2.2</b> More on Coordinates</a></li>
+<li class="chapter" data-level="2.2.3" data-path="igraph.html"><a href="igraph.html#available-layouts"><i class="fa fa-check"></i><b>2.2.3</b> Available Layouts</a></li>
+<li class="chapter" data-level="2.2.4" data-path="igraph.html"><a href="igraph.html#node-layout-via-tkplot"><i class="fa fa-check"></i><b>2.2.4</b> Node Layout via tkplot</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="igraph.html"><a href="igraph.html#attributes"><i class="fa fa-check"></i><b>2.3</b> Attributes</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="igraph.html"><a href="igraph.html#vertices"><i class="fa fa-check"></i><b>2.3.1</b> Vertices</a></li>
@@ -279,22 +281,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ukfaculty" class="section level2">
 <h2><span class="header-section-number">A.2</span> UKfaculty</h2>
 <p>The personal friendship network of a faculty of a UK university, consisting of 81 vertices (individuals) and 817 directed and weighted connections. The school affiliation of each individual is stored as a vertex attribute. This dataset can serve as a testbed for community detection algorithms.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;UKfaculty&quot;</span>)</a>
-<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="kw">V</span>(UKfaculty)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;UKfaculty&quot;</span>)</a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="kw">V</span>(UKfaculty)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>## + 5/81 vertices, from 6f42903:
 ## [1] 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">E</span>(UKfaculty)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">E</span>(UKfaculty)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>## + 5/817 edges from 6f42903:
 ## [1] 57-&gt;52 76-&gt;42 12-&gt;69 43-&gt;34 28-&gt;47</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</a>
-<a class="sourceLine" id="cb77-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
-<a class="sourceLine" id="cb77-3" data-line-number="3"><span class="kw">plot.igraph</span>(UKfaculty,</a>
-<a class="sourceLine" id="cb77-4" data-line-number="4">     <span class="dt">vertex.size =</span> <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb77-5" data-line-number="5">     <span class="dt">layout =</span> layout_with_drl,</a>
-<a class="sourceLine" id="cb77-6" data-line-number="6">     <span class="dt">edge.arrow.width =</span> <span class="fl">.1</span>,</a>
-<a class="sourceLine" id="cb77-7" data-line-number="7">     <span class="dt">asp =</span> <span class="dv">0</span></a>
-<a class="sourceLine" id="cb77-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb77-9" data-line-number="9">     )</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb80-3" data-line-number="3"><span class="kw">plot.igraph</span>(UKfaculty,</a>
+<a class="sourceLine" id="cb80-4" data-line-number="4">     <span class="dt">vertex.size =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb80-5" data-line-number="5">     <span class="dt">layout =</span> layout_with_drl,</a>
+<a class="sourceLine" id="cb80-6" data-line-number="6">     <span class="dt">edge.arrow.width =</span> <span class="fl">.1</span>,</a>
+<a class="sourceLine" id="cb80-7" data-line-number="7">     <span class="dt">asp =</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb80-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb80-9" data-line-number="9">     )</a></code></pre></div>
 <p><img src="book_network_analysis_in_R_files/figure-html/ukfaculty-intro-1.png" width="672" /></p>
 
 </div>

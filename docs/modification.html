@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2021-01-20" />
+<meta name="date" content="2021-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -188,7 +188,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="igraph.html"><a href="igraph.html#layout-of-nodes"><i class="fa fa-check"></i><b>2.2</b> Layout of Nodes</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="igraph.html"><a href="igraph.html#consistent-plotting"><i class="fa fa-check"></i><b>2.2.1</b> Consistent Plotting</a></li>
-<li class="chapter" data-level="2.2.2" data-path="igraph.html"><a href="igraph.html#available-layouts"><i class="fa fa-check"></i><b>2.2.2</b> Available Layouts</a></li>
+<li class="chapter" data-level="2.2.2" data-path="igraph.html"><a href="igraph.html#more-on-coordinates"><i class="fa fa-check"></i><b>2.2.2</b> More on Coordinates</a></li>
+<li class="chapter" data-level="2.2.3" data-path="igraph.html"><a href="igraph.html#available-layouts"><i class="fa fa-check"></i><b>2.2.3</b> Available Layouts</a></li>
+<li class="chapter" data-level="2.2.4" data-path="igraph.html"><a href="igraph.html#node-layout-via-tkplot"><i class="fa fa-check"></i><b>2.2.4</b> Node Layout via tkplot</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="igraph.html"><a href="igraph.html#attributes"><i class="fa fa-check"></i><b>2.3</b> Attributes</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="igraph.html"><a href="igraph.html#vertices"><i class="fa fa-check"></i><b>2.3.1</b> Vertices</a></li>
@@ -273,9 +275,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 3</span> Graph Modification</h1>
 <div id="load-plot-house" class="section level2">
 <h2><span class="header-section-number">3.1</span> Load plot “House”</h2>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">g1 &lt;-<span class="st"> </span><span class="kw">make_graph</span>(<span class="st">&quot;house&quot;</span>)</a>
-<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="co">#data structure - full</span></a>
-<a class="sourceLine" id="cb31-3" data-line-number="3">g1[]</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">g1 &lt;-<span class="st"> </span><span class="kw">make_graph</span>(<span class="st">&quot;house&quot;</span>)</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co">#data structure - full</span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">g1[]</a></code></pre></div>
 <pre><code>## 5 x 5 sparse Matrix of class &quot;dgCMatrix&quot;
 ##               
 ## [1,] . 1 1 . .
@@ -283,71 +285,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [3,] 1 . . 1 1
 ## [4,] . 1 1 . 1
 ## [5,] . . 1 1 .</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co">#data structure - row 1</span></a>
-<a class="sourceLine" id="cb33-2" data-line-number="2">g1[<span class="dv">1</span>, ]</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="co">#data structure - row 1</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">g1[<span class="dv">1</span>, ]</a></code></pre></div>
 <pre><code>## [1] 0 1 1 0 0</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co">#data structure - col 2</span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2">g1[, <span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="co">#data structure - col 2</span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">g1[, <span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1] 1 0 0 1 0</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="co">#plot graph object</span></a>
-<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="kw">plot</span>(g1,</a>
-<a class="sourceLine" id="cb37-4" data-line-number="4">     <span class="dt">vertex.size =</span> <span class="dv">30</span>,</a>
-<a class="sourceLine" id="cb37-5" data-line-number="5">     <span class="dt">vertex.color =</span> <span class="dv">1</span>, <span class="co">#default</span></a>
-<a class="sourceLine" id="cb37-6" data-line-number="6">     <span class="dt">main =</span> <span class="st">&quot;Our House&quot;</span></a>
-<a class="sourceLine" id="cb37-7" data-line-number="7">     )</a>
-<a class="sourceLine" id="cb37-8" data-line-number="8"><span class="co">#assign attribute &amp; label nodes</span></a>
-<a class="sourceLine" id="cb37-9" data-line-number="9"><span class="kw">vertex_attr</span>(g1, <span class="dt">name =</span> <span class="st">&quot;rooms&quot;</span>) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;LR&quot;</span>, <span class="st">&quot;FR&quot;</span>, <span class="st">&quot;BR&quot;</span>, <span class="st">&quot;DR&quot;</span>, <span class="st">&quot;Garage&quot;</span>)</a>
-<a class="sourceLine" id="cb37-10" data-line-number="10"><span class="kw">plot</span>(g1,</a>
-<a class="sourceLine" id="cb37-11" data-line-number="11">     <span class="dt">vertex.size =</span> <span class="dv">30</span>,</a>
-<a class="sourceLine" id="cb37-12" data-line-number="12">     <span class="dt">vertex.color =</span> <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb37-13" data-line-number="13">     <span class="dt">vertex.label =</span> <span class="kw">V</span>(g1)<span class="op">$</span>rooms,</a>
-<a class="sourceLine" id="cb37-14" data-line-number="14">     <span class="dt">main =</span> <span class="st">&quot;Has Many Rooms&quot;</span></a>
-<a class="sourceLine" id="cb37-15" data-line-number="15">     )</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="co">#plot graph object</span></a>
+<a class="sourceLine" id="cb40-3" data-line-number="3"><span class="kw">plot</span>(g1,</a>
+<a class="sourceLine" id="cb40-4" data-line-number="4">     <span class="dt">vertex.size =</span> <span class="dv">30</span>,</a>
+<a class="sourceLine" id="cb40-5" data-line-number="5">     <span class="dt">vertex.color =</span> <span class="dv">1</span>, <span class="co">#default</span></a>
+<a class="sourceLine" id="cb40-6" data-line-number="6">     <span class="dt">main =</span> <span class="st">&quot;Our House&quot;</span></a>
+<a class="sourceLine" id="cb40-7" data-line-number="7">     )</a>
+<a class="sourceLine" id="cb40-8" data-line-number="8"><span class="co">#assign attribute &amp; label nodes</span></a>
+<a class="sourceLine" id="cb40-9" data-line-number="9"><span class="kw">vertex_attr</span>(g1, <span class="dt">name =</span> <span class="st">&quot;rooms&quot;</span>) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;LR&quot;</span>, <span class="st">&quot;FR&quot;</span>, <span class="st">&quot;BR&quot;</span>, <span class="st">&quot;DR&quot;</span>, <span class="st">&quot;Garage&quot;</span>)</a>
+<a class="sourceLine" id="cb40-10" data-line-number="10"><span class="kw">plot</span>(g1,</a>
+<a class="sourceLine" id="cb40-11" data-line-number="11">     <span class="dt">vertex.size =</span> <span class="dv">30</span>,</a>
+<a class="sourceLine" id="cb40-12" data-line-number="12">     <span class="dt">vertex.color =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb40-13" data-line-number="13">     <span class="dt">vertex.label =</span> <span class="kw">V</span>(g1)<span class="op">$</span>rooms,</a>
+<a class="sourceLine" id="cb40-14" data-line-number="14">     <span class="dt">main =</span> <span class="st">&quot;Has Many Rooms&quot;</span></a>
+<a class="sourceLine" id="cb40-15" data-line-number="15">     )</a></code></pre></div>
 <p><img src="book_network_analysis_in_R_files/figure-html/load-a-house-plot-1.png" width="672" /></p>
 </div>
 <div id="get-edges" class="section level2">
 <h2><span class="header-section-number">3.2</span> Get Edges</h2>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="co"># &quot;E&quot; is for edges</span></a>
-<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="kw">E</span>(g1)</a></code></pre></div>
-<pre><code>## + 6/6 edges from afaa2be:
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co"># &quot;E&quot; is for edges</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="kw">E</span>(g1)</a></code></pre></div>
+<pre><code>## + 6/6 edges from ded6328:
 ## [1] 1--2 1--3 2--4 3--4 3--5 4--5</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">edge_attr</span>(g1, <span class="dt">name =</span> <span class="st">&quot;services&quot;</span>) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;electric&quot;</span>, <span class="st">&quot;air_cond&quot;</span>, <span class="st">&quot;gas&quot;</span>, <span class="st">&quot;cable&quot;</span>, <span class="st">&quot;wifi&quot;</span>, <span class="st">&quot;water&quot;</span>)</a>
-<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb40-3" data-line-number="3"><span class="kw">plot</span>(g1,</a>
-<a class="sourceLine" id="cb40-4" data-line-number="4">     <span class="dt">vertex.size =</span> <span class="dv">30</span>,</a>
-<a class="sourceLine" id="cb40-5" data-line-number="5">     <span class="dt">vertex.color =</span> <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb40-6" data-line-number="6">     <span class="dt">vertex.label =</span> <span class="kw">V</span>(g1)<span class="op">$</span>rooms,</a>
-<a class="sourceLine" id="cb40-7" data-line-number="7">     <span class="dt">main =</span> <span class="st">&quot;With Many Rooms&quot;</span></a>
-<a class="sourceLine" id="cb40-8" data-line-number="8">     )</a>
-<a class="sourceLine" id="cb40-9" data-line-number="9"><span class="kw">plot</span>(g1, </a>
-<a class="sourceLine" id="cb40-10" data-line-number="10">     <span class="dt">vertex.size =</span> <span class="dv">30</span>,</a>
-<a class="sourceLine" id="cb40-11" data-line-number="11">     <span class="dt">vertex.color =</span> <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb40-12" data-line-number="12">     <span class="dt">vertex.label =</span> <span class="kw">V</span>(g1)<span class="op">$</span>rooms,</a>
-<a class="sourceLine" id="cb40-13" data-line-number="13">     <span class="dt">edge.label =</span> <span class="kw">E</span>(g1)<span class="op">$</span>services,</a>
-<a class="sourceLine" id="cb40-14" data-line-number="14">     <span class="dt">main =</span> <span class="st">&quot;Is Connected&quot;</span></a>
-<a class="sourceLine" id="cb40-15" data-line-number="15">     )</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">edge_attr</span>(g1, <span class="dt">name =</span> <span class="st">&quot;services&quot;</span>) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;electric&quot;</span>, <span class="st">&quot;air_cond&quot;</span>, <span class="st">&quot;gas&quot;</span>, <span class="st">&quot;cable&quot;</span>, <span class="st">&quot;wifi&quot;</span>, <span class="st">&quot;water&quot;</span>)</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="kw">plot</span>(g1,</a>
+<a class="sourceLine" id="cb43-4" data-line-number="4">     <span class="dt">vertex.size =</span> <span class="dv">30</span>,</a>
+<a class="sourceLine" id="cb43-5" data-line-number="5">     <span class="dt">vertex.color =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb43-6" data-line-number="6">     <span class="dt">vertex.label =</span> <span class="kw">V</span>(g1)<span class="op">$</span>rooms,</a>
+<a class="sourceLine" id="cb43-7" data-line-number="7">     <span class="dt">main =</span> <span class="st">&quot;With Many Rooms&quot;</span></a>
+<a class="sourceLine" id="cb43-8" data-line-number="8">     )</a>
+<a class="sourceLine" id="cb43-9" data-line-number="9"><span class="kw">plot</span>(g1, </a>
+<a class="sourceLine" id="cb43-10" data-line-number="10">     <span class="dt">vertex.size =</span> <span class="dv">30</span>,</a>
+<a class="sourceLine" id="cb43-11" data-line-number="11">     <span class="dt">vertex.color =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb43-12" data-line-number="12">     <span class="dt">vertex.label =</span> <span class="kw">V</span>(g1)<span class="op">$</span>rooms,</a>
+<a class="sourceLine" id="cb43-13" data-line-number="13">     <span class="dt">edge.label =</span> <span class="kw">E</span>(g1)<span class="op">$</span>services,</a>
+<a class="sourceLine" id="cb43-14" data-line-number="14">     <span class="dt">main =</span> <span class="st">&quot;Is Connected&quot;</span></a>
+<a class="sourceLine" id="cb43-15" data-line-number="15">     )</a></code></pre></div>
 <p><img src="book_network_analysis_in_R_files/figure-html/get-edges-for-house-1.png" width="672" /></p>
 </div>
 <div id="get-vertices" class="section level2">
 <h2><span class="header-section-number">3.3</span> Get Vertices</h2>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co"># &quot;V&quot; is for vertices</span></a>
-<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="kw">V</span>(g1)</a></code></pre></div>
-<pre><code>## + 5/5 vertices, from afaa2be:
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="co"># &quot;V&quot; is for vertices</span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="kw">V</span>(g1)</a></code></pre></div>
+<pre><code>## + 5/5 vertices, from ded6328:
 ## [1] 1 2 3 4 5</code></pre>
 <div id="add-vertices-attribute" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Add vertices attribute</h3>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">V</span>(g1)<span class="op">$</span>label &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(<span class="kw">V</span>(g1))]</a>
-<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="co">#query attibutes</span></a>
-<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="kw">vertex_attr</span>(g1)</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">V</span>(g1)<span class="op">$</span>label &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(<span class="kw">V</span>(g1))]</a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="co">#query attibutes</span></a>
+<a class="sourceLine" id="cb46-3" data-line-number="3"><span class="kw">vertex_attr</span>(g1)</a></code></pre></div>
 <pre><code>## $rooms
 ## [1] &quot;LR&quot;     &quot;FR&quot;     &quot;BR&quot;     &quot;DR&quot;     &quot;Garage&quot;
 ## 
 ## $label
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="co">#set_vertex_attr(g1, name = &quot;size&quot;, value = seq(10, 50, by =10))</span></a>
-<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="kw">V</span>(g1)<span class="op">$</span>size &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="dt">by =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="kw">plot</span>(g1)</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="co">#set_vertex_attr(g1, name = &quot;size&quot;, value = seq(10, 50, by =10))</span></a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="kw">V</span>(g1)<span class="op">$</span>size &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="dt">by =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="kw">plot</span>(g1)</a></code></pre></div>
 <p><img src="book_network_analysis_in_R_files/figure-html/add-vertices-attr-1.png" width="672" /></p>
 
 </div>

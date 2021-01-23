@@ -24,7 +24,7 @@
 <meta name="author" content="Robert Wiederstein" />
 
 
-<meta name="date" content="2021-01-20" />
+<meta name="date" content="2021-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -188,7 +188,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="igraph.html"><a href="igraph.html#layout-of-nodes"><i class="fa fa-check"></i><b>2.2</b> Layout of Nodes</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="igraph.html"><a href="igraph.html#consistent-plotting"><i class="fa fa-check"></i><b>2.2.1</b> Consistent Plotting</a></li>
-<li class="chapter" data-level="2.2.2" data-path="igraph.html"><a href="igraph.html#available-layouts"><i class="fa fa-check"></i><b>2.2.2</b> Available Layouts</a></li>
+<li class="chapter" data-level="2.2.2" data-path="igraph.html"><a href="igraph.html#more-on-coordinates"><i class="fa fa-check"></i><b>2.2.2</b> More on Coordinates</a></li>
+<li class="chapter" data-level="2.2.3" data-path="igraph.html"><a href="igraph.html#available-layouts"><i class="fa fa-check"></i><b>2.2.3</b> Available Layouts</a></li>
+<li class="chapter" data-level="2.2.4" data-path="igraph.html"><a href="igraph.html#node-layout-via-tkplot"><i class="fa fa-check"></i><b>2.2.4</b> Node Layout via tkplot</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="igraph.html"><a href="igraph.html#attributes"><i class="fa fa-check"></i><b>2.3</b> Attributes</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="igraph.html"><a href="igraph.html#vertices"><i class="fa fa-check"></i><b>2.3.1</b> Vertices</a></li>
@@ -271,33 +273,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="sigma" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> Sigma JS</h1>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="co">#example for ?sigmajs::sigmajs</span></a>
-<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="kw">library</span>(sigmajs)</a>
-<a class="sourceLine" id="cb53-3" data-line-number="3">nodes &lt;-<span class="st"> </span><span class="kw">sg_make_nodes</span>()</a>
-<a class="sourceLine" id="cb53-4" data-line-number="4">edges &lt;-<span class="st"> </span><span class="kw">sg_make_edges</span>(nodes)</a>
-<a class="sourceLine" id="cb53-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb53-6" data-line-number="6"><span class="kw">sigmajs</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb53-7" data-line-number="7"><span class="st">  </span><span class="kw">sg_nodes</span>(nodes, id, label, size, color) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb53-8" data-line-number="8"><span class="st">  </span><span class="kw">sg_edges</span>(edges, id, source, target) </a></code></pre></div>
-<div id="htmlwidget-838bcabee982e5988f03" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-838bcabee982e5988f03">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"G85","size":"3","color":"#B1E2A3","x":"16.896708","y":" 5.291011"},{"id":"2","label":"V48","size":"4","color":"#A5DBA3","x":" 4.719605","y":" 1.012867"},{"id":"3","label":"R44","size":"5","color":"#9AD4A4","x":"15.586431","y":"13.377427"},{"id":"4","label":"W23","size":"4","color":"#76BA99","x":"16.456605","y":"15.634896"},{"id":"5","label":"Z52","size":"2","color":"#48998A","x":" 8.415399","y":"18.337747"},{"id":"6","label":"S97","size":"2","color":"#2D7E7E","x":"14.259440","y":" 2.158065"},{"id":"7","label":"S19","size":"4","color":"#236B76","x":" 5.370537","y":"15.947451"},{"id":"8","label":"A79","size":"3","color":"#1C686F","x":"17.070048","y":"11.916219"},{"id":"9","label":"G59","size":"3","color":"#20986D","x":"19.393393","y":"12.109029"},{"id":"10","label":"X24","size":"3","color":"#24C96B","x":" 3.471289","y":" 7.352935"}],"edges":[{"id":"1","source":"1","target":"5"},{"id":"2","source":"2","target":"4"},{"id":"3","source":"3","target":"8"},{"id":"4","source":"4","target":"7"},{"id":"5","source":"5","target":"6"},{"id":"6","source":"6","target":"3"},{"id":"7","source":"7","target":"8"},{"id":"8","source":"8","target":"5"},{"id":"9","source":"9","target":"4"},{"id":"10","source":"10","target":"10"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="co">#example for ?sigmajs::sigmajs</span></a>
+<a class="sourceLine" id="cb56-2" data-line-number="2"><span class="kw">library</span>(sigmajs)</a>
+<a class="sourceLine" id="cb56-3" data-line-number="3">nodes &lt;-<span class="st"> </span><span class="kw">sg_make_nodes</span>()</a>
+<a class="sourceLine" id="cb56-4" data-line-number="4">edges &lt;-<span class="st"> </span><span class="kw">sg_make_edges</span>(nodes)</a>
+<a class="sourceLine" id="cb56-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb56-6" data-line-number="6"><span class="kw">sigmajs</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-7" data-line-number="7"><span class="st">  </span><span class="kw">sg_nodes</span>(nodes, id, label, size, color) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-8" data-line-number="8"><span class="st">  </span><span class="kw">sg_edges</span>(edges, id, source, target) </a></code></pre></div>
+<div id="htmlwidget-c07a8bbb92a3e0a7f5a5" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c07a8bbb92a3e0a7f5a5">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"Y77","size":"5","color":"#B1E2A3","x":" 8.138669","y":"17.546583"},{"id":"2","label":"G59","size":"3","color":"#A5DBA3","x":" 4.027824","y":"18.817951"},{"id":"3","label":"N14","size":"3","color":"#9AD4A4","x":"10.949921","y":" 7.749659"},{"id":"4","label":"J88","size":"3","color":"#76BA99","x":" 4.594658","y":"13.471899"},{"id":"5","label":"J62","size":"3","color":"#48998A","x":"19.852457","y":" 8.138336"},{"id":"6","label":"J36","size":"5","color":"#2D7E7E","x":" 5.341376","y":" 4.384073"},{"id":"7","label":"F84","size":"5","color":"#236B76","x":" 2.894188","y":" 2.348668"},{"id":"8","label":"R44","size":"4","color":"#1C686F","x":"10.050946","y":"17.523487"},{"id":"9","label":"V48","size":"2","color":"#20986D","x":" 8.612059","y":" 7.889422"},{"id":"10","label":"V74","size":"2","color":"#24C96B","x":" 9.366450","y":" 4.823284"}],"edges":[{"id":"1","source":"1","target":"5"},{"id":"2","source":"2","target":"3"},{"id":"3","source":"3","target":"2"},{"id":"4","source":"4","target":"8"},{"id":"5","source":"5","target":"10"},{"id":"6","source":"6","target":"2"},{"id":"7","source":"7","target":"5"},{"id":"8","source":"8","target":"7"},{"id":"9","source":"9","target":"1"},{"id":"10","source":"10","target":"3"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
 <div id="stop-light-1" class="section level2">
 <h2><span class="header-section-number">6.1</span> Stop light</h2>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">library</span>(sigmajs)</a>
-<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="kw">library</span>(tibble)</a>
-<a class="sourceLine" id="cb54-3" data-line-number="3">edges &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">id =</span> <span class="kw">rep</span>(<span class="st">&quot;1&quot;</span>, <span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb54-4" data-line-number="4">                    <span class="dt">source =</span> <span class="kw">rep</span>(<span class="st">&quot;1&quot;</span>, <span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb54-5" data-line-number="5">                    <span class="dt">target =</span> <span class="kw">as.character</span>(<span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>))</a>
-<a class="sourceLine" id="cb54-6" data-line-number="6">                    )</a>
-<a class="sourceLine" id="cb54-7" data-line-number="7">nodes &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">id =</span> <span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>),</a>
-<a class="sourceLine" id="cb54-8" data-line-number="8">                    <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">&quot;light&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>),</a>
-<a class="sourceLine" id="cb54-9" data-line-number="9">                    <span class="dt">time =</span> <span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">20</span>)</a>
-<a class="sourceLine" id="cb54-10" data-line-number="10">)</a>
-<a class="sourceLine" id="cb54-11" data-line-number="11"><span class="kw">sigmajs</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb54-12" data-line-number="12"><span class="st">  </span><span class="kw">sg_nodes</span>(nodes, id, label, time) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb54-13" data-line-number="13"><span class="st">  </span><span class="kw">sg_edges</span>(edges, id, source, target) </a></code></pre></div>
-<div id="htmlwidget-8c330e72a5b613313cc5" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8c330e72a5b613313cc5">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":"15.315168","y":"11.658052"},{"id":"2","label":"red","time":" 30","x":" 9.702284","y":" 5.437606"},{"id":"3","label":"yellow","time":" 10","x":"12.494940","y":"14.729496"},{"id":"4","label":"green","time":" 20","x":" 8.937837","y":"16.652079"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw">library</span>(sigmajs)</a>
+<a class="sourceLine" id="cb57-2" data-line-number="2"><span class="kw">library</span>(tibble)</a>
+<a class="sourceLine" id="cb57-3" data-line-number="3">edges &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">id =</span> <span class="kw">rep</span>(<span class="st">&quot;1&quot;</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb57-4" data-line-number="4">                    <span class="dt">source =</span> <span class="kw">rep</span>(<span class="st">&quot;1&quot;</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb57-5" data-line-number="5">                    <span class="dt">target =</span> <span class="kw">as.character</span>(<span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb57-6" data-line-number="6">                    )</a>
+<a class="sourceLine" id="cb57-7" data-line-number="7">nodes &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">id =</span> <span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb57-8" data-line-number="8">                    <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">&quot;light&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>),</a>
+<a class="sourceLine" id="cb57-9" data-line-number="9">                    <span class="dt">time =</span> <span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb57-10" data-line-number="10">)</a>
+<a class="sourceLine" id="cb57-11" data-line-number="11"><span class="kw">sigmajs</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb57-12" data-line-number="12"><span class="st">  </span><span class="kw">sg_nodes</span>(nodes, id, label, time) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb57-13" data-line-number="13"><span class="st">  </span><span class="kw">sg_edges</span>(edges, id, source, target) </a></code></pre></div>
+<div id="htmlwidget-66f60950695449aabce0" style="width:100%;height:480px;" class="sigmajs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-66f60950695449aabce0">{"x":{"events":[],"kill":false,"data":{"nodes":[{"id":"1","label":"light","time":"100","x":"16.658730","y":" 8.529010"},{"id":"2","label":"red","time":" 30","x":"15.948791","y":" 5.560517"},{"id":"3","label":"yellow","time":" 10","x":"15.145310","y":"19.113062"},{"id":"4","label":"green","time":" 20","x":" 7.598991","y":"18.786361"}],"edges":[{"id":"1","source":"1","target":"2"},{"id":"1","source":"1","target":"3"},{"id":"1","source":"1","target":"4"}]},"type":null,"button":[],"buttonevent":[],"crosstalk":{"crosstalk_key":null,"crosstalk_group":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>
