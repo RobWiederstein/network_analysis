@@ -51,10 +51,10 @@ sapply(notable.graphs, function(x) plot.igraph(make_graph(x), main = x, vertex.s
 
 ### Complicated Graph
 
-The complicated graph below was created from the Les Miserable resident dataset in `igraph`. [@knuthStanfordGraphBasePlatform1993] The data contains 77 nodes and 254 edges.
+The complicated graph below was created from the Les Miserable resident dataset in `igraph`. [@knuthStanfordGraphBasePlatform1993] The data contains 77 nodes and 254 edges. "Complicated" as used here is relative and means relative to the network graphs introduced thus far.
 
 
-```{r complicated-igraph-node, fig.cap="Network graph of the coappearnce of characters in Les Miserable.", echo=FALSE, warning=FALSE, message=FALSE, fig.align="center"}
+```{r complicated-igraph-node, fig.cap="Network graph of the coappearance of characters in Les Miserable.", echo=FALSE, warning=FALSE, message=FALSE, fig.align="center"}
 library(qgraph)
 #igraph may have lesmis as resident dataset
 file <- "./data/gephy/lesmiserables.gml"
@@ -65,8 +65,9 @@ e <- get.edgelist(g1)
 #l <- qgraph.layout.fruchtermanreingold(e,vcount=vcount(g1))
 l <- qgraph.layout.fruchtermanreingold(e,vcount=vcount(g1), area=8*(vcount(g1)^2),repulse.rad=(vcount(g1)^3.1))
 #that worked! See https://stackoverflow.com/questions/39290909/igraph-resolving-tight-overlapping-nodes
+par(mar = c(1, 1, 1, 1))
 plot.igraph(g1, 
-            asp = 0,
+            asp = .71,
             vertex.label.cex = .35, 
             layout = l,
             axes = F)
@@ -185,11 +186,64 @@ plot(g,
 
 ### Node Layout via tkplot
 
-```{r igraph-karate-layout-nicely, fig.height = 4, fig.width = 6, fig.align="center", fig.cap="Vertices coordinates computed via the layout_nicely algorightm."}
+A node layout in two dimensions is contained within a matrix of x and y coordinates where each row is an individual node.  The number of rows in the matrix is equal to the number of vertices. An algorithm produces a matrix for a group of nodes.  Often, the layout is a helpful starting point, but individual nodes may still be moved depending on the author's preference. `tkplot` can help.
+
+Below is the "karate" dataset from the `igraphdata` package.  The network is a group of individuals that attended a university karate club.  The club was led by the University president "A" and its instructor was "H".  The club later split with some members following "A" while others followed "H".
+
+The nodes below were laid out using the `layout_nicely` algorithm in the `igraph` package.  For less than 1000 vertices, the `layout_nicely` function defaults to the Fruchterman-Reingold ("F-R") layout.  The F-R layout is a force-directed layout algorithm.  Force-directed layouts distribute the nodes in a way where edges are similar in length and cross each other as little as possible. Often, nodes with multiple connections are in the center of the network.
+
+Here, the node layout is reflects the two competing groups in the karate club with "A" and "H" in the center of the graph, but some of the vertices overlap.  `tkplot` can be used to make a cleaner format and to emphasize the connections of the two most influential actors. 
+
+```{r igraph-karate-layout-nicely, echo=F, fig.height = 4, fig.width = 6, fig.align="center", fig.cap="Vertices coordinates computed via the layout_nicely algorithm."}
 knitr::include_graphics( "./imgs/karate_coords_via_layout_nicely.jpeg")
 ```
 
-```{r igraph-karate-layout-tkplot, fig.height = 4, fig.width = 6, fig.align="center", fig.cap="Vertices manually adjusted in tkplot to prevent overlapping and then new coordinates imported for plot."  }
+
+The code below is in three parts.  First, it produces an image to show the "before" Karate club network.  Second, it anticipates the user would adjust the nodes using `tkplot` and then fetch the new coordinates using the `tkplot.getcoords(x)`.  Finally, the code produces a new plot with the same attributes, but different coordinates. 
+
+```{r igraph-karate-layout-code, eval=F}
+library(igraph)
+library(igraphdata)
+data("karate")
+#before image
+filename <- "./imgs/karate_coords_via_layout_nicely.jpeg"
+jpeg(filename = filename, width = 6, height = 4, units = "in", 
+     quality = 95, res = 300, type = "cairo")
+par(mar = c(1, 0, 1, 0))
+plot(karate,
+     vertex.size = 10,
+     layout = layout_nicely,
+     asp = .66,
+     main = "coords via layout_nicely",
+     rescale = T
+)
+dev.off()
+canvas.width <- 600
+canvas.height <- 400
+x <- tkplot(karate, 
+            vertex.size = 10,
+            canvas.width = canvas.width,
+            canvas.height = canvas.height
+            )
+#Here: Move nodes within the tkplot window to a layout you like!
+coords01 <- tkplot.getcoords(x)
+#after image
+filename <- "./imgs/karate_coords_via_tkplot.jpeg"
+jpeg(filename = filename, width = 6, height = 4, units = "in", quality = 95, res = 300, type = "cairo")
+        par(mar = c(1, 0, 1, 0))
+        plot(karate,
+        vertex.size = 10,
+        layout = coords01,
+        asp = .66,
+        main = "coords via tkplot"
+     )
+dev.off()
+
+```
+
+Actors "A" and "H" were moved to the corners of the plot, less for aesthetic reasons and more to demonstrate to the reader how using `tkplot` could dramatically alter the appearance of the network. This could be an exteremely helpful strategy when fine-tuning a plot in its final stages.
+
+```{r igraph-karate-layout-tkplot, echo=F, fig.height = 4, fig.width = 6, fig.align="center", fig.cap="Vertices manually adjusted in tkplot to prevent overlapping and then new coordinates imported for plot."  }
 knitr::include_graphics("./imgs/karate_coords_via_tkplot.jpeg")
 ```
 
